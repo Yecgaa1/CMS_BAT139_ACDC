@@ -1,0 +1,12 @@
+2023/03/29
+1.优化interrupt.c中的锁相环程序时序逻辑；
+2.优化sys_define_param.h中的母线过压保护时间；
+
+
+2023/04/04
+1.优化通信程序，加入DMA传输；
+
+2023/04/06
+1.优化interrupt.c中void gpt1_elcovf0_interrupt(void) 函数的同步整流驱动使能逻辑，只允许使能一次，即COM_Ctr_Info.PWM_Enable == 2表示SR模式驱动使能完成(第141和226行)；
+2.优化interrupt.c中void SysTick_Handler(void)函数的【BOSOC_STATUS】信号监测逻辑，在任何状态时都受监测(第359行)；
+3.优化user_function.c 中void DC_CloseDrive(void)函数的故障关断逻辑(第350行)，现为在任何状态时都会因故障代码进入故障态；
