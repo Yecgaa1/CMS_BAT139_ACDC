@@ -11,6 +11,9 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 /*----include files---------------------------------------------------------*/
 #include "sys_state_machine.h"
 #include "sys_mcu_header.h"
+
+//接入修改的头文件
+#include "change.h"
 /***************************************************************************/
 
 /*************************************************
@@ -626,8 +629,8 @@ void COM_CHG_INV_Select(void)
             }
         }
       
-
-        //市电接入判断，设定工作模式为PFC状态
+        //市电接入判断，设定工作模式为PFC状态,即充电状态
+		//修改代码
         if( System_ProtectFlag_Info.all == 0 && \
             State_Context.state_Value <= COM_RUN_STATE && \
             COM_AD_Data_Info.VACIN_RMS_Val_Fir > PFC_START_CHECK_AC_VOL_DN && \
@@ -635,7 +638,8 @@ void COM_CHG_INV_Select(void)
             COM_Ctr_Info.PFC_FREQ_State == 1 && \
             (COM_Ctr_Info.INV_PFC_Mode_Select == 1||COM_Ctr_Info.INV_PFC_Mode_Select == 0) && \
             COM_AD_Data_Info.VACIN_Freq_Val_Fir > PFC_START_CHECK_FREQ_DN && \
-            COM_AD_Data_Info.VACIN_Freq_Val_Fir < PFC_START_CHECK_FREQ_UP) //输入电压范围内时，启用控算法              
+            COM_AD_Data_Info.VACIN_Freq_Val_Fir < PFC_START_CHECK_FREQ_UP&& \
+			isAllowCHG==1)//输入电压范围内时，启用控算法              
         {       
             if(COM_Ctr_Info.PFC_AC_Vol_OK_Cnt < COM_Ctr_Info.PFC_AC_Vol_OK_TimeVal)
             {
