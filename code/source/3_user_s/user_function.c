@@ -356,13 +356,13 @@ void User_Key_Deal(void)
     //开逆变输出继电器					
     if ( COM_Ctr_Info.INV_Enable_Flag == 1 && System_ProtectFlag_Info.all == 0 )	
     {        
-        if(INV_RY1_STATE==0)
+        if(INV_RY1_STATE==0)//如果继电器关闭
         {
             u16Inv_RY3_count = 0;
             INV_RY1_ENABLE;//开启逆变器输出 
             INV_RY3_ENABLE;//开启逆变器输出 
         }
-        else
+        else//打开20ms后关闭RY1
         {
             if (SysClockBase_ms.sys_1ms == 1 )
                 u16Inv_RY3_count++;
@@ -650,7 +650,7 @@ void COM_CHG_INV_Select(void)
 
             if( COM_Ctr_Info.PFC_AC_Vol_OK_Cnt  >= COM_Ctr_Info.PFC_AC_Vol_OK_TimeVal &&\
                 UPS_Ctr_Info.V_ACIN_OK          == 1 &&\
-                (UPS_Ctr_Info.lock_Phase_OK==1 ||COM_Ctr_Info.INV_Enable_Flag == 0)  )//锁相完成或者未开逆变器
+                (UPS_Ctr_Info.lock_Phase_OK==1 ||COM_Ctr_Info.INV_Enable_Flag == 0)  )//放电模式下锁相完成或者用户未指示逆变器工作
             {   
                 INV_START_DISABLE;
                 
@@ -674,7 +674,7 @@ void COM_CHG_INV_Select(void)
                 PFC_Ctrl_Info.vBus_Ref_SS               = PFC_VBUS_REF_INIT_SS;//电压环缓启动参考值给定  
                 PFC_Ref_Info.u32SS_vBus_Hold            = PFC_VBUS_REF_INIT_SS;  //PFC电压环缓启动参考值给定                    
                 COM_Ctr_Info.PFC_AC_Vol_OK_Cnt          = 0;
-                COM_Ctr_Info.INV_PFC_Mode_Select        = 2;//检测市电正常工作模式为PFC模式                                  
+                COM_Ctr_Info.INV_PFC_Mode_Select        = 2;//检测市电正常工作后，模式设置为PFC模式                                  
             }
         } 
         else
@@ -719,7 +719,7 @@ void COM_CHG_INV_Select(void)
                 State_Context.state_Value               = COM_WAITING_STATE;
                 
                 COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt = 0;                    
-                COM_Ctr_Info.INV_PFC_Mode_Select = 1;//逆变模式   
+                COM_Ctr_Info.INV_PFC_Mode_Select = 1;//设置为逆变模式   
 
                 //逆变器状态值判断
                 if((COM_AD_Data_Info.auxPower_Val_Fir > COM_AUX_POWER_LVP_VAL &&  \
