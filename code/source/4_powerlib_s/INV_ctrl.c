@@ -304,7 +304,27 @@ void INV_Ctrl(void)
         /*-------------------电流环控制--------------------------------------------*/
         if (INV_Ctrl_Info.mode_PID_Loop  ==   INV_DOUBLE_LOOP) //电压电流双环输出           
         {           
-            INV_PID_Cur.ref         = INV_PID_Vol.out;  
+
+
+            
+            //if (UPS_Ctr_Info.lock_Phase_OK == 1)//闭合前用电压环控制，闭合后用电流环控制
+            if (0)//闭合前用电压环控制，闭合后用电流环控制
+            {
+                    INV_PID_Cur.ref =((int32_t)(2.0*4096/COM_CUR_INDUC_BASE)*3>>1);//修改电流输出值,存疑
+            }
+            else{
+                //使用电压环控制电流环
+                INV_PID_Cur.ref         = INV_PID_Vol.out; 
+            }
+
+            
+
+
+
+
+
+
+
 //            INV_PID_Cur.fdb         = INV_Ctrl_Info.curInduc_Peak;   
             //限电流
             if( INV_PID_Cur.ref >= INV_Ctrl_Info.curLoop_Up)

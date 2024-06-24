@@ -152,7 +152,8 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 #define INV_RY3_DISABLE  			                ( PORT->PCLR2 = (1<<1))
 
 //PFC_继电器2
-#define PFC_RY2_ENABLE				                ( PORT->PSET13 = (1<<0))
+//强行关断
+//#define PFC_RY2_ENABLE				                ( PORT->PSET13 = (1<<0))
 #define PFC_RY2_DISABLE  			                ( PORT->PCLR13 = (1<<0))
 
 //发送INV工作信号ToDCDC侧

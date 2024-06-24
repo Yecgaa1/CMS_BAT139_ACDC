@@ -205,8 +205,11 @@ void Run_State_OpenDriver(void)
     if(COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE)//INV模式：放电
     {       
         INV_PWM_Enable();					//开启PWM输出
-        INV_RY1_ENABLE;//开启逆变器输出
-        INV_RY3_ENABLE;//开启逆变器输出
+
+        //修改逆变器开启时间
+        // INV_RY1_ENABLE;//开启逆变器输出
+        // INV_RY3_ENABLE;//开启逆变器输出
+        
         Run_Deal.flag.bit.OpenDriver_Ok = E_TRUE;              
     }
     else if(COM_Ctr_Info.INV_PFC_Mode_Select == PFC_MODE)//PFC模式：充电

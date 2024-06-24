@@ -264,7 +264,7 @@ void tmm1_interrupt(void)
     if(COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE)//
     {
         //Êä³öµçÑ¹ËøÏà
-        PLL_Ctrl_Info_V_ACOUT.i16Valpha = -ADSample_Info.INV_AC_Vol_AD_FIR;    
+        PLL_Ctrl_Info_V_ACOUT.i16Valpha = ADSample_Info.INV_AC_Vol_AD_FIR;    
         if(INV_Ctrl_Info.periodDot_Cnt>=(INV_Ctrl_Info.periodDot_Val>>2))
         {
             PLL_Ctrl_Info_V_ACOUT.i16cos[INV_Ctrl_Info.periodDot_Cnt-(INV_Ctrl_Info.periodDot_Val>>2)] = PLL_Ctrl_Info_V_ACOUT.i16Valpha;
