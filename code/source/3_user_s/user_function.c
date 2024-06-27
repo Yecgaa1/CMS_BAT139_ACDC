@@ -352,7 +352,7 @@ void User_Key_Deal(void)
     // 开逆变输出继电器
     if (COM_Ctr_Info.INV_Enable_Flag == 1 && System_ProtectFlag_Info.all == 0)
     {
-        if (0)//UPS_Ctr_Info.lock_Phase_OK == 1 && 
+        if (1)//UPS_Ctr_Info.lock_Phase_OK == 1 && 
         {
             if (INV_RY1_STATE == 0) // 如果继电器关闭
             {

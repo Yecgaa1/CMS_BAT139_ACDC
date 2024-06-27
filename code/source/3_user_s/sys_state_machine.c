@@ -207,8 +207,8 @@ void Run_State_OpenDriver(void)
         INV_PWM_Enable();					//开启PWM输出
 
         //修改逆变器开启时间
-        // INV_RY1_ENABLE;//开启逆变器输出
-        // INV_RY3_ENABLE;//开启逆变器输出
+        INV_RY1_ENABLE;//开启逆变器输出
+        INV_RY3_ENABLE;//开启逆变器输出
         
         Run_Deal.flag.bit.OpenDriver_Ok = E_TRUE;              
     }

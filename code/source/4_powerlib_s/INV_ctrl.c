@@ -318,8 +318,8 @@ void INV_Ctrl(void)
         {
 
             // 使用电压环控制电流环
-            INV_PID_Cur.ref = INV_PID_Vol.out;
-            //INV_PID_Cur.ref = ((int32_t)(1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 1); // 修改电流输出值
+            //INV_PID_Cur.ref = INV_PID_Vol.out;
+            INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2); // 修改电流输出值
             //INV_PID_Cur.ref = 0;
             //            INV_PID_Cur.fdb         = INV_Ctrl_Info.curInduc_Peak;
             // 限电流
