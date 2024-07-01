@@ -17,7 +17,7 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 /*-------------------INV模式时PWM开关周期设置------------------------------*/
 /***************************************************************************/
 #define INV_PWM_FREQ	                            (21000L)// PWM frequency[Hz]
-#define INV_DEADTIME			                    ((int32_t)((0.95 * COM_MCU_CLK)) / 1000000L)
+#define INV_DEADTIME			                    ((int32_t)((0 * COM_MCU_CLK)) / 1000000L)
 #if 1
     //中心互补对称周期值
     #define INV_PWM_PERIOD	                        ((int32_t)(COM_MCU_CLK  / (INV_PWM_FREQ * 2)) + INV_DEADTIME - 2)   //1/fk* (m+2–p)* 2
