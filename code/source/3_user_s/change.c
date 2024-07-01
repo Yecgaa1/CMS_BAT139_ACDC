@@ -19,3 +19,24 @@ void Function_TxSendDebug_INT(int32_t data)
     DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
     SCI0->TXD0 = (uint8_t)txChar[0];
 }
+void DebugUse(void)
+{
+    // 逆变控制
+    INV_Ctrl_Info.PWM_Duty=300;
+
+    // 占空比、周期更新
+    TMM->TMGRA0 = INV_Ctrl_Info.PWM_Period; // Set pwm period
+    TMM->TMGRD0 = INV_Ctrl_Info.PWM_Duty;   // 控制为互补输出
+    // TMM->TMGRD0 = INV_Ctrl_Info.PWM_DutyB;//PWM2的输出占空比设置   TMGRC1寄存器为TMGRA1寄存器的缓冲寄存器
+    TMM->TMGRC1 = INV_Ctrl_Info.PWM_Duty; // PWM2的输出占空比设置   TMGRC1寄存器为TMGRA1寄存器的缓冲寄存器
+
+    if (COM_Ctr_Info.PWM_Enable == 0)
+    {
+        // 打开INV状态时PWM口
+        TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |
+                      _00_TMM_TMIOA1_OUTPUT_ENABLE | _20_TMM_TMIOB1_OUTPUT_DISABLE | _00_TMM_TMIOC1_OUTPUT_ENABLE | _80_TMM_TMIOD1_OUTPUT_DISABLE;
+
+        INV_Ctrl_Info.periodDot_Cnt = 0;
+        COM_Ctr_Info.PWM_Enable = 1;
+    }
+}

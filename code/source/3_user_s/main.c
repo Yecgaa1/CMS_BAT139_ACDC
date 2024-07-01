@@ -55,6 +55,7 @@
 #include "user_function.h"
 #include "sys_mcu_header.h"
 #include "PLL_Ctrl.h"
+#include "change.h"
 /****************************************************************************/
 
 /*************************************************
@@ -70,6 +71,8 @@ int main(void)
     //变量初始化
     Sys_Variableinit();
     //锁相参数初始化
+    DebugUse();
+    while(1);
     PLL_Ctrl_Param(&PLL_Ctrl_Info_V_ACIN);
     PLL_Ctrl_Param(&PLL_Ctrl_Info_V_ACOUT);
     
