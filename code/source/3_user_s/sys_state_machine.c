@@ -12,6 +12,7 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 #include "sys_state_machine.h"
 #include "sys_mcu_header.h"
 #include "user_function.h"
+#include "change.h"
 /***************************************************************************/
 
 _State_Context_t State_Context = STATE_CONTEXT_DEFAULTS;
