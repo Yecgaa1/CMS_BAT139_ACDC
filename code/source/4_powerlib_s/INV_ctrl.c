@@ -219,14 +219,14 @@ void INV_Ctrl(void)
         {
 
             // 用自己的正弦表
-            INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * Sine_Table_50Hz[INV_Ctrl_Info.periodDot_Cnt] +
-                               INV_Ctrl_Info.AC_Vol_AMP_Target * INV_PID_DCIM.out) >>
-                              12;
-
-            // 市电正常就用市电的thete角
-            // INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * (-(Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))) +
+            // INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * Sine_Table_50Hz[INV_Ctrl_Info.periodDot_Cnt] +
             //                    INV_Ctrl_Info.AC_Vol_AMP_Target * INV_PID_DCIM.out) >>
             //                   12;
+
+            // 市电正常就用市电的thete角
+            INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * (-(Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))) +
+                               INV_Ctrl_Info.AC_Vol_AMP_Target * INV_PID_DCIM.out) >>
+                              12;
         }
         else
         {
