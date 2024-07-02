@@ -203,10 +203,11 @@ void Run_State_OpenDriver(void)
     {
         INV_PWM_Enable(); // 开启PWM输出
 
-        if (BWRY_State)
+        // if (BWRY_State)
+        if (0)
         {
-            INV_RY1_ENABLE; // 开启逆变器输出
-            INV_RY3_ENABLE; // 开启逆变器输出
+            //INV_RY1_ENABLE; // 开启逆变器输出
+            //INV_RY3_ENABLE; // 开启逆变器输出
         }
 
         Run_Deal.flag.bit.OpenDriver_Ok = E_TRUE;

@@ -352,13 +352,14 @@ void User_Key_Deal(void)
     // 开逆变输出继电器
     if (COM_Ctr_Info.INV_Enable_Flag == 1 && System_ProtectFlag_Info.all == 0)
     {
-        if (BWRY_State)//UPS_Ctr_Info.lock_Phase_OK == 1 && 
+        // if (BWRY_State)
+        if (0)
         {
             if (INV_RY1_STATE == 0) // 如果继电器关闭
             {
                 u16Inv_RY3_count = 0;
-                INV_RY1_ENABLE; // 开启逆变器输出
-                INV_RY3_ENABLE; // 开启逆变器输出
+                //INV_RY1_ENABLE; // 开启逆变器输出
+                //INV_RY3_ENABLE; // 开启逆变器输出
             }
             else // 打开20ms后关闭RY1
             {
@@ -375,7 +376,7 @@ void User_Key_Deal(void)
     else
     {
         COM_Ctr_Info.INV_Enable_Flag = 0;
-        INV_RY1_DISABLE; // 开启逆变器输出
+        INV_RY1_DISABLE; // 关闭逆变器输出
         INV_RY3_DISABLE;
     }
 }

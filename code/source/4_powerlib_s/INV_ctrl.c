@@ -322,11 +322,25 @@ void INV_Ctrl(void)
         if (INV_Ctrl_Info.mode_PID_Loop == INV_DOUBLE_LOOP) // 电压电流双环输出
         {
 
+            if (COM_AD_Data_Info.vBus_Val_Fir < Enable_RY_CurPID)
+            {
+                // 440V母线电压前,使用电压环
+                INV_PID_Cur.ref = INV_PID_Vol.out;
+            }
+            else
+            {
+                // 440V母线电压后,使用电流环
+                INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2);
+                if (BWRY_State)
+                {
+                    INV_RY1_ENABLE; // 开启逆变器输出
+                    INV_RY3_ENABLE; // 开启逆变器输出
+                }
+            }
+
             // 使用电压环控制电流环
-            // INV_PID_Cur.ref = INV_PID_Vol.out;
 
             // 电流环控制
-            INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2);
 
             //  INV_PID_Cur.ref = 0;
             //              INV_PID_Cur.fdb         = INV_Ctrl_Info.curInduc_Peak;
