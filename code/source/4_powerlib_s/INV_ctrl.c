@@ -325,11 +325,18 @@ void INV_Ctrl(void)
         {
 
             // 使用电压环控制电流环
-            // INV_PID_Cur.ref = INV_PID_Vol.out;
-            INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2); // 修改电流输出值
-            // INV_PID_Cur.ref = 0;
-            //             INV_PID_Cur.fdb         = INV_Ctrl_Info.curInduc_Peak;
-            //  限电流
+            if (UPS_Ctr_Info.V_ACIN_OK == 1) // 市电正常就用市电的thete角，运行电流环
+            {
+                INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2); // 修改电流输出值
+            }
+            else
+            {
+                INV_PID_Cur.ref = INV_PID_Vol.out;
+            }
+
+            //  INV_PID_Cur.ref = 0;
+            //              INV_PID_Cur.fdb         = INV_Ctrl_Info.curInduc_Peak;
+            //   限电流
             if (INV_PID_Cur.ref >= INV_Ctrl_Info.curLoop_Up)
                 INV_PID_Cur.ref = INV_Ctrl_Info.curLoop_Up;
 
@@ -433,8 +440,8 @@ void INV_Ctrl(void)
         INV_Ctrl_Info.PWM_Duty = INV_Ctrl_Info.PWM_Duty_Dn * 59; // 更新占空比
     }
 
-    //为PWM_DutyB添加相同的保护代码
-    // 限制最大占空比
+    // 为PWM_DutyB添加相同的保护代码
+    //  限制最大占空比
     if (INV_Ctrl_Info.PWM_DutyB > (INV_Ctrl_Info.PWM_Period - INV_Ctrl_Info.PWM_Duty_Dn))
     {
         INV_Ctrl_Info.PWM_DutyB = INV_Ctrl_Info.PWM_Period - INV_Ctrl_Info.PWM_Duty_Dn; // 更新占空比
