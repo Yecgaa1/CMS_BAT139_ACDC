@@ -14,7 +14,7 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 #include "user_function.h"
 #include "sys_state_machine.h"
 #include "elc.h"
-
+#include "change.h"
 /***************************************************************************/
 void IRQ27_Handler(void) __attribute__((alias("tmm0_interrupt")));
 void IRQ28_Handler(void) __attribute__((alias("tmm1_interrupt")));
@@ -195,7 +195,7 @@ void INV_Deal(void)
         TMM->TMGRD0 = INV_Ctrl_Info.PWM_DutyB;//PWM2µÄÊä³öÕ¼¿Õ±ÈÉèÖÃ   TMGRC1¼Ä´æÆ÷ÎªTMGRA1¼Ä´æÆ÷µÄ»º³å¼Ä´æÆ÷         
         TMM->TMGRC1 = INV_Ctrl_Info.PWM_Duty; //PWM2µÄÊä³öÕ¼¿Õ±ÈÉèÖÃ   TMGRC1¼Ä´æÆ÷ÎªTMGRA1¼Ä´æÆ÷µÄ»º³å¼Ä´æÆ÷          
       
-        if(COM_Ctr_Info.PWM_Enable == 0)
+        if(COM_Ctr_Info.PWM_Enable == 0&&COM_AD_Data_Info.vBus_Val_Fir > Enable_PWM)
         {
             //´ò¿ªINV×´Ì¬Ê±PWM¿Ú
             TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |

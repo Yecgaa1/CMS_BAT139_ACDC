@@ -324,12 +324,13 @@ void INV_Ctrl(void)
 
             if (COM_AD_Data_Info.vBus_Val_Fir < Enable_RY_CurPID)
             {
-                // 440V母线电压前,使用电压环
-                INV_PID_Cur.ref = INV_PID_Vol.out;
+                // 410V母线电压前,使用电压环
+                // INV_PID_Cur.ref = INV_PID_Vol.out;
+                INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2);
             }
             else
             {
-                // 440V母线电压后,使用电流环
+                // 410V母线电压后,使用电流环
                 INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2);
                 if (BWRY_State)
                 {
