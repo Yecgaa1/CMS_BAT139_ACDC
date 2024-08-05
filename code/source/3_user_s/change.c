@@ -15,7 +15,7 @@ int32_t Get_PLL_Cos(PLL_Ctrl_Var_t *PLL_Info)
 char txChar[24] = {0};
 void Function_TxSendDebug_INT(int32_t data)
 {
-    sprintf((char *)txChar, "%d\r\n", data);
+    sprintf((char *)txChar, "%d\n", data);
 
     DMAVEC->CTRL[0].DMSAR = (uint32_t)(txChar + 1);
     DMAVEC->CTRL[0].DMACT = strlen(txChar) - 1; // 传输8个数据
@@ -24,7 +24,7 @@ void Function_TxSendDebug_INT(int32_t data)
 }
 void Function_TxSendDebug_Float(float data)
 {
-    sprintf((char *)txChar, "%.4f\r\n", data);
+    sprintf((char *)txChar, "%.4f\n", data);
 
     DMAVEC->CTRL[0].DMSAR = (uint32_t)(txChar + 1);
     DMAVEC->CTRL[0].DMACT = strlen(txChar) - 1; // 传输8个数据
