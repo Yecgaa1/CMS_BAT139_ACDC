@@ -15,13 +15,23 @@ int32_t Get_PLL_Cos(PLL_Ctrl_Var_t *PLL_Info)
 char txChar[24] = {0};
 void Function_TxSendDebug_INT(int32_t data)
 {
-    sprintf((char *)txChar, "\r\n%d\r\n", data);
+    sprintf((char *)txChar, "%d\r\n", data);
 
     DMAVEC->CTRL[0].DMSAR = (uint32_t)(txChar + 1);
     DMAVEC->CTRL[0].DMACT = strlen(txChar) - 1; // 传输8个数据
     DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
     SCI0->TXD0 = (uint8_t)txChar[0];
 }
+void Function_TxSendDebug_Float(float data)
+{
+    sprintf((char *)txChar, "%.4f\r\n", data);
+
+    DMAVEC->CTRL[0].DMSAR = (uint32_t)(txChar + 1);
+    DMAVEC->CTRL[0].DMACT = strlen(txChar) - 1; // 传输8个数据
+    DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
+    SCI0->TXD0 = (uint8_t)txChar[0];
+}
+
 void DebugUse(void)
 {
     while (1)
