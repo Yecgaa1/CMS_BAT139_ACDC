@@ -325,6 +325,6 @@ void User_UART_View(void)
 
 //         Function_TxSendDebug(UART1_Info.TXD_W[5],System_ProtectFlag_Info.all,ADSample_Info.INV_AC_Vol_AD_FIR,COM_AD_Data_Info.VACOUT_RMS_Val_Fir);//
 				// Function_TxSendDebug(COM_Ctr_Info.INV_PFC_Mode_Select*100+State_Context.state_Value*1000,PFC_PID_Vol.fdb, UARTx_DC_Info.vBus_SetVal,PFC_PID_Vol.ref,ADSample_Info.INV_AC_Vol_AD_FIR);//			 
-       Function_TxSendDebug_INT(123);
-       Function_TxSendDebug_Float(127.01);
+//       Function_TxSendDebug_INT(123);
+       Function_TxSendDebug_Float((float)InvToDC_Data_Info.VBusAD_Val/10.0);
 }

@@ -219,14 +219,14 @@ void INV_Ctrl(void)
         {
 
             // 用自己的正弦表
-            INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * Sine_Table_50Hz[INV_Ctrl_Info.periodDot_Cnt] +
-                               INV_Ctrl_Info.AC_Vol_AMP_Target * INV_PID_DCIM.out) >>
-                              12;
-
-            // 市电正常就用市电的thete角
-            // INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * (-(Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))) +
+            // INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * Sine_Table_50Hz[INV_Ctrl_Info.periodDot_Cnt] +
             //                    INV_Ctrl_Info.AC_Vol_AMP_Target * INV_PID_DCIM.out) >>
             //                   12;
+
+            // 市电正常就用市电的thete角
+            INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * (-(Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))) +
+                               INV_Ctrl_Info.AC_Vol_AMP_Target * INV_PID_DCIM.out) >>
+                              12;
         }
         else
         {
@@ -331,8 +331,8 @@ void INV_Ctrl(void)
             else
             {
                 // 410V母线电压后,使用电流环
-                // INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2);
-                INV_PID_Cur.ref = INV_PID_Vol.out;
+                INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2);
+                // INV_PID_Cur.ref = INV_PID_Vol.out;
                 if (BWRY_State)
                 {
                     INV_RY1_ENABLE; // 开启逆变器输出
