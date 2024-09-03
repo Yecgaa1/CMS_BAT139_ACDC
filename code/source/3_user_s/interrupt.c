@@ -197,12 +197,12 @@ void INV_Deal(void)
       
         if(COM_Ctr_Info.PWM_Enable == 0&&COM_AD_Data_Info.vBus_Val_Fir > Enable_PWM)
         {
-            //打开INV状态时PWM口
-            TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |
-                          _00_TMM_TMIOA1_OUTPUT_ENABLE | _20_TMM_TMIOB1_OUTPUT_DISABLE | _00_TMM_TMIOC1_OUTPUT_ENABLE | _80_TMM_TMIOD1_OUTPUT_DISABLE;	
+            // //打开INV状态时PWM口
+            // TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |
+            //               _00_TMM_TMIOA1_OUTPUT_ENABLE | _20_TMM_TMIOB1_OUTPUT_DISABLE | _00_TMM_TMIOC1_OUTPUT_ENABLE | _80_TMM_TMIOD1_OUTPUT_DISABLE;	
             
-            INV_Ctrl_Info.periodDot_Cnt = 0;
-            COM_Ctr_Info.PWM_Enable     = 1;
+            // INV_Ctrl_Info.periodDot_Cnt = 0;
+            // COM_Ctr_Info.PWM_Enable     = 1;
         }
     }
 }

@@ -31,6 +31,15 @@ void Function_TxSendDebug_Float(float data)
     DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
     SCI0->TXD0 = (uint8_t)txChar[0];
 }
+void Function_TxSendDebug_Two_Float(float data1, float data2)
+{
+    sprintf((char *)txChar, "%.2f,%.2f\n", data1, data2);
+
+    DMAVEC->CTRL[0].DMSAR = (uint32_t)(txChar + 1);
+    DMAVEC->CTRL[0].DMACT = strlen(txChar) - 1; // 传输8个数据
+    DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
+    SCI0->TXD0 = (uint8_t)txChar[0];
+}
 
 void DebugUse(void)
 {

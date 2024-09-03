@@ -335,8 +335,8 @@ void INV_Ctrl(void)
                 // INV_PID_Cur.ref = INV_PID_Vol.out;
                 if (BWRY_State)
                 {
-                    INV_RY1_ENABLE; // 开启逆变器输出
-                    INV_RY3_ENABLE; // 开启逆变器输出
+                    // INV_RY1_ENABLE; // 开启逆变器输出
+                    // INV_RY3_ENABLE; // 开启逆变器输出
                 }
             }
 
