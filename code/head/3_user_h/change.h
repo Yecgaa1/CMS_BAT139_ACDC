@@ -4,6 +4,7 @@
 extern int isAllowCHG;
 int32_t Get_PLL_Sin(PLL_Ctrl_Var_t *PLL_Info);
 void Function_TxSendDebug_INT(int32_t data);
+void Function_TxSendDebug_Two_Float(float data1, float data2);
 void Function_TxSendDebug_Float(float data);
 void DebugUse(void);
 #define BWRY_State 0
