@@ -322,7 +322,8 @@ void INV_Ctrl(void)
         if (INV_Ctrl_Info.mode_PID_Loop == INV_DOUBLE_LOOP) // 电压电流双环输出
         {
 
-            if (COM_AD_Data_Info.vBus_Val_Fir < Enable_RY_CurPID)
+            // if (COM_AD_Data_Info.vBus_Val_Fir < Enable_RY_CurPID)
+            if (1)
             {
                 // 410V母线电压前,使用电压环
                 INV_PID_Cur.ref = INV_PID_Vol.out;

@@ -9,5 +9,5 @@ void Function_TxSendDebug_Float(float data);
 void DebugUse(void);
 #define BWRY_State 0
 #define Enable_RY_CurPID (600 * COM_REAL_VBUS_SCAL)
-#define Enable_PWM (600 * COM_REAL_VBUS_SCAL)
+#define Enable_PWM (0 * COM_REAL_VBUS_SCAL)
 int32_t Get_PLL_Cos(PLL_Ctrl_Var_t *PLL_Info);

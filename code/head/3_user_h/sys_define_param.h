@@ -405,13 +405,13 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
     //过流保护：OCP
     /*------------------------------------------------------------------------------------*/
     #define INV_INDUC_RMS_OCP1                          (10.0)//(A)
-    #define INV_INDUC_RMS_OCP2                          (12.0)//(A)
+    #define INV_INDUC_RMS_OCP2                          (0.9)//(A)
     #define INV_INDUC_RMS_OCP3                          (14.0)//(A)
     #define INV_INDUC_RMS_OCP4                          (18.0)//(A)
     #define INV_INDUC_RMS_OCP_VALBACK                   ( 0.4)//保护使用的回差值(A)
 
     #define INV_RMS_OCP1_TIME                           (40000)//延时时间(ms)
-    #define INV_RMS_OCP2_TIME                           (8000)//延时时间(ms)
+    #define INV_RMS_OCP2_TIME                           (1000)//延时时间(ms)
     #define INV_RMS_OCP3_TIME                           (12000)//延时时间(ms)
     #define INV_RMS_OCP4_TIME                           (12000)//延时时间(ms)
 
