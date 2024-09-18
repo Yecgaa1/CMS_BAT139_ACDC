@@ -19,6 +19,7 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 #include "DMA.h"
 #include "gpio.h"
 #include "userdefine.h"
+#include "change.h"
 /***************************************************************************/
 
 /*************************************************
@@ -381,7 +382,6 @@ Others     : ¹Ø±ÕPWMÊä³ö
 void COM_PWM_Disable(void)
 {
     
-    
     TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _02_TMM_TMIOB0_OUTPUT_DISABLE | _04_TMM_TMIOC0_OUTPUT_DISABLE | _08_TMM_TMIOD0_OUTPUT_DISABLE |
                   _10_TMM_TMIOA1_OUTPUT_DISABLE | _20_TMM_TMIOB1_OUTPUT_DISABLE | _40_TMM_TMIOC1_OUTPUT_DISABLE | _80_TMM_TMIOD1_OUTPUT_DISABLE;
 
@@ -390,6 +390,8 @@ void COM_PWM_Disable(void)
 		
     PFC_RY2_DISABLE;
     //INV_RY1_DISABLE;
+
+	
     
 }
 

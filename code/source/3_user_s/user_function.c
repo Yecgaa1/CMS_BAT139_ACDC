@@ -334,6 +334,7 @@ void User_Key_Deal(void)
     // 在PFC模式时，关逆变输出时不封管
     if (u16INV_OFF_Flag == 1)
     {
+    	isONPWM=0;
         if (ADSample_Info.INV_AC_Vol_AD_FIR <= 100 && ADSample_Info.INV_AC_Vol_AD_FIR >= -100)
         {
             if (COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE) // INV模式：放电
