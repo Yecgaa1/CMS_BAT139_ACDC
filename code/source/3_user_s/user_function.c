@@ -9,7 +9,7 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 
 /****************************************************************************/
 /*----include files---------------------------------------------------------*/
-#include "sys_state_machine.h"
+#include "sys_state_machine.h"sou
 #include "sys_mcu_header.h"
 
 // 接入修改的头文件

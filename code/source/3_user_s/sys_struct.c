@@ -101,6 +101,9 @@ Protect_Check_Var_t     INV_RMS_OCP3_Info 		        = { E_I_INDUC_OCP,E_MAX,INV_
 
 Protect_Check_Var_t     INV_RMS_OCP4_Info 		        = { E_I_INDUC_OCP,E_MAX,INV_RMS_OCP4_TIME,0,\
                                                             INV_RMS_OCP4_VAL,INV_RMS_OCP4_VAL_BACK };
+//瞬时过流保护定义
+Protect_Check_Var_t     INV_IST_OCP1_Info 		        = { E_I_INDUC_OCP,E_MAX,INV_IST_OCP1_TIME,0,\
+                                                            INV_IST_OCP1_VAL,INV_IST_OCP1_VAL_BACK };
 
 /*------------------------------------------------------------------------------------*/
 //INV输出过欠压变量定义

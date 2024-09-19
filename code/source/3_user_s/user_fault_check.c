@@ -148,7 +148,8 @@ void Fault_State_Check(void)
         COM_Get_Protect_Flag( COM_AD_Data_Info.iInduc_RMS_Val_Fir , &INV_RMS_OCP3_Info , &System_ProtectFlag_Info.all );
         COM_Get_Protect_Flag( COM_AD_Data_Info.iInduc_RMS_Val_Fir , &INV_RMS_OCP4_Info , &System_ProtectFlag_Info.all );
 
-            
+        COM_Get_Protect_Flag( ABSFUN(ADSample_Info.curLoad_AD_FIR) , &INV_IST_OCP1_Info , &System_ProtectFlag_Info.all );
+		
         /*-------------------------Ä¸ÏßÇ·Ñ¹¼ì²â±£»¤-----------------------------------------------*/
         COM_Get_Protect_Flag( COM_AD_Data_Info.vBus_Val_Fir  , &INV_VBus_LVP1_Info  , &System_ProtectFlag_Info.all );
         COM_Get_Protect_Flag( COM_AD_Data_Info.vBus_Val_Fir  , &INV_VBus_LVP2_Info  , &System_ProtectFlag_Info.all );

@@ -331,7 +331,7 @@ void User_UART_View(void)
     }
 
 
-    if(isONPWM)
+    if(INV_RY1_STATE)
     {
         save[save_cnt]=ADSample_Info.curLoad_AD_FIR;
     }
