@@ -4,7 +4,8 @@
 // 充放电控制标志位
 int isAllowCHG = 0; // 0即不允许充电，1即允许充电
 volatile int32_t Duty_Out1 = 0;
-int32_t save[1024] = {0};
+int32_t save[512] = {0};
+int32_t save2[512] = {0};
 volatile uint32_t save_cnt = 0;
 volatile uint32_t isONPWM=1;
 int32_t Get_PLL_Sin(PLL_Ctrl_Var_t *PLL_Info)
@@ -26,6 +27,17 @@ void Function_TxSendDebug_INT(int32_t data)
     DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
     SCI0->TXD0 = (uint8_t)txChar[0];
 }
+
+void Function_TxSendDebug_TWO_INT(int32_t data1,int32_t data2)
+{
+    sprintf((char *)txCharL, "%d,%d\r\n", data1,data2);
+
+    DMAVEC->CTRL[0].DMSAR = (uint32_t)(txCharL + 1);
+    DMAVEC->CTRL[0].DMACT = strlen(txCharL) - 1; // 传输8个数据
+    DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
+    SCI0->TXD0 = (uint8_t)txCharL[0];
+}
+
 void Function_TxSendDebug_Float(float data)
 {
     sprintf((char *)txChar, "%.4f\n", data);

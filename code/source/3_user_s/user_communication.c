@@ -321,20 +321,24 @@ void User_UART_View(void)
     //       Function_TxSendDebug_INT(123);
     // Function_TxSendDebug_Two_Float((float)ADSample_Info.PFC_AC_Vol_AD_FIR , (float)(INV_Ctrl_Info.AC_Vol_AMP_Target_Ref * (-(Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))))/4096.0/20.0);
     // Function_TxSendDebug_Two_Float((float)COM_AD_Data_Info.vBus_Val_Fir/10.0  , (float)COM_AD_Data_Info.iLoad_RMS_Val/100.0);
-    if(save_cnt==1023)
-    {
-       save_cnt=0;
-    }
-    else
-    {
-        save_cnt++;
-    }
 
 
-    if(INV_RY1_STATE)
-    {
-        save[save_cnt]=ADSample_Info.curLoad_AD_FIR;
-    }
+
+
+
+
     
-    Function_TxSendDebug_INT(save[save_cnt]);
+    // Function_TxSendDebug_INT(save[save_cnt]);
+    if(!INV_RY1_STATE)
+    {
+        Function_TxSendDebug_TWO_INT(save[save_cnt],save2[save_cnt]);
+        if(save_cnt==511)
+        {
+        save_cnt=0;
+        }
+        else
+        {
+            save_cnt++;
+        }
+    }
 }

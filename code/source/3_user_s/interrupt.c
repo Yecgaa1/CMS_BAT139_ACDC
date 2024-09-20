@@ -311,11 +311,28 @@ void tmm1_interrupt(void)
     /*------------------------------------------------------------------------------------*/			
     /*------------------------UARTx串口调试-----------------------------------------------*/
     User_UART_View_cnt11++;    
-    if(User_UART_View_cnt11>22)   
+    if(User_UART_View_cnt11>23)   
     {    
        User_UART_View();
         User_UART_View_cnt11 = 0;
-    }   
+    }
+	if(INV_RY1_STATE)
+    {
+        if(User_UART_View_cnt11%4==0)
+        {
+            save[save_cnt]=ADSample_Info.curLoad_AD_FIR;
+            // save2[save_cnt]=ADSample_Info.curInduc_AD_FIR;
+            save2[save_cnt]=((int32_t)(-4.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN)))>>3;
+            if(save_cnt==511)
+            {
+                save_cnt=0;
+            }
+            else
+            {
+                save_cnt++;
+            }
+        }
+    }
 
     /*-------------------------清除对应标志位与使能中断-----------------------------------*/			
 //    TMM->TMSR1 = tmsr1_temp & (uint8_t)~_01_TMM1_INTA_GENERATE_FLAG;//清除与TMGRA0匹配产生的中断标志位
