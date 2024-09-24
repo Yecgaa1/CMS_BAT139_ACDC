@@ -322,7 +322,7 @@ void tmm1_interrupt(void)
         {
             save[save_cnt]=ADSample_Info.curLoad_AD_FIR;
             // save2[save_cnt]=ADSample_Info.curInduc_AD_FIR;
-            save2[save_cnt]=((int32_t)(-4.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN)))>>3;
+            save2[save_cnt]=((int32_t)(-4.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))/100);
             if(save_cnt==511)
             {
                 save_cnt=0;
