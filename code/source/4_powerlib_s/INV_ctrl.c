@@ -326,8 +326,8 @@ void INV_Ctrl(void)
             if (1)
             {
                 // 410V母线电压前,使用电压环
-                INV_PID_Cur.ref = INV_PID_Vol.out;
-                // INV_PID_Cur.ref = ((int32_t)(-4.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / 100));
+                // INV_PID_Cur.ref = INV_PID_Vol.out;
+                INV_PID_Cur.ref = ((int32_t)(-4.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / 100));
             }
             else
             {
@@ -355,8 +355,8 @@ void INV_Ctrl(void)
                 INV_PID_Cur.ref = INV_Ctrl_Info.curLoop_Dn;
 
             //            INV_PID_Cur.Calc(&INV_PID_Cur);
-            INV_PID_Cur.err = INV_PID_Cur.ref - INV_Ctrl_Info.curInduc_Peak;
-            // INV_PID_Cur.err = INV_PID_Cur.ref - ADSample_Info.curLoad_AD_FIR;
+            // INV_PID_Cur.err = INV_PID_Cur.ref - INV_Ctrl_Info.curInduc_Peak;
+            INV_PID_Cur.err = INV_PID_Cur.ref - ADSample_Info.curLoad_AD_FIR;
             //        //误差限制
             //        if ( INV_PID_Cur.err > INV_PID_Cur.err_Max ) INV_PID_Cur.err = INV_PID_Cur.err_Max;
             //        if ( INV_PID_Cur.err < INV_PID_Cur.err_Min ) INV_PID_Cur.err = INV_PID_Cur.err_Min;

@@ -371,7 +371,7 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
     //过流保护：OVP
     /*------------------------------------------------------------------------------------*/
     #define VACOUT_RMS_OVP                              (255)//(V)
-    #define VACOUT_RMS_LVP                              (160)//(V)
+    #define VACOUT_RMS_LVP                              (0)//(V)
     #define VACOUT_RMS_VP_VALBACK                       ( 5)//保护使用的回差值(V)
     
     #define INV_ACOUT_OVP_TIME                          ( 300)//延时时间(ms)        

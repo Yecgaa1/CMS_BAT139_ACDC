@@ -114,22 +114,22 @@ void Fault_State_Check(void)
         /*-------------------------短路保护-----------------------------------------------------*/
         if(INV_Ctrl_Info.short_Start_Flag == 0 && COM_RUN_STATE == State_Context.state_Value)//短路启机标志清零后启用短路保护
         {
-            COM_Get_Protect_Flag( COM_AD_Data_Info.VACOUT_RMS_Val_Fir , &INV_ACOUT_SCP_Info , &System_ProtectFlag_Info.all );
+            //COM_Get_Protect_Flag( COM_AD_Data_Info.VACOUT_RMS_Val_Fir , &INV_ACOUT_SCP_Info , &System_ProtectFlag_Info.all );
             
             if(ADSample_Info.INV_AC_Vol_AD_FIR > 0)            
             {
-                COM_Get_Protect_Flag( ADSample_Info.INV_AC_Vol_AD_FIR , &INV_ACOUT_P_SCP_Info , &System_ProtectFlag_Info.all );  		
+                //COM_Get_Protect_Flag( ADSample_Info.INV_AC_Vol_AD_FIR , &INV_ACOUT_P_SCP_Info , &System_ProtectFlag_Info.all );  		
             }
             else
             {
-                COM_Get_Protect_Flag( -ADSample_Info.INV_AC_Vol_AD_FIR , &INV_ACOUT_P_SCP_Info , &System_ProtectFlag_Info.all );  		
+                //COM_Get_Protect_Flag( -ADSample_Info.INV_AC_Vol_AD_FIR , &INV_ACOUT_P_SCP_Info , &System_ProtectFlag_Info.all );  		
             }
         }   
         /*-------------------------输出电压过压保护-----------------------------------------------*/
         COM_Get_Protect_Flag( COM_AD_Data_Info.VACOUT_RMS_Val_Fir , &INV_ACOUT_OVP_Info , &System_ProtectFlag_Info.all );
 
         /*-------------------------输出电压欠压---------------------------------------------------*/
-        COM_Get_Protect_Flag( COM_AD_Data_Info.VACOUT_RMS_Val_Fir , &INV_ACOUT_LVP_Info , &System_ProtectFlag_Info.all );
+        //COM_Get_Protect_Flag( COM_AD_Data_Info.VACOUT_RMS_Val_Fir , &INV_ACOUT_LVP_Info , &System_ProtectFlag_Info.all );
         
         /*-------------------------放电时过载保护-----------------------------------------------*/
         COM_Get_Protect_Flag( COM_AD_Data_Info.VACOUT_ActivePower , &INV_P_OLP1_Info   , &System_ProtectFlag_Info.all );
