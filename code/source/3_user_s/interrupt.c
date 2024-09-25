@@ -320,10 +320,10 @@ void tmm1_interrupt(void)
     {
         if(User_UART_View_cnt11%4==0)
         {
-            // save[save_cnt]=ADSample_Info.curLoad_AD_FIR;
-            save[save_cnt]=INV_Ctrl_Info.PWM_Duty;
-            save2[save_cnt]=INV_Ctrl_Info.PWM_DutyB;
-            // save2[save_cnt]=((int32_t)(-4.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))/100);
+            save[save_cnt]=ADSample_Info.curLoad_AD_FIR;
+            // save[save_cnt]=INV_PID_Cur.out;
+            // save2[save_cnt]=INV_PID_Cur.err;
+            save2[save_cnt]=INV_PID_Cur.ref;
             if(save_cnt==511)
             {
                 save_cnt=0;
