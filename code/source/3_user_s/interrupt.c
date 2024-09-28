@@ -320,10 +320,10 @@ void tmm1_interrupt(void)
     {
         if(User_UART_View_cnt11%4==0)
         {
-            save[save_cnt]=ADSample_Info.curLoad_AD_FIR;
-            // save[save_cnt]=INV_PID_Cur.out;
+            // save[save_cnt]=INV_PID_Cur.ref;
+            save[save_cnt]=INV_PID_Cur.out;
             // save2[save_cnt]=INV_PID_Cur.err;
-            save2[save_cnt]=INV_PID_Cur.ref;
+            save2[save_cnt]=ADSample_Info.curLoad_AD_FIR;
             if(save_cnt==511)
             {
                 save_cnt=0;
