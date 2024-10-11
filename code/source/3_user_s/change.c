@@ -6,8 +6,48 @@ int isAllowCHG = 0; // 0即不允许充电，1即允许充电
 volatile int32_t Duty_Out1 = 0;
 int32_t save[512] = {0};
 int32_t save2[512] = {0};
+uint16_t PWM_CNT=0;
 volatile uint32_t save_cnt = 0;
-volatile uint32_t isONPWM=1;
+volatile uint32_t isONPWM = 1;
+extern const int16_t Sin_Cos_Table[256];
+int32_t Get_PLL_Sin_WithARG(PLL_Ctrl_Var_t *PLL_Info, float ARG)
+{
+    int offset = (int)(ARG * 1024 / 360 + 0.5); // 四舍五入
+    // 原始的角度计算
+     uint16_t u16Index = (uint16_t)(PLL_Info->i32Theta + 32768) >> 6;
+
+    // 调整索引以 offset 度对应的偏移量
+    u16Index = (u16Index + offset) & 0x03FF; // 确保索引在 0~1023 范围内
+    int16_t sine_value;
+    // 后续计算保持不变
+    switch (u16Index & 0x0300)
+    {
+    /* 0~90度 */
+    case 0x0200:
+        sine_value = Sin_Cos_Table[(uint8_t)(u16Index)];
+        break;
+
+    /* 90~180度 */
+    case 0x0300:
+        sine_value = Sin_Cos_Table[(uint8_t)(0xFF - (uint8_t)(u16Index))];
+        break;
+
+    /* 180~270度 */
+    case 0x0000:
+        sine_value = -Sin_Cos_Table[(uint8_t)(u16Index)];
+        break;
+
+    /* 270~360度 */
+    case 0x0100:
+        sine_value = -Sin_Cos_Table[(uint8_t)(0xFF - (uint8_t)(u16Index))];
+        break;
+
+    default:
+        sine_value = 0;
+        break;
+    }
+    return sine_value >> 3;
+}
 int32_t Get_PLL_Sin(PLL_Ctrl_Var_t *PLL_Info)
 {
     return (PLL_Info->i32SinTheta) >> 3;
@@ -28,13 +68,13 @@ void Function_TxSendDebug_INT(int32_t data)
     SCI0->TXD0 = (uint8_t)txChar[0];
 }
 
-void Function_TxSendDebug_TWO_INT(int32_t data1,int32_t data2)
+void Function_TxSendDebug_TWO_INT(int32_t data1, int32_t data2)
 {
-    sprintf((char *)txCharL, "%d,%d\r\n", data1,data2);
+    sprintf((char *)txCharL, "%d,%d\r\n", data1, data2);
 
     DMAVEC->CTRL[0].DMSAR = (uint32_t)(txCharL + 1);
     DMAVEC->CTRL[0].DMACT = strlen(txCharL) - 1; // 传输8个数据
-    DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
+    DMA->DMAEN1 |= 1 << 4;                       // uart1                                  //使能传输(UART1)
     SCI0->TXD0 = (uint8_t)txCharL[0];
 }
 
@@ -62,7 +102,7 @@ void Function_TxSendDebug_Four_Float(int32_t data1, int32_t data2, int32_t data3
 
     DMAVEC->CTRL[0].DMSAR = (uint32_t)(txCharL + 1);
     DMAVEC->CTRL[0].DMACT = strlen(txCharL) - 1; // 传输8个数据
-    DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
+    DMA->DMAEN1 |= 1 << 4;                       // uart1                                  //使能传输(UART1)
     SCI0->TXD0 = (uint8_t)txCharL[0];
 }
 

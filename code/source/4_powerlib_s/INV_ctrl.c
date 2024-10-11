@@ -327,7 +327,7 @@ void INV_Ctrl(void)
             {
                 // 410V母线电压前,使用电压环
                 // INV_PID_Cur.ref = INV_PID_Vol.out;
-                INV_PID_Cur.ref = ((int32_t)(-2.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / 100));
+                INV_PID_Cur.ref = ((int32_t)(-4.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN,45.0) / 100));
             }
             else
             {

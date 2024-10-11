@@ -434,11 +434,11 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 //有效值：RMS
 //过流保护：OCP
 /*------------------------------------------------------------------------------------*/
-#define INV_INDUC_IST_OCP1							(10.0)//(A)
+#define INV_INDUC_IST_OCP1							(15.0)//(A)
 #define INV_INDUC_IST_OCP_VALBACK					( 0.1)//保护使用的回差值(A)
 #define COM_REAL_IINDUC_IST_SCAL                    (40.96)//电感电流有效值的真实值缩放系数
 
-#define INV_IST_OCP1_TIME							(1)//延时时间(ms)
+#define INV_IST_OCP1_TIME							(2)//延时时间(ms)
 
 #define INV_IST_OCP1_VAL							(int32_t)(INV_INDUC_IST_OCP1 * COM_REAL_IINDUC_IST_SCAL)//真实电流有效值(A)*COM_REAL_IINDUC_RMS_SCAL
 
