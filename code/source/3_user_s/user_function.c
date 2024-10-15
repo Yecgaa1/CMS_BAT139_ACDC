@@ -661,7 +661,7 @@ void COM_CHG_INV_Select(void)
                 //重新进入初始化阶段                     
                 COM_PWM_Disable();	//关闭PWM输出、继电器 
       
-                PFC_RY2_ENABLE;//UPS继电器动作     PASS 
+                //PFC_RY2_ENABLE;//UPS继电器动作     PASS 
   
                 StartCheck_Flag_Info.bit.AC_Vol_High_OK = E_FALSE;
                 StartCheck_Flag_Info.bit.AC_Vol_Low_OK  = E_FALSE;

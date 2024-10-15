@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "change.h": "c",
+        "stdio.h": "c",
+        "sys_mcu_header.h": "c"
+    }
+}

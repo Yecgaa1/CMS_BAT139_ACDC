@@ -113,6 +113,8 @@ void PFC_Deal(void)
         {
             if(COM_Ctr_Info.PWM_Enable == 0)
             {
+            	INV_RY1_ENABLE;                       // 开启逆变器输出
+                INV_RY3_ENABLE;                       // 开启逆变器输出
                 //打开PFC状态时PWM口
                 TMM->TMOER1 =   _01_TMM_TMIOA0_OUTPUT_DISABLE | _02_TMM_TMIOB0_OUTPUT_DISABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _08_TMM_TMIOD0_OUTPUT_DISABLE |
                                 _00_TMM_TMIOA1_OUTPUT_ENABLE | _20_TMM_TMIOB1_OUTPUT_DISABLE | _00_TMM_TMIOC1_OUTPUT_ENABLE | _80_TMM_TMIOD1_OUTPUT_DISABLE;
@@ -312,7 +314,8 @@ void tmm1_interrupt(void)
     {    
        User_UART_View();
         User_UART_View_cnt11 = 0;
-    }   
+    }
+	PFC_RY2_ENABLE;
 
     /*-------------------------清除对应标志位与使能中断-----------------------------------*/			
 //    TMM->TMSR1 = tmsr1_temp & (uint8_t)~_01_TMM1_INTA_GENERATE_FLAG;//清除与TMGRA0匹配产生的中断标志位
