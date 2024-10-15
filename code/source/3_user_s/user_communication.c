@@ -328,7 +328,7 @@ void User_UART_View(void)
         // save[save_cnt] = COM_Ctr_Info.PFC_AC_Vol_OK_Cnt;
         // save2[save_cnt] = COM_AD_Data_Info.VACIN_Freq_Val_Fir;
         // Function_TxSendDebug_TWO_INT(save[save_cnt], save2[save_cnt]);
-        Function_TxSendDebug_Four_Float(COM_AD_Data_Info.VACIN_RMS_Val_Fir,COM_Ctr_Info.PFC_FREQ_State,COM_Ctr_Info.INV_PFC_Mode_Select,COM_AD_Data_Info.VACIN_Freq_Val_Fir);
+        // Function_TxSendDebug_Four_Float(PFC_Ctrl_Info.AC_Vol_Freq, UPS_Ctr_Info.V_ACIN_NOK_Cnt_P, UPS_Ctr_Info.V_ACIN_NOK_Cnt_N, UPS_Ctr_Info.V_ACIN_NOK_Cnt);
         if (save_cnt == 511)
         {
             save_cnt = 0;

@@ -672,8 +672,7 @@ void COM_CHG_INV_Select(void)
                 PFC_Ref_Info.u32SS_vBus_Hold = PFC_VBUS_REF_INIT_SS; // PFC电压环缓启动参考值给定
                 COM_Ctr_Info.PFC_AC_Vol_OK_Cnt = 0;
                 COM_Ctr_Info.INV_PFC_Mode_Select = 2; // 检测市电正常工作后，模式设置为PFC模式
-                // INV_RY1_ENABLE;                       // 开启逆变器输出
-                // INV_RY3_ENABLE;                       // 开启逆变器输出
+                
             }
         }
         else
