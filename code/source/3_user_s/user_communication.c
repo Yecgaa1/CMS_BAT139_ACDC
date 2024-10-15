@@ -323,11 +323,12 @@ void User_UART_View(void)
     // Function_TxSendDebug_Two_Float((float)COM_AD_Data_Info.vBus_Val_Fir/10.0  , (float)COM_AD_Data_Info.iLoad_RMS_Val/100.0);
 
     // Function_TxSendDebug_INT(save[save_cnt]);
-    if (!INV_RY1_STATE)
+    if (1)
     {
-        //save[save_cnt] = ((int32_t)(-6.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / 100));
-        //save2[save_cnt] = ((int32_t)(-6.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN,90.0) / 100));
-        Function_TxSendDebug_TWO_INT(save[save_cnt], save2[save_cnt]);
+        // save[save_cnt] = COM_Ctr_Info.PFC_AC_Vol_OK_Cnt;
+        // save2[save_cnt] = COM_AD_Data_Info.VACIN_Freq_Val_Fir;
+        // Function_TxSendDebug_TWO_INT(save[save_cnt], save2[save_cnt]);
+        Function_TxSendDebug_Four_Float(COM_AD_Data_Info.VACIN_RMS_Val_Fir,COM_Ctr_Info.PFC_FREQ_State,COM_Ctr_Info.INV_PFC_Mode_Select,COM_AD_Data_Info.VACIN_Freq_Val_Fir);
         if (save_cnt == 511)
         {
             save_cnt = 0;

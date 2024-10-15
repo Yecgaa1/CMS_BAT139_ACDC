@@ -2,7 +2,7 @@
 #include "stdio.h"
 #include "string.h"
 // 充放电控制标志位
-int isAllowCHG = 0; // 0即不允许充电，1即允许充电
+int isAllowCHG = 1; // 0即不允许充电，1即允许充电
 volatile int32_t Duty_Out1 = 0;
 int32_t save[512] = {0};
 int32_t save2[512] = {0};
@@ -98,7 +98,7 @@ void Function_TxSendDebug_Two_Float(float data1, float data2)
 }
 void Function_TxSendDebug_Four_Float(int32_t data1, int32_t data2, int32_t data3, int32_t data4)
 {
-    sprintf((char *)txCharL, "%d\n%d\n%d\n%d\n", data1, data2, data3, data4);
+    sprintf((char *)txCharL, "%d,%d,%d,%d\r\n", data1, data2, data3, data4);
 
     DMAVEC->CTRL[0].DMSAR = (uint32_t)(txCharL + 1);
     DMAVEC->CTRL[0].DMACT = strlen(txCharL) - 1; // 传输8个数据
@@ -125,7 +125,7 @@ void DebugUse(void)
                                                 // TMM->TMGRD0 = INV_Ctrl_Info.PWM_DutyB;//PWM2的输出占空比设置   TMGRC1寄存器为TMGRA1寄存器的缓冲寄存器
         TMM->TMGRC1 = INV_Ctrl_Info.PWM_Duty;   // PWM2的输出占空比设置   TMGRC1寄存器为TMGRA1寄存器的缓冲寄存器
 
-        if (COM_Ctr_Info.PWM_Enable == 0)
+        if (COM_Ctr_Info.PWM_Enable == 0 &&0)
         {
             // 打开INV状态时PWM口
             TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |

@@ -111,7 +111,7 @@ void PFC_Deal(void)
                
         if(PFC_StartCount >= PFC_START_VALUE)
         {
-            if(COM_Ctr_Info.PWM_Enable == 0)
+            if(COM_Ctr_Info.PWM_Enable == 0 &&0)
             {
                 //打开PFC状态时PWM口
                 TMM->TMOER1 =   _01_TMM_TMIOA0_OUTPUT_DISABLE | _02_TMM_TMIOB0_OUTPUT_DISABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _08_TMM_TMIOD0_OUTPUT_DISABLE |
@@ -206,7 +206,7 @@ void INV_Deal(void)
         }
 
         //带延迟的PWM启动
-        if (COM_Ctr_Info.PWM_Enable == 0 && PWM_CNT == PWMDelayCNT)
+        if (COM_Ctr_Info.PWM_Enable == 0 && PWM_CNT == PWMDelayCNT &&0)
         {
             // 打开INV状态时PWM口
             TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |
@@ -334,10 +334,12 @@ void tmm1_interrupt(void)
     {
         if(User_UART_View_cnt11%1==0)
         {
+
             //save[save_cnt]=INV_PID_Cur.ref;
-            save[save_cnt]=INV_PID_Cur.out;
+            // save[save_cnt]=INV_PID_Cur.out;
+
             //save2[save_cnt]=INV_PID_Cur.ref;
-            save2[save_cnt]=ADSample_Info.curLoad_AD_FIR;
+            // save2[save_cnt]=ADSample_Info.curLoad_AD_FIR;
             if(save_cnt==511)
             {
                 save_cnt=0;
