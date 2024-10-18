@@ -388,7 +388,7 @@ void COM_PWM_Disable(void)
     PORT->P1    &= ~(15 << 2);  // PWM¿ÚÖÃµÍµçÆ½
     
 		
-    PFC_RY2_DISABLE;
+    // PFC_RY2_DISABLE;
     //INV_RY1_DISABLE;
 
 	

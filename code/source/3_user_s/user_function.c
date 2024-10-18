@@ -377,8 +377,8 @@ void User_Key_Deal(void)
     else
     {
         COM_Ctr_Info.INV_Enable_Flag = 0;
-        //INV_RY1_DISABLE; // 关闭逆变器输出
-        //INV_RY3_DISABLE;
+        // INV_RY1_DISABLE; // 关闭逆变器输出
+        // INV_RY3_DISABLE;
     }
 }
 
@@ -634,6 +634,7 @@ void COM_CHG_INV_Select(void)
             COM_AD_Data_Info.VACIN_Freq_Val_Fir < PFC_START_CHECK_FREQ_UP &&
             isAllowCHG == 1) // 输入电压范围内时，启用控算法
         {
+
             if (COM_Ctr_Info.PFC_AC_Vol_OK_Cnt < COM_Ctr_Info.PFC_AC_Vol_OK_TimeVal)
             {
                 COM_Ctr_Info.PFC_AC_Vol_OK_Cnt++;
@@ -650,7 +651,8 @@ void COM_CHG_INV_Select(void)
                 (UPS_Ctr_Info.lock_Phase_OK == 1 || COM_Ctr_Info.INV_Enable_Flag == 0)) // 放电模式下锁相完成或者用户未指示逆变器工作
             {
                 INV_START_DISABLE;
-
+                INV_RY1_ENABLE; // 开启逆变器输出
+                INV_RY3_ENABLE; // 开启逆变器输出
                 // 重新进入初始化阶段
                 COM_PWM_Disable(); // 关闭PWM输出、继电器
 
@@ -672,7 +674,6 @@ void COM_CHG_INV_Select(void)
                 PFC_Ref_Info.u32SS_vBus_Hold = PFC_VBUS_REF_INIT_SS; // PFC电压环缓启动参考值给定
                 COM_Ctr_Info.PFC_AC_Vol_OK_Cnt = 0;
                 COM_Ctr_Info.INV_PFC_Mode_Select = 2; // 检测市电正常工作后，模式设置为PFC模式
-                
             }
         }
         else
@@ -703,7 +704,7 @@ void COM_CHG_INV_Select(void)
                               _10_TMM_TMIOA1_OUTPUT_DISABLE | _20_TMM_TMIOB1_OUTPUT_DISABLE | _40_TMM_TMIOC1_OUTPUT_DISABLE | _80_TMM_TMIOD1_OUTPUT_DISABLE;
                 PORT->P1 &= ~(3 << 4); // 工频管清零
 
-                PFC_RY2_DISABLE;
+                // PFC_RY2_DISABLE;
 
                 StartCheck_Flag_Info.bit.vBus_High_OK = E_FALSE;
                 StartCheck_Flag_Info.bit.vBus_Low_OK = E_FALSE;
@@ -798,7 +799,7 @@ void COM_CHG_INV_Select(void)
     // 不在充电模式关PFC_RY2_DISABLE
     if (COM_Ctr_Info.INV_PFC_Mode_Select != PFC_MODE)
     {
-        PFC_RY2_DISABLE;
+        // PFC_RY2_DISABLE;
     }
 }
 

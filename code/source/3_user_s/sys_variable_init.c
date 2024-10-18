@@ -29,7 +29,7 @@ void Sys_Variableinit(void)
     UART1_Info.TXD_CRC_Init = 0xffff;//初始化CRC寄存器初始值
     COM_Ctr_Info.PWM_Enable             = 0;//开驱动使能信号    
     COM_Ctr_Info.PFC_AC_Vol_OK_Cnt      = 0;
-    COM_Ctr_Info.PFC_AC_Vol_OK_TimeVal  = 1300;//检测市电OK
+    COM_Ctr_Info.PFC_AC_Vol_OK_TimeVal  = 5000;//检测市电OK
     
     COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt     = 0;
     COM_Ctr_Info.PFC_AC_Vol_NOK_TimeVal = 25;//检测市电NOK

@@ -7,9 +7,15 @@ volatile int32_t Duty_Out1 = 0;
 int32_t save[512] = {0};
 int32_t save2[512] = {0};
 uint16_t PWM_CNT=0;
+uint16_t PFC_StartCount=0;
 volatile uint32_t save_cnt = 0;
 volatile uint32_t isONPWM = 1;
 extern const int16_t Sin_Cos_Table[256];
+
+uint16_t NOK_CNT=0;
+uint32_t periodDot_Val=0;
+uint16_t why=0;
+
 int32_t Get_PLL_Sin_WithARG(PLL_Ctrl_Var_t *PLL_Info, float ARG)
 {
     int offset = (int)(ARG * 1024 / 360 + 0.5); // Àƒ…·ŒÂ»Î

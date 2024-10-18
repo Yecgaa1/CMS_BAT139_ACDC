@@ -275,7 +275,6 @@ extern uint16_t u16_INV_Freq_Cnt;
 extern int virtual_Res_Coeff_temp;
 extern uint8_t *UART1_RXD_B_Temp;
 
-extern int16_t PFC_StartCount;
 void User_UART_View(void)
 {
     /*------------------------------------------------------------------------------------*/
@@ -328,7 +327,7 @@ void User_UART_View(void)
         // save[save_cnt] = COM_Ctr_Info.PFC_AC_Vol_OK_Cnt;
         // save2[save_cnt] = COM_AD_Data_Info.VACIN_Freq_Val_Fir;
         // Function_TxSendDebug_TWO_INT(save[save_cnt], save2[save_cnt]);
-        // Function_TxSendDebug_Four_Float(PFC_Ctrl_Info.AC_Vol_Freq, UPS_Ctr_Info.V_ACIN_NOK_Cnt_P, UPS_Ctr_Info.V_ACIN_NOK_Cnt_N, UPS_Ctr_Info.V_ACIN_NOK_Cnt);
+        Function_TxSendDebug_Four_Float(COM_Ctr_Info.INV_PFC_Mode_Select, UPS_Ctr_Info.V_ACIN_OK, PFC_StartCount, UPS_Ctr_Info.V_ACIN_NOK_Cnt);
         if (save_cnt == 511)
         {
             save_cnt = 0;
