@@ -326,15 +326,15 @@ void User_UART_View(void)
     {
         // save[save_cnt] = COM_Ctr_Info.PFC_AC_Vol_OK_Cnt;
         // save2[save_cnt] = COM_AD_Data_Info.VACIN_Freq_Val_Fir;
-        // Function_TxSendDebug_TWO_INT(save[save_cnt], save2[save_cnt]);
-        Function_TxSendDebug_Four_Float(COM_Ctr_Info.INV_PFC_Mode_Select, UPS_Ctr_Info.V_ACIN_OK, PFC_StartCount, UPS_Ctr_Info.V_ACIN_NOK_Cnt);
-        if (save_cnt == 511)
+        Function_TxSendDebug_TWO_INT(save[send_cnt], save2[send_cnt]);
+        // Function_TxSendDebug_Four_Float(COM_Ctr_Info.INV_PFC_Mode_Select, UPS_Ctr_Info.V_ACIN_OK, PFC_StartCount, UPS_Ctr_Info.V_ACIN_NOK_Cnt);
+        if (send_cnt == 511)
         {
-            save_cnt = 0;
+            send_cnt = 0;
         }
         else
         {
-            save_cnt++;
+            send_cnt++;
         }
     }
 }

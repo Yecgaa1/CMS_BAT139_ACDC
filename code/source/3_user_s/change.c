@@ -8,7 +8,7 @@ int32_t save[512] = {0};
 int32_t save2[512] = {0};
 uint16_t PWM_CNT=0;
 uint16_t PFC_StartCount=0;
-volatile uint32_t save_cnt = 0;
+volatile uint32_t save_cnt = 0,send_cnt=0;
 volatile uint32_t isONPWM = 1;
 extern const int16_t Sin_Cos_Table[256];
 

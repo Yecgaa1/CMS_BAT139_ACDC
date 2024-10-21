@@ -21,7 +21,7 @@ void DebugUse(void);
 int32_t Get_PLL_Cos(PLL_Ctrl_Var_t *PLL_Info);
 extern uint16_t PFC_StartCount;
 extern int32_t save[512], save2[512];
-extern volatile uint32_t save_cnt, isONPWM;
+extern volatile uint32_t save_cnt, isONPWM, send_cnt;
 
 extern uint16_t PWM_CNT;
 

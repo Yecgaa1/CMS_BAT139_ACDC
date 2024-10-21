@@ -328,7 +328,7 @@ void tmm1_interrupt(void)
         User_UART_View_cnt11 = 0;
     }
 
-    if (INV_RY1_STATE)
+    if (COM_Ctr_Info.INV_PFC_Mode_Select == 2 || save_cnt < 511)
     {
         if (User_UART_View_cnt11 % 1 == 0)
         {
@@ -338,9 +338,15 @@ void tmm1_interrupt(void)
 
             // save2[save_cnt]=INV_PID_Cur.ref;
             //  save2[save_cnt]=ADSample_Info.curLoad_AD_FIR;
+
+            save[save_cnt] = UPS_Ctr_Info.V_ACIN_OK;
+            save2[save_cnt] = COM_Ctr_Info.INV_PFC_Mode_Select;
             if (save_cnt == 511)
             {
-                save_cnt = 0;
+                if (COM_Ctr_Info.INV_PFC_Mode_Select == 2)
+                {
+                    save_cnt = 0;
+                }
             }
             else
             {
