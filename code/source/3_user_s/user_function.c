@@ -376,9 +376,10 @@ void User_Key_Deal(void)
     }
     else
     {
+
         COM_Ctr_Info.INV_Enable_Flag = 0;
-        // INV_RY1_DISABLE; // 关闭逆变器输出
-        // INV_RY3_DISABLE;
+        INV_RY1_DISABLE; // 关闭逆变器输出
+        INV_RY3_DISABLE;
     }
 }
 

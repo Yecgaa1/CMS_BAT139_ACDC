@@ -210,17 +210,16 @@ void INV_Deal(void)
         }
 
         // 带延迟的PWM启动
-        if (COM_Ctr_Info.PWM_Enable == 0 && PWM_CNT == PWMDelayCNT && 0)
+        if (COM_Ctr_Info.PWM_Enable == 0 && PWM_CNT == PWMDelayCNT)
         {
+
             // 打开INV状态时PWM口
-            // TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |
-            //               _00_TMM_TMIOA1_OUTPUT_ENABLE | _20_TMM_TMIOB1_OUTPUT_DISABLE | _00_TMM_TMIOC1_OUTPUT_ENABLE | _80_TMM_TMIOD1_OUTPUT_DISABLE;
+            TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |
+                          _00_TMM_TMIOA1_OUTPUT_ENABLE | _20_TMM_TMIOB1_OUTPUT_DISABLE | _00_TMM_TMIOC1_OUTPUT_ENABLE | _80_TMM_TMIOD1_OUTPUT_DISABLE;
 
-            // INV_Ctrl_Info.periodDot_Cnt = 0;
-            // COM_Ctr_Info.PWM_Enable = 1;
+            INV_Ctrl_Info.periodDot_Cnt = 0;
+            COM_Ctr_Info.PWM_Enable = 1;
 
-            // INV_RY1_ENABLE; // 开启逆变器输出
-            // INV_RY3_ENABLE; // 开启逆变器输出
         }
     }
 }
@@ -328,9 +327,9 @@ void tmm1_interrupt(void)
         User_UART_View_cnt11 = 0;
     }
 
-    if (COM_Ctr_Info.INV_PFC_Mode_Select == 2 || save_cnt < 511)
+    if (INV_RY1_STATE)
     {
-        if (User_UART_View_cnt11 % 1 == 0)
+        if (User_UART_View_cnt11 % 4 == 0)
         {
 
             // save[save_cnt]=INV_PID_Cur.ref;
@@ -339,14 +338,11 @@ void tmm1_interrupt(void)
             // save2[save_cnt]=INV_PID_Cur.ref;
             //  save2[save_cnt]=ADSample_Info.curLoad_AD_FIR;
 
-            save[save_cnt] = UPS_Ctr_Info.V_ACIN_OK;
-            save2[save_cnt] = COM_Ctr_Info.INV_PFC_Mode_Select;
+            save[save_cnt] = ADSample_Info.curLoad_AD_FIR;
+            save2[save_cnt] = ((int32_t)(4.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN,0.0) / 100));
             if (save_cnt == 511)
             {
-                if (COM_Ctr_Info.INV_PFC_Mode_Select == 2)
-                {
                     save_cnt = 0;
-                }
             }
             else
             {

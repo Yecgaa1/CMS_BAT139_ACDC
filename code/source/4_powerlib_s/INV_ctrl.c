@@ -224,7 +224,7 @@ void INV_Ctrl(void)
             //                   12;
 
             // 市电正常就用市电的thete角
-            INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * (-(Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))) +
+            INV_PID_Vol.ref = (INV_Ctrl_Info.AC_Vol_AMP_Target * ((Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN))) +
                                INV_Ctrl_Info.AC_Vol_AMP_Target * INV_PID_DCIM.out) >>
                               12;
         }
@@ -327,7 +327,7 @@ void INV_Ctrl(void)
             {
                 // 410V母线电压前,使用电压环
                 // INV_PID_Cur.ref = INV_PID_Vol.out;
-                INV_PID_Cur.ref = ((int32_t)(-4.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN,45.0) / 100));
+                INV_PID_Cur.ref = ((int32_t)(5.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN,0.0) / 100));
             }
             else
             {

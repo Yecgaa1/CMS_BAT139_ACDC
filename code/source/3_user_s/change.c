@@ -2,7 +2,7 @@
 #include "stdio.h"
 #include "string.h"
 // 充放电控制标志位
-int isAllowCHG = 1; // 0即不允许充电，1即允许充电
+int isAllowCHG = 0; // 0即不允许充电，1即允许充电
 volatile int32_t Duty_Out1 = 0;
 int32_t save[512] = {0};
 int32_t save2[512] = {0};

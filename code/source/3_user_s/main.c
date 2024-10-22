@@ -73,7 +73,7 @@ int main(void)
     PLL_Ctrl_Param(&PLL_Ctrl_Info_V_ACIN);
     PLL_Ctrl_Param(&PLL_Ctrl_Info_V_ACOUT);
     
-    PFC_RY2_ENABLE;//先把继电器开起来
+    // PFC_RY2_ENABLE;//先把继电器开起来
     while(1)
     {		
         //喂狗
