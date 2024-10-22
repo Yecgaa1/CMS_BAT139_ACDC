@@ -336,9 +336,9 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
     /*------------------------------------------------------------------------------------*/
     //母线过欠压参数设置
     /*------------------------------------------------------------------------------------*/
-    #define COM_VBUS_OVP1                               (490)//(V)
-    #define COM_VBUS_OVP2                               (490)//(V)
-    #define COM_VBUS_OVP3                               (490)//(V)
+    #define COM_VBUS_OVP1                               (480)//(V)
+    #define COM_VBUS_OVP2                               (480)//(V)
+    #define COM_VBUS_OVP3                               (480)//(V)
     #define COM_VBUS_LVP1                               (285)//(V)
     #define COM_VBUS_LVP2                               (280)//(V)
     #define COM_VBUS_LVP3                               (275)//(V)    
