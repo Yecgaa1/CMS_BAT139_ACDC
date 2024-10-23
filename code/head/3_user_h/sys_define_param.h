@@ -336,9 +336,9 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
     /*------------------------------------------------------------------------------------*/
     //母线过欠压参数设置
     /*------------------------------------------------------------------------------------*/
-    #define COM_VBUS_OVP1                               (490)//(V)
-    #define COM_VBUS_OVP2                               (490)//(V)
-    #define COM_VBUS_OVP3                               (490)//(V)
+    #define COM_VBUS_OVP1                               (480)//(V)
+    #define COM_VBUS_OVP2                               (480)//(V)
+    #define COM_VBUS_OVP3                               (480)//(V)
     #define COM_VBUS_LVP1                               (285)//(V)
     #define COM_VBUS_LVP2                               (280)//(V)
     #define COM_VBUS_LVP3                               (275)//(V)    
@@ -405,13 +405,13 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
     //过流保护：OCP
     /*------------------------------------------------------------------------------------*/
     #define INV_INDUC_RMS_OCP1                          (10.0)//(A)
-    #define INV_INDUC_RMS_OCP2                          (12.0)//(A)
+    #define INV_INDUC_RMS_OCP2                          (5.0)//(A)
     #define INV_INDUC_RMS_OCP3                          (14.0)//(A)
     #define INV_INDUC_RMS_OCP4                          (18.0)//(A)
     #define INV_INDUC_RMS_OCP_VALBACK                   ( 0.4)//保护使用的回差值(A)
 
     #define INV_RMS_OCP1_TIME                           (40000)//延时时间(ms)
-    #define INV_RMS_OCP2_TIME                           (8000)//延时时间(ms)
+    #define INV_RMS_OCP2_TIME                           (4000)//延时时间(ms)
     #define INV_RMS_OCP3_TIME                           (12000)//延时时间(ms)
     #define INV_RMS_OCP4_TIME                           (12000)//延时时间(ms)
 
@@ -427,6 +427,22 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 
 
 #endif	
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+//INV电感电流瞬时值保护设置
+//有效值：RMS
+//过流保护：OCP
+/*------------------------------------------------------------------------------------*/
+#define INV_INDUC_IST_OCP1							(15.0)//(A)
+#define INV_INDUC_IST_OCP_VALBACK					( 0.1)//保护使用的回差值(A)
+#define COM_REAL_IINDUC_IST_SCAL                    (40.96)//电感电流有效值的真实值缩放系数
+
+#define INV_IST_OCP1_TIME							(2)//延时时间(ms)
+
+#define INV_IST_OCP1_VAL							(int32_t)(INV_INDUC_IST_OCP1 * COM_REAL_IINDUC_IST_SCAL)//真实电流有效值(A)*COM_REAL_IINDUC_RMS_SCAL
+
+#define INV_IST_OCP1_VAL_BACK						(int32_t)((INV_INDUC_IST_OCP1 - INV_INDUC_IST_OCP_VALBACK) * COM_REAL_IINDUC_IST_SCAL)
 
 /*------------------------------------------------------------------------------------*/
 //输出短路变量设置

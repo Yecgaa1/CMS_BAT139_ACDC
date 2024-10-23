@@ -210,6 +210,8 @@ extern Protect_Check_Var_t      INV_RMS_OCP2_Info;
 extern Protect_Check_Var_t      INV_RMS_OCP3_Info;
 extern Protect_Check_Var_t      INV_RMS_OCP4_Info;
 
+extern Protect_Check_Var_t      INV_IST_OCP1_Info;
+
 
 extern Protect_Check_Var_t      COM_AuxPower_OVP_Info;
 extern Protect_Check_Var_t      COM_AuxPower_LVP_Info;

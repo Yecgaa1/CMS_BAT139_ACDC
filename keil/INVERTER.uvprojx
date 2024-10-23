@@ -774,6 +774,11 @@
               <FileType>1</FileType>
               <FilePath>..\code\source\3_user_s\user_communication.c</FilePath>
             </File>
+            <File>
+              <FileName>change.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\code\source\3_user_s\change.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

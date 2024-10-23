@@ -14,7 +14,7 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 #include "user_function.h"
 #include "sys_state_machine.h"
 #include "elc.h"
-
+#include "change.h"
 /***************************************************************************/
 void IRQ27_Handler(void) __attribute__((alias("tmm0_interrupt")));
 void IRQ28_Handler(void) __attribute__((alias("tmm1_interrupt")));
@@ -189,13 +189,24 @@ void INV_Deal(void)
             
         //逆变控制
         INV_Ctrl();
-         
-        //占空比、周期更新          
-        TMM->TMGRA0 = INV_Ctrl_Info.PWM_Period;	//Set pwm period
-        TMM->TMGRD0 = INV_Ctrl_Info.PWM_DutyB;//PWM2的输出占空比设置   TMGRC1寄存器为TMGRA1寄存器的缓冲寄存器         
-        TMM->TMGRC1 = INV_Ctrl_Info.PWM_Duty; //PWM2的输出占空比设置   TMGRC1寄存器为TMGRA1寄存器的缓冲寄存器          
-      
-        if(COM_Ctr_Info.PWM_Enable == 0)
+
+        // 占空比、周期更新
+        TMM->TMGRA0 = INV_Ctrl_Info.PWM_Period; // Set pwm period
+        TMM->TMGRD0 = INV_Ctrl_Info.PWM_DutyB;  // PWM2的输出占空比设置   TMGRC1寄存器为TMGRA1寄存器的缓冲寄存器
+        TMM->TMGRC1 = INV_Ctrl_Info.PWM_Duty;   // PWM2的输出占空比设置   TMGRC1寄存器为TMGRA1寄存器的缓冲寄存器
+
+        // 先打开继电器
+        INV_RY1_ENABLE; // 开启逆变器输出
+        INV_RY3_ENABLE; // 开启逆变器输出
+
+        // 延迟计数器
+        if (PWM_CNT < PWMDelayCNT)
+        {
+            PWM_CNT++;
+        }
+
+        // 带延迟的PWM启动
+        if (COM_Ctr_Info.PWM_Enable == 0 && PWM_CNT == PWMDelayCNT)
         {
             //打开INV状态时PWM口
             TMM->TMOER1 = _01_TMM_TMIOA0_OUTPUT_DISABLE | _00_TMM_TMIOB0_OUTPUT_ENABLE | _00_TMM_TMIOC0_OUTPUT_ENABLE | _00_TMM_TMIOD0_OUTPUT_ENABLE |
@@ -263,9 +274,9 @@ void tmm1_interrupt(void)
 
     if(COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE)//
     {
-        //输出电压锁相
-        PLL_Ctrl_Info_V_ACOUT.i16Valpha = -ADSample_Info.INV_AC_Vol_AD_FIR;    
-        if(INV_Ctrl_Info.periodDot_Cnt>=(INV_Ctrl_Info.periodDot_Val>>2))
+        // 输出电压锁相
+        PLL_Ctrl_Info_V_ACOUT.i16Valpha = ADSample_Info.INV_AC_Vol_AD_FIR;
+        if (INV_Ctrl_Info.periodDot_Cnt >= (INV_Ctrl_Info.periodDot_Val >> 2))
         {
             PLL_Ctrl_Info_V_ACOUT.i16cos[INV_Ctrl_Info.periodDot_Cnt-(INV_Ctrl_Info.periodDot_Val>>2)] = PLL_Ctrl_Info_V_ACOUT.i16Valpha;
         }
@@ -307,17 +318,41 @@ void tmm1_interrupt(void)
  
     /*------------------------------------------------------------------------------------*/			
     /*------------------------UARTx串口调试-----------------------------------------------*/
-    User_UART_View_cnt11++;    
-    if(User_UART_View_cnt11>22)   
-    {    
-       User_UART_View();
+    User_UART_View_cnt11++;
+    if (User_UART_View_cnt11 > 23)
+    {
+        User_UART_View();
         User_UART_View_cnt11 = 0;
-    }   
+    }
 
-    /*-------------------------清除对应标志位与使能中断-----------------------------------*/			
-//    TMM->TMSR1 = tmsr1_temp & (uint8_t)~_01_TMM1_INTA_GENERATE_FLAG;//清除与TMGRA0匹配产生的中断标志位
-    TMM->TMSR1 = 0;//清除标志位
-    TMM->TMIER1 = tmier1_temp; 
+    if (INV_RY1_STATE)
+    {
+        if (User_UART_View_cnt11 % 4 == 0)
+        {
+
+            // save[save_cnt]=INV_PID_Cur.ref;
+            //  save[save_cnt]=INV_PID_Cur.out;
+
+            // save2[save_cnt]=INV_PID_Cur.ref;
+            //  save2[save_cnt]=ADSample_Info.curLoad_AD_FIR;
+
+            save[save_cnt] = ADSample_Info.curLoad_AD_FIR;
+            save2[save_cnt] = ((int32_t)(4.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN,0.0) / 100));
+            if (save_cnt == 511)
+            {
+                    save_cnt = 0;
+            }
+            else
+            {
+                save_cnt++;
+            }
+        }
+    }
+
+    /*-------------------------清除对应标志位与使能中断-----------------------------------*/
+    //    TMM->TMSR1 = tmsr1_temp & (uint8_t)~_01_TMM1_INTA_GENERATE_FLAG;//清除与TMGRA0匹配产生的中断标志位
+    TMM->TMSR1 = 0; // 清除标志位
+    TMM->TMIER1 = tmier1_temp;
 }
 
 
@@ -551,10 +586,10 @@ void HardFault_Handler(void)
 {
     //关闭PWM
     INV_RY1_DISABLE;
-    // PFC_RY2_DISABLE;
-    INV_RY3_DISABLE;        
-    
-    COM_PWM_Disable();	//关闭PWM输出 
+//    PFC_RY2_DISABLE;
+    INV_RY3_DISABLE;
+
+    COM_PWM_Disable(); // 关闭PWM输出
     State_Context.state_Value = COM_FAULT_STATE;
 }
 

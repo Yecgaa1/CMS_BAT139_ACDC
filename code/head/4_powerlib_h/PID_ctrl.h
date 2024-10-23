@@ -34,8 +34,8 @@ Copyright (C) 2021 China Micro Semiconductor Limited Company. All Rights Reserve
 #define     INV_VOL_PERIOD_VALUE                        (0)
 
 /*-------------------INV电流环参数---------------------------------------*/
-#define     INV_CUR_KP                                  12500//(12500)
-#define     INV_CUR_KI                                  3000//(4000)
+#define     INV_CUR_KP                                  35000//(12500)
+#define     INV_CUR_KI                                  20000//(3000)
 #define     INV_CUR_KD                                  (0)
 #define     INV_CUR_ERR_MAX							    (32767)
 #define     INV_CUR_ERR_MIN							    (-32767)

@@ -349,22 +349,22 @@ void User_Key_Deal(void)
     // 开逆变输出继电器
     if (COM_Ctr_Info.INV_Enable_Flag == 1 && System_ProtectFlag_Info.all == 0)
     {
-        if (INV_RY1_STATE == 0)
-        {
-            u16Inv_RY3_count = 0;
-            INV_RY1_ENABLE; // 开启逆变器输出
-            INV_RY3_ENABLE; // 开启逆变器输出
-        }
-        else
-        {
-            if (SysClockBase_ms.sys_1ms == 1)
-                u16Inv_RY3_count++;
-            if (u16Inv_RY3_count >= 20)
-            {
-                u16Inv_RY3_count = 20;
-                // INV_RY1_DISABLE;
-            }
-        }
+        // if (INV_RY1_STATE == 0)
+        // {
+        //     u16Inv_RY3_count = 0;
+        //     INV_RY1_ENABLE; // 开启逆变器输出
+        //     INV_RY3_ENABLE; // 开启逆变器输出
+        // }
+        // else
+        // {
+        //     if (SysClockBase_ms.sys_1ms == 1)
+        //         u16Inv_RY3_count++;
+        //     if (u16Inv_RY3_count >= 20)
+        //     {
+        //         u16Inv_RY3_count = 20;
+        //         // INV_RY1_DISABLE;
+        //     }
+        // }
     }
     else
     {
