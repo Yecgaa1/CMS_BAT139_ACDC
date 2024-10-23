@@ -385,7 +385,7 @@ void State_Context_Task(void)
         case COM_STOP_STATE:
             COM_Ctr_Info.INV_Enable_Flag = 0;
             INV_RY1_DISABLE;
-            PFC_RY2_DISABLE;
+            // PFC_RY2_DISABLE;
             INV_RY3_DISABLE;        
 
             COM_PWM_Disable();	//关闭PWM输出              
@@ -395,7 +395,7 @@ void State_Context_Task(void)
         default:
             COM_Ctr_Info.INV_Enable_Flag = 0;
             INV_RY1_DISABLE;
-            PFC_RY2_DISABLE;
+            // PFC_RY2_DISABLE;
             INV_RY3_DISABLE;        
 
             COM_PWM_Disable();	//关闭PWM输出              

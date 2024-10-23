@@ -551,7 +551,7 @@ void HardFault_Handler(void)
 {
     //¹Ø±ÕPWM
     INV_RY1_DISABLE;
-    PFC_RY2_DISABLE;
+    // PFC_RY2_DISABLE;
     INV_RY3_DISABLE;        
     
     COM_PWM_Disable();	//¹Ø±ÕPWMÊä³ö 
