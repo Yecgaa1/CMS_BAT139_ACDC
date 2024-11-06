@@ -17,6 +17,7 @@ void DebugUse(void);
 #define Enable_PWM (0 * COM_REAL_VBUS_SCAL)
 #define PWMDelay (0) // ms，不得大于2000，可以是0
 #define PWMDelayCNT (PWMDelay * 24)
+#define ENABLE_OUT_DN 198 * COM_REAL_VACIN_RMS_SCAL //198是V，真实值
 
 int32_t Get_PLL_Cos(PLL_Ctrl_Var_t *PLL_Info);
 extern uint16_t PFC_StartCount;
