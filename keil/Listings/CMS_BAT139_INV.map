@@ -2223,71 +2223,71 @@ Image Symbol Table
     i.CMP_VREF_Set_Value                     0x00001640   Section        0  cmp.o(i.CMP_VREF_Set_Value)
     i.COM_AD_Data_Deal                       0x00001654   Section        0  user_function.o(i.COM_AD_Data_Deal)
     i.COM_CHG_INV_Select                     0x00001750   Section        0  user_function.o(i.COM_CHG_INV_Select)
-    i.COM_CloseDrive                         0x00001b08   Section        0  user_function.o(i.COM_CloseDrive)
-    i.COM_Function                           0x00001b58   Section        0  user_function.o(i.COM_Function)
-    i.COM_Get_Protect_Flag                   0x00001bb0   Section        0  user_fault_check.o(i.COM_Get_Protect_Flag)
-    i.COM_PWM_Disable                        0x00001c0c   Section        0  sys_hardware_init.o(i.COM_PWM_Disable)
-    i.COM_UART1_Deal                         0x00001c28   Section        0  user_function.o(i.COM_UART1_Deal)
-    i.COM_UPS_Deal                           0x00001d58   Section        0  user_function.o(i.COM_UPS_Deal)
-    i.DMA_Start                              0x00001e04   Section        0  dma.o(i.DMA_Start)
-    i.ELC_Start                              0x00001eb0   Section        0  elc.o(i.ELC_Start)
-    i.EPWM_ConfigInit                        0x00001ebc   Section        0  sys_hardware_init.o(i.EPWM_ConfigInit)
-    i.Fault_Deal_Func                        0x00001fc4   Section        0  sys_state_machine.o(i.Fault_Deal_Func)
-    i.Fault_State_Check                      0x00001fd8   Section        0  user_fault_check.o(i.Fault_State_Check)
-    i.Fault_State_Deal                       0x00002234   Section        0  user_fault_check.o(i.Fault_State_Deal)
-    i.GPIO_Init                              0x00002238   Section        0  sys_hardware_init.o(i.GPIO_Init)
-    i.Get_PLL_Sin                            0x000022b0   Section        0  change.o(i.Get_PLL_Sin)
-    i.Get_PLL_Sin_WithARG                    0x000022bc   Section        0  change.o(i.Get_PLL_Sin_WithARG)
-    i.INV_PWM_Enable                         0x00002348   Section        0  sys_hardware_init.o(i.INV_PWM_Enable)
-    i.INV_Run_VariableInit                   0x000023b0   Section        0  sys_variable_init.o(i.INV_Run_VariableInit)
-    i.Initial_Deal_Func                      0x00002580   Section        0  sys_state_machine.o(i.Initial_Deal_Func)
-    i.Key_Calc                               0x00002598   Section        0  user_function.o(i.Key_Calc)
-    i.PFC_PWM_Enable                         0x000025e0   Section        0  sys_hardware_init.o(i.PFC_PWM_Enable)
-    i.PFC_Run_VariableInit                   0x00002638   Section        0  sys_variable_init.o(i.PFC_Run_VariableInit)
-    i.PORT_Init                              0x000027a4   Section        0  gpio.o(i.PORT_Init)
-    i.Protect_Release                        0x00002860   Section        0  user_fault_check.o(i.Protect_Release)
-    i.Ready_Deal_Func                        0x00002862   Section        0  sys_state_machine.o(i.Ready_Deal_Func)
-    i.Ready_State_Check                      0x00002870   Section        0  sys_state_machine.o(i.Ready_State_Check)
-    i.Run_Deal_Func                          0x00002a90   Section        0  sys_state_machine.o(i.Run_Deal_Func)
-    i.Run_State_OpenDriver                   0x00002ab4   Section        0  sys_state_machine.o(i.Run_State_OpenDriver)
-    i.State_Context_Func                     0x00002aec   Section        0  sys_state_machine.o(i.State_Context_Func)
-    i.State_Context_Task                     0x00002b6c   Section        0  sys_state_machine.o(i.State_Context_Task)
-    i.Stop_Deal_Func                         0x00002c30   Section        0  sys_state_machine.o(i.Stop_Deal_Func)
-    i.SysTick_ConfigInit                     0x00002c34   Section        0  sys_hardware_init.o(i.SysTick_ConfigInit)
-    i.Sys_HardConfigInit                     0x00002c6c   Section        0  sys_hardware_init.o(i.Sys_HardConfigInit)
-    i.Sys_IE_Init                            0x00002d48   Section        0  sys_hardware_init.o(i.Sys_IE_Init)
-    i.Sys_Variableinit                       0x00002dd8   Section        0  sys_variable_init.o(i.Sys_Variableinit)
-    i.SystemClock_Init                       0x00003058   Section        0  sys_hardware_init.o(i.SystemClock_Init)
-    i.SystemInit                             0x000030a0   Section        0  system_bat32g139.o(i.SystemInit)
-    i.TIMC_ConfigInit                        0x00003114   Section        0  sys_hardware_init.o(i.TIMC_ConfigInit)
-    i.UART0_ConfigInit                       0x00003158   Section        0  sys_hardware_init.o(i.UART0_ConfigInit)
-    i.UART1_ConfigInit                       0x00003244   Section        0  sys_hardware_init.o(i.UART1_ConfigInit)
-    i.User_DelayTime_ms                      0x0000330c   Section        0  user_function.o(i.User_DelayTime_ms)
-    i.User_DelayTime_us                      0x00003328   Section        0  user_function.o(i.User_DelayTime_us)
-    i.User_Divider                           0x0000333c   Section        0  user_function.o(i.User_Divider)
-    i.User_Key_Deal                          0x00003350   Section        0  user_function.o(i.User_Key_Deal)
-    i.User_LED_Deal                          0x0000340c   Section        0  user_function.o(i.User_LED_Deal)
-    i.User_LED_ms                            0x00003530   Section        0  user_function.o(i.User_LED_ms)
-    i.User_RMS_Deal                          0x00003588   Section        0  user_function.o(i.User_RMS_Deal)
-    i.WDT_Restart                            0x000035bc   Section        0  wdt.o(i.WDT_Restart)
-    i.Waiting_Deal_Func                      0x000035c8   Section        0  sys_state_machine.o(i.Waiting_Deal_Func)
-    i.__ARM_common_switch8                   0x00003604   Section        0  gpio.o(i.__ARM_common_switch8)
-    i.__NVIC_ClearPendingIRQ                 0x00003620   Section        0  sys_hardware_init.o(i.__NVIC_ClearPendingIRQ)
-    __NVIC_ClearPendingIRQ                   0x00003621   Thumb Code    18  sys_hardware_init.o(i.__NVIC_ClearPendingIRQ)
-    i.__NVIC_SetPriority                     0x00003638   Section        0  sys_hardware_init.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x00003639   Thumb Code    60  sys_hardware_init.o(i.__NVIC_SetPriority)
-    i._sys_exit                              0x0000367c   Section        0  retarget.o(i._sys_exit)
-    i.main                                   0x00003694   Section        0  main.o(i.main)
-    i.sqrt                                   0x000036bc   Section        0  sqrt.o(i.sqrt)
-    i.wdt_interrupt                          0x00003704   Section        0  wdt_user.o(i.wdt_interrupt)
-    sram_code                                0x00003718   Section        0  clk.o(sram_code)
-    .constdata                               0x00003760   Section      840  user_sine_table.o(.constdata)
-    x$fpl$usenofp                            0x00003760   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x00003aa8   Section      700  user_sine_table.o(.constdata)
-    .constdata                               0x00003d64   Section      128  ddiv.o(.constdata)
-    ddiv_reciptbl                            0x00003d64   Data         128  ddiv.o(.constdata)
-    .constdata                               0x00003de4   Section       64  fdiv.o(.constdata)
-    fdiv_tab                                 0x00003de4   Data          64  fdiv.o(.constdata)
+    i.COM_CloseDrive                         0x00001b18   Section        0  user_function.o(i.COM_CloseDrive)
+    i.COM_Function                           0x00001b68   Section        0  user_function.o(i.COM_Function)
+    i.COM_Get_Protect_Flag                   0x00001bc0   Section        0  user_fault_check.o(i.COM_Get_Protect_Flag)
+    i.COM_PWM_Disable                        0x00001c1c   Section        0  sys_hardware_init.o(i.COM_PWM_Disable)
+    i.COM_UART1_Deal                         0x00001c38   Section        0  user_function.o(i.COM_UART1_Deal)
+    i.COM_UPS_Deal                           0x00001d68   Section        0  user_function.o(i.COM_UPS_Deal)
+    i.DMA_Start                              0x00001e14   Section        0  dma.o(i.DMA_Start)
+    i.ELC_Start                              0x00001ec0   Section        0  elc.o(i.ELC_Start)
+    i.EPWM_ConfigInit                        0x00001ecc   Section        0  sys_hardware_init.o(i.EPWM_ConfigInit)
+    i.Fault_Deal_Func                        0x00001fd4   Section        0  sys_state_machine.o(i.Fault_Deal_Func)
+    i.Fault_State_Check                      0x00001fe8   Section        0  user_fault_check.o(i.Fault_State_Check)
+    i.Fault_State_Deal                       0x00002244   Section        0  user_fault_check.o(i.Fault_State_Deal)
+    i.GPIO_Init                              0x00002248   Section        0  sys_hardware_init.o(i.GPIO_Init)
+    i.Get_PLL_Sin                            0x000022c0   Section        0  change.o(i.Get_PLL_Sin)
+    i.Get_PLL_Sin_WithARG                    0x000022cc   Section        0  change.o(i.Get_PLL_Sin_WithARG)
+    i.INV_PWM_Enable                         0x00002358   Section        0  sys_hardware_init.o(i.INV_PWM_Enable)
+    i.INV_Run_VariableInit                   0x000023c0   Section        0  sys_variable_init.o(i.INV_Run_VariableInit)
+    i.Initial_Deal_Func                      0x00002590   Section        0  sys_state_machine.o(i.Initial_Deal_Func)
+    i.Key_Calc                               0x000025a8   Section        0  user_function.o(i.Key_Calc)
+    i.PFC_PWM_Enable                         0x000025f0   Section        0  sys_hardware_init.o(i.PFC_PWM_Enable)
+    i.PFC_Run_VariableInit                   0x00002648   Section        0  sys_variable_init.o(i.PFC_Run_VariableInit)
+    i.PORT_Init                              0x000027b4   Section        0  gpio.o(i.PORT_Init)
+    i.Protect_Release                        0x00002870   Section        0  user_fault_check.o(i.Protect_Release)
+    i.Ready_Deal_Func                        0x00002872   Section        0  sys_state_machine.o(i.Ready_Deal_Func)
+    i.Ready_State_Check                      0x00002880   Section        0  sys_state_machine.o(i.Ready_State_Check)
+    i.Run_Deal_Func                          0x00002aa0   Section        0  sys_state_machine.o(i.Run_Deal_Func)
+    i.Run_State_OpenDriver                   0x00002ac4   Section        0  sys_state_machine.o(i.Run_State_OpenDriver)
+    i.State_Context_Func                     0x00002afc   Section        0  sys_state_machine.o(i.State_Context_Func)
+    i.State_Context_Task                     0x00002b7c   Section        0  sys_state_machine.o(i.State_Context_Task)
+    i.Stop_Deal_Func                         0x00002c40   Section        0  sys_state_machine.o(i.Stop_Deal_Func)
+    i.SysTick_ConfigInit                     0x00002c44   Section        0  sys_hardware_init.o(i.SysTick_ConfigInit)
+    i.Sys_HardConfigInit                     0x00002c7c   Section        0  sys_hardware_init.o(i.Sys_HardConfigInit)
+    i.Sys_IE_Init                            0x00002d58   Section        0  sys_hardware_init.o(i.Sys_IE_Init)
+    i.Sys_Variableinit                       0x00002de8   Section        0  sys_variable_init.o(i.Sys_Variableinit)
+    i.SystemClock_Init                       0x00003068   Section        0  sys_hardware_init.o(i.SystemClock_Init)
+    i.SystemInit                             0x000030b0   Section        0  system_bat32g139.o(i.SystemInit)
+    i.TIMC_ConfigInit                        0x00003124   Section        0  sys_hardware_init.o(i.TIMC_ConfigInit)
+    i.UART0_ConfigInit                       0x00003168   Section        0  sys_hardware_init.o(i.UART0_ConfigInit)
+    i.UART1_ConfigInit                       0x00003254   Section        0  sys_hardware_init.o(i.UART1_ConfigInit)
+    i.User_DelayTime_ms                      0x0000331c   Section        0  user_function.o(i.User_DelayTime_ms)
+    i.User_DelayTime_us                      0x00003338   Section        0  user_function.o(i.User_DelayTime_us)
+    i.User_Divider                           0x0000334c   Section        0  user_function.o(i.User_Divider)
+    i.User_Key_Deal                          0x00003360   Section        0  user_function.o(i.User_Key_Deal)
+    i.User_LED_Deal                          0x0000341c   Section        0  user_function.o(i.User_LED_Deal)
+    i.User_LED_ms                            0x00003540   Section        0  user_function.o(i.User_LED_ms)
+    i.User_RMS_Deal                          0x00003598   Section        0  user_function.o(i.User_RMS_Deal)
+    i.WDT_Restart                            0x000035cc   Section        0  wdt.o(i.WDT_Restart)
+    i.Waiting_Deal_Func                      0x000035d8   Section        0  sys_state_machine.o(i.Waiting_Deal_Func)
+    i.__ARM_common_switch8                   0x00003614   Section        0  gpio.o(i.__ARM_common_switch8)
+    i.__NVIC_ClearPendingIRQ                 0x00003630   Section        0  sys_hardware_init.o(i.__NVIC_ClearPendingIRQ)
+    __NVIC_ClearPendingIRQ                   0x00003631   Thumb Code    18  sys_hardware_init.o(i.__NVIC_ClearPendingIRQ)
+    i.__NVIC_SetPriority                     0x00003648   Section        0  sys_hardware_init.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x00003649   Thumb Code    60  sys_hardware_init.o(i.__NVIC_SetPriority)
+    i._sys_exit                              0x0000368c   Section        0  retarget.o(i._sys_exit)
+    i.main                                   0x000036a4   Section        0  main.o(i.main)
+    i.sqrt                                   0x000036cc   Section        0  sqrt.o(i.sqrt)
+    i.wdt_interrupt                          0x00003714   Section        0  wdt_user.o(i.wdt_interrupt)
+    sram_code                                0x00003728   Section        0  clk.o(sram_code)
+    .constdata                               0x00003770   Section      840  user_sine_table.o(.constdata)
+    x$fpl$usenofp                            0x00003770   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x00003ab8   Section      700  user_sine_table.o(.constdata)
+    .constdata                               0x00003d74   Section      128  ddiv.o(.constdata)
+    ddiv_reciptbl                            0x00003d74   Data         128  ddiv.o(.constdata)
+    .constdata                               0x00003df4   Section       64  fdiv.o(.constdata)
+    fdiv_tab                                 0x00003df4   Data          64  fdiv.o(.constdata)
     i.COM_Uartx_HeartCheck                   0x200001c0   Section        0  user_communication.o(i.COM_Uartx_HeartCheck)
     i.Function_TxSendDebug                   0x20000200   Section        0  user_communication.o(i.Function_TxSendDebug)
     i.HardFault_Handler                      0x20000280   Section        0  interrupt.o(i.HardFault_Handler)
@@ -2618,67 +2618,67 @@ Image Symbol Table
     CMP_Input_Select                         0x00001621   Thumb Code    26  cmp.o(i.CMP_Input_Select)
     CMP_VREF_Set_Value                       0x00001641   Thumb Code    16  cmp.o(i.CMP_VREF_Set_Value)
     COM_AD_Data_Deal                         0x00001655   Thumb Code   216  user_function.o(i.COM_AD_Data_Deal)
-    COM_CHG_INV_Select                       0x00001751   Thumb Code   850  user_function.o(i.COM_CHG_INV_Select)
-    COM_CloseDrive                           0x00001b09   Thumb Code    64  user_function.o(i.COM_CloseDrive)
-    COM_Function                             0x00001b59   Thumb Code    74  user_function.o(i.COM_Function)
-    COM_Get_Protect_Flag                     0x00001bb1   Thumb Code    88  user_fault_check.o(i.COM_Get_Protect_Flag)
-    COM_PWM_Disable                          0x00001c0d   Thumb Code    18  sys_hardware_init.o(i.COM_PWM_Disable)
-    COM_UART1_Deal                           0x00001c29   Thumb Code   272  user_function.o(i.COM_UART1_Deal)
-    COM_UPS_Deal                             0x00001d59   Thumb Code   138  user_function.o(i.COM_UPS_Deal)
-    DMA_Start                                0x00001e05   Thumb Code   158  dma.o(i.DMA_Start)
-    ELC_Start                                0x00001eb1   Thumb Code     6  elc.o(i.ELC_Start)
-    EPWM_ConfigInit                          0x00001ebd   Thumb Code   236  sys_hardware_init.o(i.EPWM_ConfigInit)
-    Fault_Deal_Func                          0x00001fc5   Thumb Code    20  sys_state_machine.o(i.Fault_Deal_Func)
-    Fault_State_Check                        0x00001fd9   Thumb Code   442  user_fault_check.o(i.Fault_State_Check)
-    Fault_State_Deal                         0x00002235   Thumb Code     2  user_fault_check.o(i.Fault_State_Deal)
-    GPIO_Init                                0x00002239   Thumb Code   114  sys_hardware_init.o(i.GPIO_Init)
-    Get_PLL_Sin                              0x000022b1   Thumb Code    12  change.o(i.Get_PLL_Sin)
-    Get_PLL_Sin_WithARG                      0x000022bd   Thumb Code   126  change.o(i.Get_PLL_Sin_WithARG)
-    INV_PWM_Enable                           0x00002349   Thumb Code    88  sys_hardware_init.o(i.INV_PWM_Enable)
-    INV_Run_VariableInit                     0x000023b1   Thumb Code   358  sys_variable_init.o(i.INV_Run_VariableInit)
-    Initial_Deal_Func                        0x00002581   Thumb Code    20  sys_state_machine.o(i.Initial_Deal_Func)
-    Key_Calc                                 0x00002599   Thumb Code    70  user_function.o(i.Key_Calc)
-    PFC_PWM_Enable                           0x000025e1   Thumb Code    62  sys_hardware_init.o(i.PFC_PWM_Enable)
-    PFC_Run_VariableInit                     0x00002639   Thumb Code   258  sys_variable_init.o(i.PFC_Run_VariableInit)
-    PORT_Init                                0x000027a5   Thumb Code   180  gpio.o(i.PORT_Init)
-    Protect_Release                          0x00002861   Thumb Code     2  user_fault_check.o(i.Protect_Release)
-    Ready_Deal_Func                          0x00002863   Thumb Code    12  sys_state_machine.o(i.Ready_Deal_Func)
-    Ready_State_Check                        0x00002871   Thumb Code   430  sys_state_machine.o(i.Ready_State_Check)
-    Run_Deal_Func                            0x00002a91   Thumb Code    34  sys_state_machine.o(i.Run_Deal_Func)
-    Run_State_OpenDriver                     0x00002ab5   Thumb Code    44  sys_state_machine.o(i.Run_State_OpenDriver)
-    State_Context_Func                       0x00002aed   Thumb Code   128  sys_state_machine.o(i.State_Context_Func)
-    State_Context_Task                       0x00002b6d   Thumb Code   182  sys_state_machine.o(i.State_Context_Task)
-    Stop_Deal_Func                           0x00002c31   Thumb Code     2  sys_state_machine.o(i.Stop_Deal_Func)
-    SysTick_ConfigInit                       0x00002c35   Thumb Code    44  sys_hardware_init.o(i.SysTick_ConfigInit)
-    Sys_HardConfigInit                       0x00002c6d   Thumb Code   190  sys_hardware_init.o(i.Sys_HardConfigInit)
-    Sys_IE_Init                              0x00002d49   Thumb Code   134  sys_hardware_init.o(i.Sys_IE_Init)
-    Sys_Variableinit                         0x00002dd9   Thumb Code   490  sys_variable_init.o(i.Sys_Variableinit)
-    SystemClock_Init                         0x00003059   Thumb Code    58  sys_hardware_init.o(i.SystemClock_Init)
-    SystemInit                               0x000030a1   Thumb Code    82  system_bat32g139.o(i.SystemInit)
-    TIMC_ConfigInit                          0x00003115   Thumb Code    50  sys_hardware_init.o(i.TIMC_ConfigInit)
-    UART0_ConfigInit                         0x00003159   Thumb Code   192  sys_hardware_init.o(i.UART0_ConfigInit)
-    UART1_ConfigInit                         0x00003245   Thumb Code   164  sys_hardware_init.o(i.UART1_ConfigInit)
-    User_DelayTime_ms                        0x0000330d   Thumb Code    22  user_function.o(i.User_DelayTime_ms)
-    User_DelayTime_us                        0x00003329   Thumb Code    20  user_function.o(i.User_DelayTime_us)
-    User_Divider                             0x0000333d   Thumb Code    16  user_function.o(i.User_Divider)
-    User_Key_Deal                            0x00003351   Thumb Code   160  user_function.o(i.User_Key_Deal)
-    User_LED_Deal                            0x0000340d   Thumb Code   272  user_function.o(i.User_LED_Deal)
-    User_LED_ms                              0x00003531   Thumb Code    84  user_function.o(i.User_LED_ms)
-    User_RMS_Deal                            0x00003589   Thumb Code    38  user_function.o(i.User_RMS_Deal)
-    WDT_Restart                              0x000035bd   Thumb Code     8  wdt.o(i.WDT_Restart)
-    Waiting_Deal_Func                        0x000035c9   Thumb Code    52  sys_state_machine.o(i.Waiting_Deal_Func)
-    __ARM_common_switch8                     0x00003605   Thumb Code    26  gpio.o(i.__ARM_common_switch8)
-    _sys_exit                                0x0000367d   Thumb Code    16  retarget.o(i._sys_exit)
-    main                                     0x00003695   Thumb Code    30  main.o(i.main)
-    sqrt                                     0x000036bd   Thumb Code    66  sqrt.o(i.sqrt)
-    NMI_Handler                              0x00003705   Thumb Code     0  wdt_user.o(i.wdt_interrupt)
-    wdt_interrupt                            0x00003705   Thumb Code    16  wdt_user.o(i.wdt_interrupt)
-    CLK_Fclk_Select                          0x00003719   Thumb Code    62  clk.o(sram_code)
-    Sine_Table_50Hz                          0x00003760   Data         840  user_sine_table.o(.constdata)
-    __I$use$fp                               0x00003760   Number         0  usenofp.o(x$fpl$usenofp)
-    Sine_Table_60Hz                          0x00003aa8   Data         700  user_sine_table.o(.constdata)
-    Region$$Table$$Base                      0x00003e24   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00003e54   Number         0  anon$$obj.o(Region$$Table)
+    COM_CHG_INV_Select                       0x00001751   Thumb Code   862  user_function.o(i.COM_CHG_INV_Select)
+    COM_CloseDrive                           0x00001b19   Thumb Code    64  user_function.o(i.COM_CloseDrive)
+    COM_Function                             0x00001b69   Thumb Code    74  user_function.o(i.COM_Function)
+    COM_Get_Protect_Flag                     0x00001bc1   Thumb Code    88  user_fault_check.o(i.COM_Get_Protect_Flag)
+    COM_PWM_Disable                          0x00001c1d   Thumb Code    18  sys_hardware_init.o(i.COM_PWM_Disable)
+    COM_UART1_Deal                           0x00001c39   Thumb Code   272  user_function.o(i.COM_UART1_Deal)
+    COM_UPS_Deal                             0x00001d69   Thumb Code   138  user_function.o(i.COM_UPS_Deal)
+    DMA_Start                                0x00001e15   Thumb Code   158  dma.o(i.DMA_Start)
+    ELC_Start                                0x00001ec1   Thumb Code     6  elc.o(i.ELC_Start)
+    EPWM_ConfigInit                          0x00001ecd   Thumb Code   236  sys_hardware_init.o(i.EPWM_ConfigInit)
+    Fault_Deal_Func                          0x00001fd5   Thumb Code    20  sys_state_machine.o(i.Fault_Deal_Func)
+    Fault_State_Check                        0x00001fe9   Thumb Code   442  user_fault_check.o(i.Fault_State_Check)
+    Fault_State_Deal                         0x00002245   Thumb Code     2  user_fault_check.o(i.Fault_State_Deal)
+    GPIO_Init                                0x00002249   Thumb Code   114  sys_hardware_init.o(i.GPIO_Init)
+    Get_PLL_Sin                              0x000022c1   Thumb Code    12  change.o(i.Get_PLL_Sin)
+    Get_PLL_Sin_WithARG                      0x000022cd   Thumb Code   126  change.o(i.Get_PLL_Sin_WithARG)
+    INV_PWM_Enable                           0x00002359   Thumb Code    88  sys_hardware_init.o(i.INV_PWM_Enable)
+    INV_Run_VariableInit                     0x000023c1   Thumb Code   358  sys_variable_init.o(i.INV_Run_VariableInit)
+    Initial_Deal_Func                        0x00002591   Thumb Code    20  sys_state_machine.o(i.Initial_Deal_Func)
+    Key_Calc                                 0x000025a9   Thumb Code    70  user_function.o(i.Key_Calc)
+    PFC_PWM_Enable                           0x000025f1   Thumb Code    62  sys_hardware_init.o(i.PFC_PWM_Enable)
+    PFC_Run_VariableInit                     0x00002649   Thumb Code   258  sys_variable_init.o(i.PFC_Run_VariableInit)
+    PORT_Init                                0x000027b5   Thumb Code   180  gpio.o(i.PORT_Init)
+    Protect_Release                          0x00002871   Thumb Code     2  user_fault_check.o(i.Protect_Release)
+    Ready_Deal_Func                          0x00002873   Thumb Code    12  sys_state_machine.o(i.Ready_Deal_Func)
+    Ready_State_Check                        0x00002881   Thumb Code   430  sys_state_machine.o(i.Ready_State_Check)
+    Run_Deal_Func                            0x00002aa1   Thumb Code    34  sys_state_machine.o(i.Run_Deal_Func)
+    Run_State_OpenDriver                     0x00002ac5   Thumb Code    44  sys_state_machine.o(i.Run_State_OpenDriver)
+    State_Context_Func                       0x00002afd   Thumb Code   128  sys_state_machine.o(i.State_Context_Func)
+    State_Context_Task                       0x00002b7d   Thumb Code   182  sys_state_machine.o(i.State_Context_Task)
+    Stop_Deal_Func                           0x00002c41   Thumb Code     2  sys_state_machine.o(i.Stop_Deal_Func)
+    SysTick_ConfigInit                       0x00002c45   Thumb Code    44  sys_hardware_init.o(i.SysTick_ConfigInit)
+    Sys_HardConfigInit                       0x00002c7d   Thumb Code   190  sys_hardware_init.o(i.Sys_HardConfigInit)
+    Sys_IE_Init                              0x00002d59   Thumb Code   134  sys_hardware_init.o(i.Sys_IE_Init)
+    Sys_Variableinit                         0x00002de9   Thumb Code   490  sys_variable_init.o(i.Sys_Variableinit)
+    SystemClock_Init                         0x00003069   Thumb Code    58  sys_hardware_init.o(i.SystemClock_Init)
+    SystemInit                               0x000030b1   Thumb Code    82  system_bat32g139.o(i.SystemInit)
+    TIMC_ConfigInit                          0x00003125   Thumb Code    50  sys_hardware_init.o(i.TIMC_ConfigInit)
+    UART0_ConfigInit                         0x00003169   Thumb Code   192  sys_hardware_init.o(i.UART0_ConfigInit)
+    UART1_ConfigInit                         0x00003255   Thumb Code   164  sys_hardware_init.o(i.UART1_ConfigInit)
+    User_DelayTime_ms                        0x0000331d   Thumb Code    22  user_function.o(i.User_DelayTime_ms)
+    User_DelayTime_us                        0x00003339   Thumb Code    20  user_function.o(i.User_DelayTime_us)
+    User_Divider                             0x0000334d   Thumb Code    16  user_function.o(i.User_Divider)
+    User_Key_Deal                            0x00003361   Thumb Code   160  user_function.o(i.User_Key_Deal)
+    User_LED_Deal                            0x0000341d   Thumb Code   272  user_function.o(i.User_LED_Deal)
+    User_LED_ms                              0x00003541   Thumb Code    84  user_function.o(i.User_LED_ms)
+    User_RMS_Deal                            0x00003599   Thumb Code    38  user_function.o(i.User_RMS_Deal)
+    WDT_Restart                              0x000035cd   Thumb Code     8  wdt.o(i.WDT_Restart)
+    Waiting_Deal_Func                        0x000035d9   Thumb Code    52  sys_state_machine.o(i.Waiting_Deal_Func)
+    __ARM_common_switch8                     0x00003615   Thumb Code    26  gpio.o(i.__ARM_common_switch8)
+    _sys_exit                                0x0000368d   Thumb Code    16  retarget.o(i._sys_exit)
+    main                                     0x000036a5   Thumb Code    30  main.o(i.main)
+    sqrt                                     0x000036cd   Thumb Code    66  sqrt.o(i.sqrt)
+    NMI_Handler                              0x00003715   Thumb Code     0  wdt_user.o(i.wdt_interrupt)
+    wdt_interrupt                            0x00003715   Thumb Code    16  wdt_user.o(i.wdt_interrupt)
+    CLK_Fclk_Select                          0x00003729   Thumb Code    62  clk.o(sram_code)
+    Sine_Table_50Hz                          0x00003770   Data         840  user_sine_table.o(.constdata)
+    __I$use$fp                               0x00003770   Number         0  usenofp.o(x$fpl$usenofp)
+    Sine_Table_60Hz                          0x00003ab8   Data         700  user_sine_table.o(.constdata)
+    Region$$Table$$Base                      0x00003e34   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00003e64   Number         0  anon$$obj.o(Region$$Table)
     Long Thumb to Thumb Veneer to __aeabi_i2f 0x20000101   Thumb Code    12  anon$$obj.o(Veneer$$Code)
     Long Thumb to Thumb Veneer to __aeabi_memcpy4 0x2000010d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
     Long Thumb to Thumb Veneer to COM_PWM_Disable 0x20000119   Thumb Code    12  anon$$obj.o(Veneer$$Code)
@@ -2869,9 +2869,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000010d
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00006194, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00005bd0])
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x000061a4, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00005be0])
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00003e54, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00003e64, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2966,129 +2966,129 @@ Memory Map of the image
     0x00001620   0x00001620   0x00000020   Code   RO          554    i.CMP_Input_Select  cmp.o
     0x00001640   0x00001640   0x00000014   Code   RO          558    i.CMP_VREF_Set_Value  cmp.o
     0x00001654   0x00001654   0x000000fc   Code   RO         4017    i.COM_AD_Data_Deal  user_function.o
-    0x00001750   0x00001750   0x000003b8   Code   RO         4018    i.COM_CHG_INV_Select  user_function.o
-    0x00001b08   0x00001b08   0x00000050   Code   RO         4019    i.COM_CloseDrive    user_function.o
-    0x00001b58   0x00001b58   0x00000058   Code   RO         4020    i.COM_Function      user_function.o
-    0x00001bb0   0x00001bb0   0x0000005c   Code   RO         4141    i.COM_Get_Protect_Flag  user_fault_check.o
-    0x00001c0c   0x00001c0c   0x0000001c   Code   RO         3701    i.COM_PWM_Disable   sys_hardware_init.o
-    0x00001c28   0x00001c28   0x00000130   Code   RO         4021    i.COM_UART1_Deal    user_function.o
-    0x00001d58   0x00001d58   0x000000ac   Code   RO         4022    i.COM_UPS_Deal      user_function.o
-    0x00001e04   0x00001e04   0x000000ac   Code   RO          706    i.DMA_Start         dma.o
-    0x00001eb0   0x00001eb0   0x0000000c   Code   RO          746    i.ELC_Start         elc.o
-    0x00001ebc   0x00001ebc   0x00000108   Code   RO         3702    i.EPWM_ConfigInit   sys_hardware_init.o
-    0x00001fc4   0x00001fc4   0x00000014   Code   RO         3828    i.Fault_Deal_Func   sys_state_machine.o
-    0x00001fd8   0x00001fd8   0x0000025c   Code   RO         4142    i.Fault_State_Check  user_fault_check.o
-    0x00002234   0x00002234   0x00000002   Code   RO         4143    i.Fault_State_Deal  user_fault_check.o
-    0x00002236   0x00002236   0x00000002   PAD
-    0x00002238   0x00002238   0x00000078   Code   RO         3703    i.GPIO_Init         sys_hardware_init.o
-    0x000022b0   0x000022b0   0x0000000c   Code   RO         4256    i.Get_PLL_Sin       change.o
-    0x000022bc   0x000022bc   0x0000008c   Code   RO         4257    i.Get_PLL_Sin_WithARG  change.o
-    0x00002348   0x00002348   0x00000068   Code   RO         3704    i.INV_PWM_Enable    sys_hardware_init.o
-    0x000023b0   0x000023b0   0x000001d0   Code   RO         3662    i.INV_Run_VariableInit  sys_variable_init.o
-    0x00002580   0x00002580   0x00000018   Code   RO         3829    i.Initial_Deal_Func  sys_state_machine.o
-    0x00002598   0x00002598   0x00000046   Code   RO         4023    i.Key_Calc          user_function.o
-    0x000025de   0x000025de   0x00000002   PAD
-    0x000025e0   0x000025e0   0x00000058   Code   RO         3705    i.PFC_PWM_Enable    sys_hardware_init.o
-    0x00002638   0x00002638   0x0000016c   Code   RO         3663    i.PFC_Run_VariableInit  sys_variable_init.o
-    0x000027a4   0x000027a4   0x000000bc   Code   RO          823    i.PORT_Init         gpio.o
-    0x00002860   0x00002860   0x00000002   Code   RO         4144    i.Protect_Release   user_fault_check.o
-    0x00002862   0x00002862   0x0000000c   Code   RO         3830    i.Ready_Deal_Func   sys_state_machine.o
-    0x0000286e   0x0000286e   0x00000002   PAD
-    0x00002870   0x00002870   0x00000220   Code   RO         3831    i.Ready_State_Check  sys_state_machine.o
-    0x00002a90   0x00002a90   0x00000022   Code   RO         3832    i.Run_Deal_Func     sys_state_machine.o
-    0x00002ab2   0x00002ab2   0x00000002   PAD
-    0x00002ab4   0x00002ab4   0x00000038   Code   RO         3833    i.Run_State_OpenDriver  sys_state_machine.o
-    0x00002aec   0x00002aec   0x00000080   Code   RO         3834    i.State_Context_Func  sys_state_machine.o
-    0x00002b6c   0x00002b6c   0x000000c4   Code   RO         3835    i.State_Context_Task  sys_state_machine.o
-    0x00002c30   0x00002c30   0x00000002   Code   RO         3836    i.Stop_Deal_Func    sys_state_machine.o
-    0x00002c32   0x00002c32   0x00000002   PAD
-    0x00002c34   0x00002c34   0x00000038   Code   RO         3706    i.SysTick_ConfigInit  sys_hardware_init.o
-    0x00002c6c   0x00002c6c   0x000000dc   Code   RO         3707    i.Sys_HardConfigInit  sys_hardware_init.o
-    0x00002d48   0x00002d48   0x00000090   Code   RO         3708    i.Sys_IE_Init       sys_hardware_init.o
-    0x00002dd8   0x00002dd8   0x00000280   Code   RO         3664    i.Sys_Variableinit  sys_variable_init.o
-    0x00003058   0x00003058   0x00000048   Code   RO         3709    i.SystemClock_Init  sys_hardware_init.o
-    0x000030a0   0x000030a0   0x00000074   Code   RO         4495    i.SystemInit        system_bat32g139.o
-    0x00003114   0x00003114   0x00000044   Code   RO         3710    i.TIMC_ConfigInit   sys_hardware_init.o
-    0x00003158   0x00003158   0x000000ec   Code   RO         3711    i.UART0_ConfigInit  sys_hardware_init.o
-    0x00003244   0x00003244   0x000000c8   Code   RO         3712    i.UART1_ConfigInit  sys_hardware_init.o
-    0x0000330c   0x0000330c   0x0000001c   Code   RO         4024    i.User_DelayTime_ms  user_function.o
-    0x00003328   0x00003328   0x00000014   Code   RO         4025    i.User_DelayTime_us  user_function.o
-    0x0000333c   0x0000333c   0x00000014   Code   RO         4026    i.User_Divider      user_function.o
-    0x00003350   0x00003350   0x000000bc   Code   RO         4027    i.User_Key_Deal     user_function.o
-    0x0000340c   0x0000340c   0x00000124   Code   RO         4028    i.User_LED_Deal     user_function.o
-    0x00003530   0x00003530   0x00000058   Code   RO         4029    i.User_LED_ms       user_function.o
-    0x00003588   0x00003588   0x00000034   Code   RO         4030    i.User_RMS_Deal     user_function.o
-    0x000035bc   0x000035bc   0x0000000c   Code   RO         3415    i.WDT_Restart       wdt.o
-    0x000035c8   0x000035c8   0x0000003c   Code   RO         3837    i.Waiting_Deal_Func  sys_state_machine.o
-    0x00003604   0x00003604   0x0000001a   Code   RO          878    i.__ARM_common_switch8  gpio.o
-    0x0000361e   0x0000361e   0x00000002   PAD
-    0x00003620   0x00003620   0x00000018   Code   RO         3714    i.__NVIC_ClearPendingIRQ  sys_hardware_init.o
-    0x00003638   0x00003638   0x00000044   Code   RO         3715    i.__NVIC_SetPriority  sys_hardware_init.o
-    0x0000367c   0x0000367c   0x00000018   Code   RO         1340    i._sys_exit         retarget.o
-    0x00003694   0x00003694   0x00000028   Code   RO         3461    i.main              main.o
-    0x000036bc   0x000036bc   0x00000048   Code   RO         4643    i.sqrt              m_ps.l(sqrt.o)
-    0x00003704   0x00003704   0x00000014   Code   RO         3435    i.wdt_interrupt     wdt_user.o
-    0x00003718   0x00003718   0x00000048   Code   RO          469    sram_code           clk.o
-    0x00003760   0x00003760   0x00000000   Code   RO         4674    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x00003760   0x00003760   0x00000348   Data   RO         4123    .constdata          user_sine_table.o
-    0x00003aa8   0x00003aa8   0x000002bc   Data   RO         4124    .constdata          user_sine_table.o
-    0x00003d64   0x00003d64   0x00000080   Data   RO         4615    .constdata          fz_ps.l(ddiv.o)
-    0x00003de4   0x00003de4   0x00000040   Data   RO         4634    .constdata          fz_ps.l(fdiv.o)
-    0x00003e24   0x00003e24   0x00000030   Data   RO         4871    Region$$Table       anon$$obj.o
+    0x00001750   0x00001750   0x000003c8   Code   RO         4018    i.COM_CHG_INV_Select  user_function.o
+    0x00001b18   0x00001b18   0x00000050   Code   RO         4019    i.COM_CloseDrive    user_function.o
+    0x00001b68   0x00001b68   0x00000058   Code   RO         4020    i.COM_Function      user_function.o
+    0x00001bc0   0x00001bc0   0x0000005c   Code   RO         4141    i.COM_Get_Protect_Flag  user_fault_check.o
+    0x00001c1c   0x00001c1c   0x0000001c   Code   RO         3701    i.COM_PWM_Disable   sys_hardware_init.o
+    0x00001c38   0x00001c38   0x00000130   Code   RO         4021    i.COM_UART1_Deal    user_function.o
+    0x00001d68   0x00001d68   0x000000ac   Code   RO         4022    i.COM_UPS_Deal      user_function.o
+    0x00001e14   0x00001e14   0x000000ac   Code   RO          706    i.DMA_Start         dma.o
+    0x00001ec0   0x00001ec0   0x0000000c   Code   RO          746    i.ELC_Start         elc.o
+    0x00001ecc   0x00001ecc   0x00000108   Code   RO         3702    i.EPWM_ConfigInit   sys_hardware_init.o
+    0x00001fd4   0x00001fd4   0x00000014   Code   RO         3828    i.Fault_Deal_Func   sys_state_machine.o
+    0x00001fe8   0x00001fe8   0x0000025c   Code   RO         4142    i.Fault_State_Check  user_fault_check.o
+    0x00002244   0x00002244   0x00000002   Code   RO         4143    i.Fault_State_Deal  user_fault_check.o
+    0x00002246   0x00002246   0x00000002   PAD
+    0x00002248   0x00002248   0x00000078   Code   RO         3703    i.GPIO_Init         sys_hardware_init.o
+    0x000022c0   0x000022c0   0x0000000c   Code   RO         4256    i.Get_PLL_Sin       change.o
+    0x000022cc   0x000022cc   0x0000008c   Code   RO         4257    i.Get_PLL_Sin_WithARG  change.o
+    0x00002358   0x00002358   0x00000068   Code   RO         3704    i.INV_PWM_Enable    sys_hardware_init.o
+    0x000023c0   0x000023c0   0x000001d0   Code   RO         3662    i.INV_Run_VariableInit  sys_variable_init.o
+    0x00002590   0x00002590   0x00000018   Code   RO         3829    i.Initial_Deal_Func  sys_state_machine.o
+    0x000025a8   0x000025a8   0x00000046   Code   RO         4023    i.Key_Calc          user_function.o
+    0x000025ee   0x000025ee   0x00000002   PAD
+    0x000025f0   0x000025f0   0x00000058   Code   RO         3705    i.PFC_PWM_Enable    sys_hardware_init.o
+    0x00002648   0x00002648   0x0000016c   Code   RO         3663    i.PFC_Run_VariableInit  sys_variable_init.o
+    0x000027b4   0x000027b4   0x000000bc   Code   RO          823    i.PORT_Init         gpio.o
+    0x00002870   0x00002870   0x00000002   Code   RO         4144    i.Protect_Release   user_fault_check.o
+    0x00002872   0x00002872   0x0000000c   Code   RO         3830    i.Ready_Deal_Func   sys_state_machine.o
+    0x0000287e   0x0000287e   0x00000002   PAD
+    0x00002880   0x00002880   0x00000220   Code   RO         3831    i.Ready_State_Check  sys_state_machine.o
+    0x00002aa0   0x00002aa0   0x00000022   Code   RO         3832    i.Run_Deal_Func     sys_state_machine.o
+    0x00002ac2   0x00002ac2   0x00000002   PAD
+    0x00002ac4   0x00002ac4   0x00000038   Code   RO         3833    i.Run_State_OpenDriver  sys_state_machine.o
+    0x00002afc   0x00002afc   0x00000080   Code   RO         3834    i.State_Context_Func  sys_state_machine.o
+    0x00002b7c   0x00002b7c   0x000000c4   Code   RO         3835    i.State_Context_Task  sys_state_machine.o
+    0x00002c40   0x00002c40   0x00000002   Code   RO         3836    i.Stop_Deal_Func    sys_state_machine.o
+    0x00002c42   0x00002c42   0x00000002   PAD
+    0x00002c44   0x00002c44   0x00000038   Code   RO         3706    i.SysTick_ConfigInit  sys_hardware_init.o
+    0x00002c7c   0x00002c7c   0x000000dc   Code   RO         3707    i.Sys_HardConfigInit  sys_hardware_init.o
+    0x00002d58   0x00002d58   0x00000090   Code   RO         3708    i.Sys_IE_Init       sys_hardware_init.o
+    0x00002de8   0x00002de8   0x00000280   Code   RO         3664    i.Sys_Variableinit  sys_variable_init.o
+    0x00003068   0x00003068   0x00000048   Code   RO         3709    i.SystemClock_Init  sys_hardware_init.o
+    0x000030b0   0x000030b0   0x00000074   Code   RO         4495    i.SystemInit        system_bat32g139.o
+    0x00003124   0x00003124   0x00000044   Code   RO         3710    i.TIMC_ConfigInit   sys_hardware_init.o
+    0x00003168   0x00003168   0x000000ec   Code   RO         3711    i.UART0_ConfigInit  sys_hardware_init.o
+    0x00003254   0x00003254   0x000000c8   Code   RO         3712    i.UART1_ConfigInit  sys_hardware_init.o
+    0x0000331c   0x0000331c   0x0000001c   Code   RO         4024    i.User_DelayTime_ms  user_function.o
+    0x00003338   0x00003338   0x00000014   Code   RO         4025    i.User_DelayTime_us  user_function.o
+    0x0000334c   0x0000334c   0x00000014   Code   RO         4026    i.User_Divider      user_function.o
+    0x00003360   0x00003360   0x000000bc   Code   RO         4027    i.User_Key_Deal     user_function.o
+    0x0000341c   0x0000341c   0x00000124   Code   RO         4028    i.User_LED_Deal     user_function.o
+    0x00003540   0x00003540   0x00000058   Code   RO         4029    i.User_LED_ms       user_function.o
+    0x00003598   0x00003598   0x00000034   Code   RO         4030    i.User_RMS_Deal     user_function.o
+    0x000035cc   0x000035cc   0x0000000c   Code   RO         3415    i.WDT_Restart       wdt.o
+    0x000035d8   0x000035d8   0x0000003c   Code   RO         3837    i.Waiting_Deal_Func  sys_state_machine.o
+    0x00003614   0x00003614   0x0000001a   Code   RO          878    i.__ARM_common_switch8  gpio.o
+    0x0000362e   0x0000362e   0x00000002   PAD
+    0x00003630   0x00003630   0x00000018   Code   RO         3714    i.__NVIC_ClearPendingIRQ  sys_hardware_init.o
+    0x00003648   0x00003648   0x00000044   Code   RO         3715    i.__NVIC_SetPriority  sys_hardware_init.o
+    0x0000368c   0x0000368c   0x00000018   Code   RO         1340    i._sys_exit         retarget.o
+    0x000036a4   0x000036a4   0x00000028   Code   RO         3461    i.main              main.o
+    0x000036cc   0x000036cc   0x00000048   Code   RO         4643    i.sqrt              m_ps.l(sqrt.o)
+    0x00003714   0x00003714   0x00000014   Code   RO         3435    i.wdt_interrupt     wdt_user.o
+    0x00003728   0x00003728   0x00000048   Code   RO          469    sram_code           clk.o
+    0x00003770   0x00003770   0x00000000   Code   RO         4674    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x00003770   0x00003770   0x00000348   Data   RO         4123    .constdata          user_sine_table.o
+    0x00003ab8   0x00003ab8   0x000002bc   Data   RO         4124    .constdata          user_sine_table.o
+    0x00003d74   0x00003d74   0x00000080   Data   RO         4615    .constdata          fz_ps.l(ddiv.o)
+    0x00003df4   0x00003df4   0x00000040   Data   RO         4634    .constdata          fz_ps.l(fdiv.o)
+    0x00003e34   0x00003e34   0x00000030   Data   RO         4871    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000100, Load base: 0x00003e54, Size: 0x000072a8, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x000002a0])
+    Execution Region RW_IRAM1 (Exec base: 0x20000100, Load base: 0x00003e64, Size: 0x000072a8, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x000002a0])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000100   0x00003e54   0x0000000c   Ven    RO         4887    Veneer$$Code        anon$$obj.o
-    0x2000010c   0x00003e60   0x0000000c   Ven    RO         4888    Veneer$$Code        anon$$obj.o
-    0x20000118   0x00003e6c   0x0000000c   Ven    RO         4889    Veneer$$Code        anon$$obj.o
-    0x20000124   0x00003e78   0x0000000c   Ven    RO         4890    Veneer$$Code        anon$$obj.o
-    0x20000130   0x00003e84   0x0000000c   Ven    RO         4891    Veneer$$Code        anon$$obj.o
-    0x2000013c   0x00003e90   0x0000000c   Ven    RO         4892    Veneer$$Code        anon$$obj.o
-    0x20000148   0x00003e9c   0x0000000c   Ven    RO         4893    Veneer$$Code        anon$$obj.o
-    0x20000154   0x00003ea8   0x0000000c   Ven    RO         4894    Veneer$$Code        anon$$obj.o
-    0x20000160   0x00003eb4   0x0000000c   Ven    RO         4895    Veneer$$Code        anon$$obj.o
-    0x2000016c   0x00003ec0   0x0000000c   Ven    RO         4896    Veneer$$Code        anon$$obj.o
-    0x20000178   0x00003ecc   0x0000000c   Ven    RO         4897    Veneer$$Code        anon$$obj.o
-    0x20000184   0x00003ed8   0x0000000c   Ven    RO         4898    Veneer$$Code        anon$$obj.o
-    0x20000190   0x00003ee4   0x0000000c   Ven    RO         4899    Veneer$$Code        anon$$obj.o
-    0x2000019c   0x00003ef0   0x0000000c   Ven    RO         4900    Veneer$$Code        anon$$obj.o
-    0x200001a8   0x00003efc   0x0000000c   Ven    RO         4901    Veneer$$Code        anon$$obj.o
-    0x200001b4   0x00003f08   0x0000000c   Ven    RO         4902    Veneer$$Code        anon$$obj.o
-    0x200001c0   0x00003f14   0x00000040   Code   RO         4179    i.COM_Uartx_HeartCheck  user_communication.o
-    0x20000200   0x00003f54   0x00000080   Code   RO         4180    i.Function_TxSendDebug  user_communication.o
-    0x20000280   0x00003fd4   0x00000020   Code   RO         3481    i.HardFault_Handler  interrupt.o
-    0x200002a0   0x00003ff4   0x00000098   Code   RO         3908    i.INV_AC_Vol_FreCalc  user_parallel.o
-    0x20000338   0x0000408c   0x000003c4   Code   RO         4340    i.INV_Ctrl          inv_ctrl.o
-    0x200006fc   0x00004450   0x00000138   Code   RO         4181    i.INV_DataSend      user_communication.o
-    0x20000834   0x00004588   0x00000090   Code   RO         3482    i.INV_Deal          interrupt.o
-    0x200008c4   0x00004618   0x00000118   Code   RO         4341    i.INV_Lock_Phase    inv_ctrl.o
-    0x200009dc   0x00004730   0x00000088   Code   RO         3909    i.INV_MasterSlaveSelect  user_parallel.o
-    0x20000a64   0x000047b8   0x0000004a   Code   RO         4404    i.INV_PQ_Droop_Ctrl  pq_droop_ctrl.o
+    0x20000100   0x00003e64   0x0000000c   Ven    RO         4887    Veneer$$Code        anon$$obj.o
+    0x2000010c   0x00003e70   0x0000000c   Ven    RO         4888    Veneer$$Code        anon$$obj.o
+    0x20000118   0x00003e7c   0x0000000c   Ven    RO         4889    Veneer$$Code        anon$$obj.o
+    0x20000124   0x00003e88   0x0000000c   Ven    RO         4890    Veneer$$Code        anon$$obj.o
+    0x20000130   0x00003e94   0x0000000c   Ven    RO         4891    Veneer$$Code        anon$$obj.o
+    0x2000013c   0x00003ea0   0x0000000c   Ven    RO         4892    Veneer$$Code        anon$$obj.o
+    0x20000148   0x00003eac   0x0000000c   Ven    RO         4893    Veneer$$Code        anon$$obj.o
+    0x20000154   0x00003eb8   0x0000000c   Ven    RO         4894    Veneer$$Code        anon$$obj.o
+    0x20000160   0x00003ec4   0x0000000c   Ven    RO         4895    Veneer$$Code        anon$$obj.o
+    0x2000016c   0x00003ed0   0x0000000c   Ven    RO         4896    Veneer$$Code        anon$$obj.o
+    0x20000178   0x00003edc   0x0000000c   Ven    RO         4897    Veneer$$Code        anon$$obj.o
+    0x20000184   0x00003ee8   0x0000000c   Ven    RO         4898    Veneer$$Code        anon$$obj.o
+    0x20000190   0x00003ef4   0x0000000c   Ven    RO         4899    Veneer$$Code        anon$$obj.o
+    0x2000019c   0x00003f00   0x0000000c   Ven    RO         4900    Veneer$$Code        anon$$obj.o
+    0x200001a8   0x00003f0c   0x0000000c   Ven    RO         4901    Veneer$$Code        anon$$obj.o
+    0x200001b4   0x00003f18   0x0000000c   Ven    RO         4902    Veneer$$Code        anon$$obj.o
+    0x200001c0   0x00003f24   0x00000040   Code   RO         4179    i.COM_Uartx_HeartCheck  user_communication.o
+    0x20000200   0x00003f64   0x00000080   Code   RO         4180    i.Function_TxSendDebug  user_communication.o
+    0x20000280   0x00003fe4   0x00000020   Code   RO         3481    i.HardFault_Handler  interrupt.o
+    0x200002a0   0x00004004   0x00000098   Code   RO         3908    i.INV_AC_Vol_FreCalc  user_parallel.o
+    0x20000338   0x0000409c   0x000003c4   Code   RO         4340    i.INV_Ctrl          inv_ctrl.o
+    0x200006fc   0x00004460   0x00000138   Code   RO         4181    i.INV_DataSend      user_communication.o
+    0x20000834   0x00004598   0x00000090   Code   RO         3482    i.INV_Deal          interrupt.o
+    0x200008c4   0x00004628   0x00000118   Code   RO         4341    i.INV_Lock_Phase    inv_ctrl.o
+    0x200009dc   0x00004740   0x00000088   Code   RO         3909    i.INV_MasterSlaveSelect  user_parallel.o
+    0x20000a64   0x000047c8   0x0000004a   Code   RO         4404    i.INV_PQ_Droop_Ctrl  pq_droop_ctrl.o
     0x20000aae   COMPRESSED   0x00000002   PAD
-    0x20000ab0   0x00004804   0x000000a4   Code   RO         3910    i.PFC_AC_Vol_FreCalc  user_parallel.o
-    0x20000b54   0x000048a8   0x00000110   Code   RO         4418    i.PFC_Ctrl          pfc_ctrl.o
-    0x20000c64   0x000049b8   0x000001c0   Code   RO         3483    i.PFC_Deal          interrupt.o
-    0x20000e24   0x00004b78   0x00000066   Code   RO         4365    i.PFC_PID_Ctrl      pid_ctrl.o
+    0x20000ab0   0x00004814   0x000000a4   Code   RO         3910    i.PFC_AC_Vol_FreCalc  user_parallel.o
+    0x20000b54   0x000048b8   0x00000110   Code   RO         4418    i.PFC_Ctrl          pfc_ctrl.o
+    0x20000c64   0x000049c8   0x000001c0   Code   RO         3483    i.PFC_Deal          interrupt.o
+    0x20000e24   0x00004b88   0x00000066   Code   RO         4365    i.PFC_PID_Ctrl      pid_ctrl.o
     0x20000e8a   COMPRESSED   0x00000002   PAD
-    0x20000e8c   0x00004be0   0x000000ac   Code   RO         4419    i.PFC_VBus_RefCalc  pfc_ctrl.o
-    0x20000f38   0x00004c8c   0x00000062   Code   RO         4366    i.PID_Ctrl          pid_ctrl.o
+    0x20000e8c   0x00004bf0   0x000000ac   Code   RO         4419    i.PFC_VBus_RefCalc  pfc_ctrl.o
+    0x20000f38   0x00004c9c   0x00000062   Code   RO         4366    i.PID_Ctrl          pid_ctrl.o
     0x20000f9a   COMPRESSED   0x00000002   PAD
-    0x20000f9c   0x00004cf0   0x000001c0   Code   RO         4449    i.PLL_Ctrl          pll_ctrl.o
-    0x2000115c   0x00004eb0   0x0000002c   Code   RO         4450    i.PLL_Ctrl_Param    pll_ctrl.o
-    0x20001188   0x00004edc   0x00000104   Code   RO         3950    i.RMS_PQ_Calc       user_sample.o
-    0x2000128c   0x00004fe0   0x00000128   Code   RO         3951    i.RMS_PQ_Update     user_sample.o
-    0x200013b4   0x00005108   0x000000bc   Code   RO         3484    i.SysTick_Handler   interrupt.o
-    0x20001470   0x000051c4   0x00000080   Code   RO         4182    i.UART1_INV_DataSend  user_communication.o
-    0x200014f0   0x00005244   0x00000044   Code   RO         4183    i.User_UART_View    user_communication.o
-    0x20001534   0x00005288   0x00000258   Code   RO         3485    i.adc_interrupt     interrupt.o
-    0x2000178c   0x000054e0   0x00000038   Code   RO         4184    i.crc16_modbus      user_communication.o
-    0x200017c4   0x00005518   0x00000024   Code   RO         3486    i.tmm0_interrupt    interrupt.o
-    0x200017e8   0x0000553c   0x000001d0   Code   RO         3487    i.tmm1_interrupt    interrupt.o
-    0x200019b8   0x0000570c   0x00000024   Code   RO         3488    i.uart1_interrupt_receive  interrupt.o
-    0x200019dc   0x00005730   0x00000200   Data   RO         4454    .constdata          pll_ctrl.o
+    0x20000f9c   0x00004d00   0x000001c0   Code   RO         4449    i.PLL_Ctrl          pll_ctrl.o
+    0x2000115c   0x00004ec0   0x0000002c   Code   RO         4450    i.PLL_Ctrl_Param    pll_ctrl.o
+    0x20001188   0x00004eec   0x00000104   Code   RO         3950    i.RMS_PQ_Calc       user_sample.o
+    0x2000128c   0x00004ff0   0x00000128   Code   RO         3951    i.RMS_PQ_Update     user_sample.o
+    0x200013b4   0x00005118   0x000000bc   Code   RO         3484    i.SysTick_Handler   interrupt.o
+    0x20001470   0x000051d4   0x00000080   Code   RO         4182    i.UART1_INV_DataSend  user_communication.o
+    0x200014f0   0x00005254   0x00000044   Code   RO         4183    i.User_UART_View    user_communication.o
+    0x20001534   0x00005298   0x00000258   Code   RO         3485    i.adc_interrupt     interrupt.o
+    0x2000178c   0x000054f0   0x00000038   Code   RO         4184    i.crc16_modbus      user_communication.o
+    0x200017c4   0x00005528   0x00000024   Code   RO         3486    i.tmm0_interrupt    interrupt.o
+    0x200017e8   0x0000554c   0x000001d0   Code   RO         3487    i.tmm1_interrupt    interrupt.o
+    0x200019b8   0x0000571c   0x00000024   Code   RO         3488    i.uart1_interrupt_receive  interrupt.o
+    0x200019dc   0x00005740   0x00000200   Data   RO         4454    .constdata          pll_ctrl.o
     0x20001bdc   COMPRESSED   0x00000004   Data   RW         3436    .data               wdt_user.o
     0x20001be0   COMPRESSED   0x00000010   Data   RW         3489    .data               interrupt.o
     0x20001bf0   COMPRESSED   0x00000014   Data   RW         3565    .data               sys_struct.o
@@ -3227,7 +3227,7 @@ Image component sizes
        280        100          4          4          0       2867   system_bat32g139.o
        756        108          0          2         44       6489   user_communication.o
        700        166          0          0          0       3384   user_fault_check.o
-      2606        310          0         12          0      11541   user_function.o
+      2622        314          0         12          0      11545   user_function.o
        452         60          0         14          0       2781   user_parallel.o
        556         36          0          0       6800       2863   user_sample.o
          0          0       1540          0          0       1050   user_sine_table.o
@@ -3235,7 +3235,7 @@ Image component sizes
         20          4          0          4          0       1484   wdt_user.o
 
     ----------------------------------------------------------------------
-     15764       2356       2296       2148      20232     224190   Object Totals
+     15780       2360       2296       2148      20232     224194   Object Totals
        264         88         48          0          0          0   (incl. Generated)
         18          0          0          8          4          0   (incl. Padding)
 
@@ -3302,15 +3302,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     20344       2498       2488       2148      20328     221406   Grand Totals
-     20344       2498       2488        672      20328     221406   ELF Image Totals (compressed)
-     20344       2498       2488        672          0          0   ROM Totals
+     20360       2502       2488       2148      20328     221410   Grand Totals
+     20360       2502       2488        672      20328     221410   ELF Image Totals (compressed)
+     20360       2502       2488        672          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                22832 (  22.30kB)
+    Total RO  Size (Code + RO Data)                22848 (  22.31kB)
     Total RW  Size (RW Data + ZI Data)             22476 (  21.95kB)
-    Total ROM Size (Code + RO Data + RW Data)      23504 (  22.95kB)
+    Total ROM Size (Code + RO Data + RW Data)      23520 (  22.97kB)
 
 ==============================================================================
 

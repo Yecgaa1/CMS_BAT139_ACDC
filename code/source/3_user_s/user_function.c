@@ -620,6 +620,7 @@ void COM_CHG_INV_Select(void)
             State_Context.state_Value <= COM_RUN_STATE &&
             COM_AD_Data_Info.VACIN_RMS_Val_Fir > PFC_START_CHECK_AC_VOL_DN &&
             COM_AD_Data_Info.VACIN_RMS_Val_Fir < PFC_START_CHECK_AC_VOL_UP &&
+            COM_AD_Data_Info.VACIN_RMS_Val_Fir > ENABLE_IN_UP &&
             COM_Ctr_Info.PFC_FREQ_State == 1 &&
             (COM_Ctr_Info.INV_PFC_Mode_Select == 1 || COM_Ctr_Info.INV_PFC_Mode_Select == 0) &&
             COM_AD_Data_Info.VACIN_Freq_Val_Fir > PFC_START_CHECK_FREQ_DN &&
