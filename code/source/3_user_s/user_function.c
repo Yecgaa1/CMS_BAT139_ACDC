@@ -624,7 +624,7 @@ void COM_CHG_INV_Select(void)
             COM_Ctr_Info.PFC_FREQ_State == 1 &&
             (COM_Ctr_Info.INV_PFC_Mode_Select == 1 || COM_Ctr_Info.INV_PFC_Mode_Select == 0) &&
             COM_AD_Data_Info.VACIN_Freq_Val_Fir > PFC_START_CHECK_FREQ_DN &&
-            COM_AD_Data_Info.VACIN_Freq_Val_Fir < PFC_START_CHECK_FREQ_UP && isAllowCHG==1 ) // 输入电压范围内时，启用控算法
+            COM_AD_Data_Info.VACIN_Freq_Val_Fir < PFC_START_CHECK_FREQ_UP && isAllowCHG == 1) // 输入电压范围内时，启用控算法
         {
             if (COM_Ctr_Info.PFC_AC_Vol_OK_Cnt < COM_Ctr_Info.PFC_AC_Vol_OK_TimeVal)
             {
@@ -639,7 +639,7 @@ void COM_CHG_INV_Select(void)
 
             if (COM_Ctr_Info.PFC_AC_Vol_OK_Cnt >= COM_Ctr_Info.PFC_AC_Vol_OK_TimeVal &&
                 UPS_Ctr_Info.V_ACIN_OK == 1 &&
-                (UPS_Ctr_Info.lock_Phase_OK == 1 || COM_Ctr_Info.INV_Enable_Flag == 0)) // 锁相完成或者未开逆变器
+                (UPS_Ctr_Info.lock_Phase_OK == 1 || COM_Ctr_Info.INV_Enable_Flag == 0 || 1)) // 锁相完成或者未开逆变器
             {
                 INV_START_DISABLE;
 
@@ -681,13 +681,14 @@ void COM_CHG_INV_Select(void)
              COM_AD_Data_Info.VACIN_RMS_Val_Fir < PFC_START_CHECK_AC_VOL_DN_BACK ||
              COM_Ctr_Info.PFC_FREQ_State == 0 ||
              UPS_Ctr_Info.V_ACIN_NOK == 1) &&
-             COM_AD_Data_Info.VACIN_RMS_Val_Fir < ENABLE_OUT_DN && 
+            COM_AD_Data_Info.VACIN_RMS_Val_Fir < ENABLE_OUT_DN &&
             (COM_Ctr_Info.INV_PFC_Mode_Select == 0 || COM_Ctr_Info.INV_PFC_Mode_Select == 2)) // 输入电压范围内时，启用控算法
         {
             if (COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt < COM_Ctr_Info.PFC_AC_Vol_NOK_TimeVal)
                 COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt++;
             if (COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt >= COM_Ctr_Info.PFC_AC_Vol_NOK_TimeVal || UPS_Ctr_Info.V_ACIN_NOK == 1)
             {
+                PFC_RY2_DISABLE; // 逆变状态下关闭
                 INV_START_DISABLE;
 
                 COM_Ctr_Info.PFC_FREQ_State = 0;
@@ -727,14 +728,16 @@ void COM_CHG_INV_Select(void)
         }
 
         // 设定工作模式为空闲状态
-        if (System_ProtectFlag_Info.all == 0 &&
-            State_Context.state_Value <= COM_RUN_STATE &&
-            COM_Ctr_Info.INV_Enable_Flag == 0 &&
-            (COM_AD_Data_Info.VACIN_RMS_Val_Fir > PFC_START_CHECK_AC_VOL_UP_BACK ||
-             COM_AD_Data_Info.VACIN_RMS_Val_Fir < PFC_START_CHECK_AC_VOL_DN_BACK ||
-             COM_Ctr_Info.PFC_FREQ_State == 0 ||
-             UPS_Ctr_Info.V_ACIN_NOK == 1) &&
-            (COM_Ctr_Info.INV_PFC_Mode_Select == 1 || COM_Ctr_Info.INV_PFC_Mode_Select == 2)) // 输入电压范围内时，启用控算法
+        if ((System_ProtectFlag_Info.all == 0 &&
+             State_Context.state_Value <= COM_RUN_STATE &&
+             COM_Ctr_Info.INV_Enable_Flag == 0 &&
+             (COM_AD_Data_Info.VACIN_RMS_Val_Fir > PFC_START_CHECK_AC_VOL_UP_BACK ||
+              COM_AD_Data_Info.VACIN_RMS_Val_Fir < PFC_START_CHECK_AC_VOL_DN_BACK ||
+              COM_Ctr_Info.PFC_FREQ_State == 0 ||
+              UPS_Ctr_Info.V_ACIN_NOK == 1) &&
+             (COM_Ctr_Info.INV_PFC_Mode_Select == 1 || COM_Ctr_Info.INV_PFC_Mode_Select == 2)) ||
+            (COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE && COM_AD_Data_Info.VACIN_RMS_Val_Fir > DISABLE_OUT_DN) ||
+            (COM_Ctr_Info.INV_PFC_Mode_Select == PFC_MODE && COM_AD_Data_Info.VACIN_RMS_Val_Fir < DISABLE_IN_UP))
         {
             if (COM_Ctr_Info.NO_Mode_OK_Cnt < COM_Ctr_Info.NO_Mode_OK_TimeVal)
             {
@@ -762,6 +765,7 @@ void COM_CHG_INV_Select(void)
                 COM_Ctr_Info.NO_Mode_OK_Cnt = 0;
                 COM_Ctr_Info.INV_PFC_Mode_Select = 0; // 正常工作模式为空闲模式
                 INV_START_DISABLE;
+                PFC_RY2_ENABLE; // 空闲状态下打开
             }
         }
         else
