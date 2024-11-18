@@ -680,7 +680,7 @@ void COM_CHG_INV_Select(void)
             (COM_AD_Data_Info.VACIN_RMS_Val_Fir > PFC_START_CHECK_AC_VOL_UP_BACK ||
              COM_AD_Data_Info.VACIN_RMS_Val_Fir < PFC_START_CHECK_AC_VOL_DN_BACK ||
              COM_Ctr_Info.PFC_FREQ_State == 0 ||
-             UPS_Ctr_Info.V_ACIN_NOK == 1) &&
+             UPS_Ctr_Info.V_ACIN_NOK == 1 ||1 ) &&
             COM_AD_Data_Info.VACIN_RMS_Val_Fir < ENABLE_OUT_DN &&
             (COM_Ctr_Info.INV_PFC_Mode_Select == 0 || COM_Ctr_Info.INV_PFC_Mode_Select == 2)) // 输入电压范围内时，启用控算法
         {
