@@ -1007,8 +1007,8 @@ void Sys_HardConfigInit(void)
       
     
     INV_RY1_DISABLE;
-    PFC_RY2_DISABLE; 
-    // PFC_RY2_ENABLE;//UPS继电器动作     PASS 
+    //PFC_RY2_DISABLE; 
+    PFC_RY2_ENABLE;//UPS继电器动作     PASS 
     INV_RY3_DISABLE;        
     
     INV_START_DISABLE;  

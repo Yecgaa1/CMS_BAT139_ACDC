@@ -2618,7 +2618,9 @@ Image Symbol Table
     CMP_Input_Select                         0x00001621   Thumb Code    26  cmp.o(i.CMP_Input_Select)
     CMP_VREF_Set_Value                       0x00001641   Thumb Code    16  cmp.o(i.CMP_VREF_Set_Value)
     COM_AD_Data_Deal                         0x00001655   Thumb Code   216  user_function.o(i.COM_AD_Data_Deal)
+
     COM_CHG_INV_Select                       0x00001751   Thumb Code   864  user_function.o(i.COM_CHG_INV_Select)
+
     COM_CloseDrive                           0x00001b19   Thumb Code    64  user_function.o(i.COM_CloseDrive)
     COM_Function                             0x00001b69   Thumb Code    74  user_function.o(i.COM_Function)
     COM_Get_Protect_Flag                     0x00001bc1   Thumb Code    88  user_fault_check.o(i.COM_Get_Protect_Flag)
@@ -3235,6 +3237,7 @@ Image component sizes
         20          4          0          4          0       1484   wdt_user.o
 
     ----------------------------------------------------------------------
+
      15780       2358       2296       2148      20232     224194   Object Totals
        264         88         48          0          0          0   (incl. Generated)
         18          0          0          8          4          0   (incl. Padding)
@@ -3305,6 +3308,7 @@ Image component sizes
      20360       2500       2488       2148      20328     221410   Grand Totals
      20360       2500       2488        672      20328     221410   ELF Image Totals (compressed)
      20360       2500       2488        672          0          0   ROM Totals
+
 
 ==============================================================================
 
