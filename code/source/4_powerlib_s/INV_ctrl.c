@@ -327,7 +327,14 @@ void INV_Ctrl(void)
             {
                 // 410V母线电压前,使用电压环
                 // INV_PID_Cur.ref = INV_PID_Vol.out;
-                INV_PID_Cur.ref = ((int32_t)(5.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN,0.0) / 100));
+                if (COM_AD_Data_Info.VACIN_RMS_Val_Fir < I6_OUT)
+                    INV_PID_Cur.ref = ((int32_t)(6.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
+                else if (COM_AD_Data_Info.VACIN_RMS_Val_Fir < I5_OUT)
+                    INV_PID_Cur.ref = ((int32_t)(5.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
+                else if (COM_AD_Data_Info.VACIN_RMS_Val_Fir < I4_OUT)
+                    INV_PID_Cur.ref = ((int32_t)(4.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
+                else
+                    INV_PID_Cur.ref = ((int32_t)(3.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
             }
             else
             {

@@ -15,6 +15,9 @@ uint16_t NOK_CNT=0;
 uint32_t periodDot_Val=0;
 uint16_t why=0;
 
+uint32_t Workms=0;
+uint32_t Works=0;
+uint32_t WorkMin=0;
 int32_t Get_PLL_Sin_WithARG(PLL_Ctrl_Var_t *PLL_Info, float ARG)
 {
     int offset = (int)(ARG * 1024 / 360 + 0.5); // Àƒ…·ŒÂ»Î
