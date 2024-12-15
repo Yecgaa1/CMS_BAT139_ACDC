@@ -28,6 +28,10 @@ void DebugUse(void);
 #define I5_OUT 198 * COM_REAL_VACIN_RMS_SCAL 
 #define I6_OUT 193 * COM_REAL_VACIN_RMS_SCAL 
 
+#define PFC_WORK_MIN 1 //单循环充电分钟，必须是整数
+#define INV_WORK_MIN 2 //单循环放电分钟，必须是整数
+#define REST_MIN 1 //单循环中休息的时间
+
 int32_t Get_PLL_Cos(PLL_Ctrl_Var_t *PLL_Info);
 extern uint16_t PFC_StartCount;
 extern int32_t save[512], save2[512];
@@ -40,3 +44,4 @@ extern uint32_t periodDot_Val;
 extern uint16_t why;
 
 extern uint32_t Workms,Works,WorkMin;
+extern uint16_t NowWork;

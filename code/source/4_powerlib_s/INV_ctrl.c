@@ -322,37 +322,9 @@ void INV_Ctrl(void)
         if (INV_Ctrl_Info.mode_PID_Loop == INV_DOUBLE_LOOP) // 电压电流双环输出
         {
 
-            // if (COM_AD_Data_Info.vBus_Val_Fir < Enable_RY_CurPID)
-            if (1)
-            {
-                // 410V母线电压前,使用电压环
-                // INV_PID_Cur.ref = INV_PID_Vol.out;
-                if (COM_AD_Data_Info.VACIN_RMS_Val_Fir < I6_OUT)
-                    INV_PID_Cur.ref = ((int32_t)(6.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
-                else if (COM_AD_Data_Info.VACIN_RMS_Val_Fir < I5_OUT)
-                    INV_PID_Cur.ref = ((int32_t)(5.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
-                else if (COM_AD_Data_Info.VACIN_RMS_Val_Fir < I4_OUT)
-                    INV_PID_Cur.ref = ((int32_t)(4.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
-                else
-                    INV_PID_Cur.ref = ((int32_t)(3.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
-            }
-            else
-            {
-                // 410V母线电压后,使用电流环
-                INV_PID_Cur.ref = ((int32_t)(-1.0 * Get_PLL_Sin(&PLL_Ctrl_Info_V_ACIN) / COM_CUR_INDUC_BASE) * 3 >> 2);
-                // INV_PID_Cur.ref = INV_PID_Vol.out;
-                if (BWRY_State)
-                {
-                    // INV_RY1_ENABLE; // 开启逆变器输出
-                    // INV_RY3_ENABLE; // 开启逆变器输出
-                }
-            }
+            INV_PID_Cur.ref = ((int32_t)(5.0 * Get_PLL_Sin_WithARG(&PLL_Ctrl_Info_V_ACIN, 0.0) / 100));
 
-            // 使用电压环控制电流环
 
-            // 电流环控制
-
-            //  INV_PID_Cur.ref = 0;
             //              INV_PID_Cur.fdb         = INV_Ctrl_Info.curInduc_Peak;
             //   限电流
             if (INV_PID_Cur.ref >= INV_Ctrl_Info.curLoop_Up)
