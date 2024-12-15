@@ -6,10 +6,11 @@ int32_t Get_PLL_Sin(PLL_Ctrl_Var_t *PLL_Info);
 int32_t Get_PLL_Sin_WithARG(PLL_Ctrl_Var_t *PLL_Info, float ARG);
 void Function_TxSendDebug_INT(int32_t data);
 void Function_TxSendDebug_TWO_INT(int32_t data1, int32_t data2);
+void Function_TxSendDebug_Four_INT(int32_t data1, int32_t data2, int32_t data3, int32_t data4);
 
 void Function_TxSendDebug_Float(float data);
 void Function_TxSendDebug_Two_Float(float data1, float data2);
-void Function_TxSendDebug_Four_Float(int32_t data1, int32_t data2, int32_t data3, int32_t data4);
+
 
 void DebugUse(void);
 #define BWRY_State 0

@@ -688,6 +688,8 @@ void COM_CHG_INV_Select(void)
                 COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt++;
             if (COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt >= COM_Ctr_Info.PFC_AC_Vol_NOK_TimeVal || UPS_Ctr_Info.V_ACIN_NOK == 1)
             {
+                //TODO:检查电压是否低于临界
+
                 PFC_RY2_DISABLE; // 逆变状态下关闭
                 INV_START_DISABLE;
 
