@@ -106,7 +106,7 @@ void Function_TxSendDebug_Two_Float(float data1, float data2)
 }
 void Function_TxSendDebug_Four_INT(int32_t data1, int32_t data2, int32_t data3, int32_t data4)
 {
-    sprintf((char *)txCharL, "1,%d,%d,%d,%d,1\r\n", data1, data2, data3, data4);
+    sprintf((char *)txCharL, "%d,%d,%d,%d,%d\r\n", data1, data2, data3, data4, data1 + data2 + data3 + data4);
 
     DMAVEC->CTRL[0].DMSAR = (uint32_t)(txCharL + 1);
     DMAVEC->CTRL[0].DMACT = strlen(txCharL) - 1; // 传输8个数据

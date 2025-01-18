@@ -479,9 +479,9 @@ Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
 work --depend=.\objects\startup_bat32g139.d -o.\objects\startup_bat32g139.o -I.
 \RTE\Device\BAT32G139GK48FA -I.\RTE\_BAT32G139GH48 -IC:\Users\xtx\AppData\Local
 \Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include -IC:\Users\xtx\AppData\Local\Arm\
-Packs\Cmsemicon\BAT32G139\1.0.1\Device\Include --predefine="__UVISION_VERSION S
-ETA 539" --predefine="_RTE_ SETA 1" --predefine="_RTE_ SETA 1" --list=.\listing
-s\startup_bat32g139.lst RTE/Device/BAT32G139GK48FA/startup_BAT32G139.s
+Packs\Cmsemicon\BAT32G139\1.0.4\Device\Include --predefine="__UVISION_VERSION S
+ETA 541" --predefine="_RTE_ SETA 1" --list=.\listings\startup_bat32g139.lst RTE
+/Device/BAT32G139GK48FA/startup_BAT32G139.s
 
 
 
