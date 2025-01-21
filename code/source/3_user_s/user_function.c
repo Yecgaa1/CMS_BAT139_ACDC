@@ -680,7 +680,7 @@ void COM_CHG_INV_Select(void)
             (COM_AD_Data_Info.VACIN_RMS_Val_Fir > PFC_START_CHECK_AC_VOL_UP_BACK ||
              COM_AD_Data_Info.VACIN_RMS_Val_Fir < PFC_START_CHECK_AC_VOL_DN_BACK ||
              COM_Ctr_Info.PFC_FREQ_State == 0 ||
-             UPS_Ctr_Info.V_ACIN_NOK == 1 ||1 ) &&
+             UPS_Ctr_Info.V_ACIN_NOK == 1 || 1) &&
             COM_AD_Data_Info.VACIN_RMS_Val_Fir < ENABLE_OUT_DN &&
             (COM_Ctr_Info.INV_PFC_Mode_Select == 0 || COM_Ctr_Info.INV_PFC_Mode_Select == 2)) // 输入电压范围内时，启用控算法
         {
@@ -688,8 +688,15 @@ void COM_CHG_INV_Select(void)
                 COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt++;
             if (COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt >= COM_Ctr_Info.PFC_AC_Vol_NOK_TimeVal || UPS_Ctr_Info.V_ACIN_NOK == 1)
             {
-                //TODO:检查电压是否低于临界
-
+                // TODO:检查电压是否低于临界
+                if (COM_AD_Data_Info.VACIN_RMS_Val_Fir < 150 * 10)
+                {
+                    is220V = 1;
+                }
+                else
+                {
+                    is220V = 0;
+                }
                 PFC_RY2_DISABLE; // 逆变状态下关闭
                 INV_START_DISABLE;
 
@@ -738,7 +745,7 @@ void COM_CHG_INV_Select(void)
               COM_Ctr_Info.PFC_FREQ_State == 0 ||
               UPS_Ctr_Info.V_ACIN_NOK == 1) &&
              (COM_Ctr_Info.INV_PFC_Mode_Select == 1 || COM_Ctr_Info.INV_PFC_Mode_Select == 2)) ||
-            (COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE && COM_AD_Data_Info.VACIN_RMS_Val_Fir > DISABLE_OUT_DN) ||
+            (COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE && COM_AD_Data_Info.VACIN_RMS_Val_Fir > DISABLE_OUT_DN && is220V == 0) ||
             (COM_Ctr_Info.INV_PFC_Mode_Select == PFC_MODE && COM_AD_Data_Info.VACIN_RMS_Val_Fir < DISABLE_IN_UP))
         {
             if (COM_Ctr_Info.NO_Mode_OK_Cnt < COM_Ctr_Info.NO_Mode_OK_TimeVal)
@@ -890,21 +897,20 @@ void COM_Function(void)
     }
     if (u8_System1msbit_cnt >= 2)
     {
-    	Workms++;
+        Workms++;
         SysClockBase_ms.sys_1ms = 0; // 1ms 时钟标记清零
         u8_System1msbit_cnt = 0;     // 1ms时钟周期在Main函数存在的周期计数值清零
     }
-	if(Workms>=1000)
-	{
-		Workms=0;
-		Works++;
-		if(Works>=60)
-		{
-			Works=0;
-			WorkMin++;
-		}
-	}
-	
+    if (Workms >= 1000)
+    {
+        Workms = 0;
+        Works++;
+        if (Works >= 60)
+        {
+            Works = 0;
+            WorkMin++;
+        }
+    }
 }
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/

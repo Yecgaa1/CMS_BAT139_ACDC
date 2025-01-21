@@ -484,10 +484,12 @@ Section Cross References
     interrupt.o(i.HardFault_Handler) refers to sys_hardware_init.o(i.COM_PWM_Disable) for COM_PWM_Disable
     interrupt.o(i.HardFault_Handler) refers to sys_state_machine.o(.data) for State_Context
     interrupt.o(i.INV_Deal) refers to inv_ctrl.o(i.INV_Lock_Phase) for INV_Lock_Phase
+    interrupt.o(i.INV_Deal) refers to inv_ctrl.o(i.INV_Ctrl_220V) for INV_Ctrl_220V
     interrupt.o(i.INV_Deal) refers to inv_ctrl.o(i.INV_Ctrl) for INV_Ctrl
     interrupt.o(i.INV_Deal) refers to sys_struct.o(.bss) for ADSample_Info
     interrupt.o(i.INV_Deal) refers to sys_struct.o(.bss) for INV_Ctrl_Info
     interrupt.o(i.INV_Deal) refers to sys_state_machine.o(.data) for State_Context
+    interrupt.o(i.INV_Deal) refers to change.o(.data) for is220V
     interrupt.o(i.INV_Deal) refers to sys_struct.o(.bss) for COM_Ctr_Info
     interrupt.o(i.INV_Deal) refers to change.o(.data) for PWM_CNT
     interrupt.o(i.PFC_Deal) refers to pfc_ctrl.o(i.PFC_VBus_RefCalc) for PFC_VBus_RefCalc
@@ -761,6 +763,7 @@ Section Cross References
     user_function.o(i.COM_CHG_INV_Select) refers to sys_struct.o(.bss) for UPS_Ctr_Info
     user_function.o(i.COM_CHG_INV_Select) refers to sys_struct.o(.data) for StartCheck_Flag_Info
     user_function.o(i.COM_CHG_INV_Select) refers to sys_struct.o(.bss) for PFC_Ref_Info
+    user_function.o(i.COM_CHG_INV_Select) refers to change.o(.data) for is220V
     user_function.o(i.COM_CloseDrive) refers to sys_hardware_init.o(i.COM_PWM_Disable) for COM_PWM_Disable
     user_function.o(i.COM_CloseDrive) refers to sys_struct.o(.bss) for COM_AD_Data_Info
     user_function.o(i.COM_CloseDrive) refers to sys_state_machine.o(.data) for State_Context
@@ -931,6 +934,18 @@ Section Cross References
     inv_ctrl.o(i.INV_Ctrl) refers to sys_struct.o(.bss) for COM_AD_Data_Info
     inv_ctrl.o(i.INV_Ctrl) refers to sys_struct.o(.data) for INV_PID_Cur
     inv_ctrl.o(i.INV_Ctrl) refers to sys_struct.o(.bss) for ADSample_Info
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to pq_droop_ctrl.o(i.INV_PQ_Droop_Ctrl) for INV_PQ_Droop_Ctrl
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to user_function.o(i.User_Divider) for User_Divider
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to sys_struct.o(.bss) for INV_Ctrl_Info
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to sys_struct.o(.data) for INV_PID_Vol
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to sys_struct.o(.data) for INV_PID_DCIM
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to user_sine_table.o(.constdata) for Sine_Table_60Hz
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to user_sine_table.o(.constdata) for Sine_Table_50Hz
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to sys_struct.o(.bss) for INV_PQ_Droop_Info
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to sys_struct.o(.data) for INV_PID_Power
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to sys_struct.o(.data) for INV_Repeat_Info
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to repeat_ctrl.o(.bss) for RepeatOut
+    inv_ctrl.o(i.INV_Ctrl_220V) refers to sys_struct.o(.data) for INV_PID_Cur
     inv_ctrl.o(i.INV_Lock_Phase) refers to pll_ctrl.o(.bss) for PLL_Ctrl_Info_V_ACIN
     inv_ctrl.o(i.INV_Lock_Phase) refers to pll_ctrl.o(.bss) for PLL_Ctrl_Info_V_ACOUT
     inv_ctrl.o(i.INV_Lock_Phase) refers to sys_struct.o(.bss) for UPS_Ctr_Info
@@ -1887,40 +1902,40 @@ Image Symbol Table
 
     RESET                                    0x00000000   Section      192  startup_bat32g139.o(RESET)
     ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0_sigfpe.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_div0.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr_intlibspace.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0_sigfpe.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_div0.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatterp.s                 0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  tempstk.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  tempstk.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/bigflt.c                         0x00000000   Number         0  bigflt0.o ABSOLUTE
     ../clib/btod.c                           0x00000000   Number         0  btod.o ABSOLUTE
-    ../clib/division.c                       0x00000000   Number         0  lludiv10.o ABSOLUTE
     ../clib/division.c                       0x00000000   Number         0  rtudiv10.o ABSOLUTE
+    ../clib/division.c                       0x00000000   Number         0  lludiv10.o ABSOLUTE
     ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv_div0.o ABSOLUTE
     ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv.o ABSOLUTE
     ../clib/fenv.c                           0x00000000   Number         0  _rserrno.o ABSOLUTE
@@ -1935,55 +1950,55 @@ Image Symbol Table
     ../clib/memcpset.c                       0x00000000   Number         0  rt_memcpy.o ABSOLUTE
     ../clib/memcpset.c                       0x00000000   Number         0  rt_memcpy.o ABSOLUTE
     ../clib/misc.s                           0x00000000   Number         0  printf_stubs.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  noretval__2printf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  noretval__2sprintf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_pad.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ptr.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll_ptr.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _sputc.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_char_file.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  noretval__2printf.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __2printf.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __2sprintf.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_x.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_f.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  noretval__2sprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_pad.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ptr.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_d.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_x.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_f.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  strcmp.o ABSOLUTE
@@ -1997,14 +2012,14 @@ Image Symbol Table
     ../fplib/cfplib/f2d.c                    0x00000000   Number         0  f2d.o ABSOLUTE
     ../fplib/cfplib/fdiv.c                   0x00000000   Number         0  fdiv.o ABSOLUTE
     ../fplib/cfplib/ffix.c                   0x00000000   Number         0  dfixi.o ABSOLUTE
-    ../fplib/cfplib/fflt.c                   0x00000000   Number         0  fflti.o ABSOLUTE
     ../fplib/cfplib/fflt.c                   0x00000000   Number         0  dflti.o ABSOLUTE
+    ../fplib/cfplib/fflt.c                   0x00000000   Number         0  fflti.o ABSOLUTE
     ../fplib/cfplib/fpinit.c                 0x00000000   Number         0  fpinit.o ABSOLUTE
     ../fplib/cfplib/ieee_status.c            0x00000000   Number         0  ieee_status.o ABSOLUTE
     ../fplib/cfplib/nan2.c                   0x00000000   Number         0  dnan2.o ABSOLUTE
     ../fplib/cfplib/retnan.c                 0x00000000   Number         0  retnan.o ABSOLUTE
-    ../fplib/cfplib/scalbn.c                 0x00000000   Number         0  dscalbn.o ABSOLUTE
     ../fplib/cfplib/scalbn.c                 0x00000000   Number         0  fscalbn.o ABSOLUTE
+    ../fplib/cfplib/scalbn.c                 0x00000000   Number         0  dscalbn.o ABSOLUTE
     ../fplib/deqf6m.s                        0x00000000   Number         0  deqf.o ABSOLUTE
     ../fplib/dleqf6m.s                       0x00000000   Number         0  dlef.o ABSOLUTE
     ../fplib/drleqf6m.s                      0x00000000   Number         0  drlef.o ABSOLUTE
@@ -2230,205 +2245,207 @@ Image Symbol Table
     i.CMP_VREF_Set_Value                     0x000018dc   Section        0  cmp.o(i.CMP_VREF_Set_Value)
     i.COM_AD_Data_Deal                       0x000018f0   Section        0  user_function.o(i.COM_AD_Data_Deal)
     i.COM_CHG_INV_Select                     0x000019ec   Section        0  user_function.o(i.COM_CHG_INV_Select)
-    i.COM_CloseDrive                         0x00001dc8   Section        0  user_function.o(i.COM_CloseDrive)
-    i.COM_Function                           0x00001e18   Section        0  user_function.o(i.COM_Function)
-    i.COM_Get_Protect_Flag                   0x00001ea4   Section        0  user_fault_check.o(i.COM_Get_Protect_Flag)
-    i.COM_PWM_Disable                        0x00001f00   Section        0  sys_hardware_init.o(i.COM_PWM_Disable)
-    i.COM_UART1_Deal                         0x00001f1c   Section        0  user_function.o(i.COM_UART1_Deal)
-    i.COM_UPS_Deal                           0x0000204c   Section        0  user_function.o(i.COM_UPS_Deal)
-    i.DMA_Start                              0x000020f8   Section        0  dma.o(i.DMA_Start)
-    i.ELC_Start                              0x000021a4   Section        0  elc.o(i.ELC_Start)
-    i.EPWM_ConfigInit                        0x000021b0   Section        0  sys_hardware_init.o(i.EPWM_ConfigInit)
-    i.Fault_Deal_Func                        0x000022b8   Section        0  sys_state_machine.o(i.Fault_Deal_Func)
-    i.Fault_State_Check                      0x000022cc   Section        0  user_fault_check.o(i.Fault_State_Check)
-    i.Fault_State_Deal                       0x00002528   Section        0  user_fault_check.o(i.Fault_State_Deal)
-    i.Function_TxSendDebug_Four_INT          0x0000252c   Section        0  change.o(i.Function_TxSendDebug_Four_INT)
-    i.GPIO_Init                              0x00002590   Section        0  sys_hardware_init.o(i.GPIO_Init)
-    i.Get_PLL_Sin                            0x00002608   Section        0  change.o(i.Get_PLL_Sin)
-    i.Get_PLL_Sin_WithARG                    0x00002614   Section        0  change.o(i.Get_PLL_Sin_WithARG)
-    i.INV_PWM_Enable                         0x000026a0   Section        0  sys_hardware_init.o(i.INV_PWM_Enable)
-    i.INV_Run_VariableInit                   0x00002708   Section        0  sys_variable_init.o(i.INV_Run_VariableInit)
-    i.Initial_Deal_Func                      0x000028d8   Section        0  sys_state_machine.o(i.Initial_Deal_Func)
-    i.Key_Calc                               0x000028f0   Section        0  user_function.o(i.Key_Calc)
-    i.PFC_PWM_Enable                         0x00002938   Section        0  sys_hardware_init.o(i.PFC_PWM_Enable)
-    i.PFC_Run_VariableInit                   0x00002990   Section        0  sys_variable_init.o(i.PFC_Run_VariableInit)
-    i.PORT_Init                              0x00002afc   Section        0  gpio.o(i.PORT_Init)
-    i.Protect_Release                        0x00002bb8   Section        0  user_fault_check.o(i.Protect_Release)
-    i.Ready_Deal_Func                        0x00002bba   Section        0  sys_state_machine.o(i.Ready_Deal_Func)
-    i.Ready_State_Check                      0x00002bc8   Section        0  sys_state_machine.o(i.Ready_State_Check)
-    i.Run_Deal_Func                          0x00002de8   Section        0  sys_state_machine.o(i.Run_Deal_Func)
-    i.Run_State_OpenDriver                   0x00002e0c   Section        0  sys_state_machine.o(i.Run_State_OpenDriver)
-    i.State_Context_Func                     0x00002e44   Section        0  sys_state_machine.o(i.State_Context_Func)
-    i.State_Context_Task                     0x00002ec4   Section        0  sys_state_machine.o(i.State_Context_Task)
-    i.Stop_Deal_Func                         0x00002f88   Section        0  sys_state_machine.o(i.Stop_Deal_Func)
-    i.SysTick_ConfigInit                     0x00002f8c   Section        0  sys_hardware_init.o(i.SysTick_ConfigInit)
-    i.Sys_HardConfigInit                     0x00002fc4   Section        0  sys_hardware_init.o(i.Sys_HardConfigInit)
-    i.Sys_IE_Init                            0x000030a0   Section        0  sys_hardware_init.o(i.Sys_IE_Init)
-    i.Sys_Variableinit                       0x00003130   Section        0  sys_variable_init.o(i.Sys_Variableinit)
-    i.SystemClock_Init                       0x000033b0   Section        0  sys_hardware_init.o(i.SystemClock_Init)
-    i.SystemInit                             0x000033f8   Section        0  system_bat32g139.o(i.SystemInit)
-    i.TIMC_ConfigInit                        0x0000346c   Section        0  sys_hardware_init.o(i.TIMC_ConfigInit)
-    i.UART0_ConfigInit                       0x000034b0   Section        0  sys_hardware_init.o(i.UART0_ConfigInit)
-    i.UART1_ConfigInit                       0x0000359c   Section        0  sys_hardware_init.o(i.UART1_ConfigInit)
-    i.User_DelayTime_ms                      0x00003664   Section        0  user_function.o(i.User_DelayTime_ms)
-    i.User_DelayTime_us                      0x00003680   Section        0  user_function.o(i.User_DelayTime_us)
-    i.User_Divider                           0x00003694   Section        0  user_function.o(i.User_Divider)
-    i.User_Key_Deal                          0x000036a8   Section        0  user_function.o(i.User_Key_Deal)
-    i.User_LED_Deal                          0x00003764   Section        0  user_function.o(i.User_LED_Deal)
-    i.User_LED_ms                            0x00003888   Section        0  user_function.o(i.User_LED_ms)
-    i.User_RMS_Deal                          0x000038e0   Section        0  user_function.o(i.User_RMS_Deal)
-    i.WDT_Restart                            0x00003914   Section        0  wdt.o(i.WDT_Restart)
-    i.Waiting_Deal_Func                      0x00003920   Section        0  sys_state_machine.o(i.Waiting_Deal_Func)
-    i.__ARM_common_switch8                   0x0000395c   Section        0  gpio.o(i.__ARM_common_switch8)
-    i.__NVIC_ClearPendingIRQ                 0x00003978   Section        0  sys_hardware_init.o(i.__NVIC_ClearPendingIRQ)
-    __NVIC_ClearPendingIRQ                   0x00003979   Thumb Code    18  sys_hardware_init.o(i.__NVIC_ClearPendingIRQ)
-    i.__NVIC_SetPriority                     0x00003990   Section        0  sys_hardware_init.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x00003991   Thumb Code    60  sys_hardware_init.o(i.__NVIC_SetPriority)
-    i._is_digit                              0x000039d4   Section        0  __printf_wp.o(i._is_digit)
-    i._sys_exit                              0x000039e4   Section        0  retarget.o(i._sys_exit)
-    i.main                                   0x000039fc   Section        0  main.o(i.main)
-    i.sqrt                                   0x00003a24   Section        0  sqrt.o(i.sqrt)
-    i.wdt_interrupt                          0x00003a6c   Section        0  wdt_user.o(i.wdt_interrupt)
-    sram_code                                0x00003a80   Section        0  clk.o(sram_code)
-    .constdata                               0x00003ac8   Section      840  user_sine_table.o(.constdata)
-    x$fpl$usenofp                            0x00003ac8   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x00003e10   Section      700  user_sine_table.o(.constdata)
-    .constdata                               0x000040cc   Section       17  __printf_flags_wp.o(.constdata)
-    maptable                                 0x000040cc   Data          17  __printf_flags_wp.o(.constdata)
-    .constdata                               0x000040dd   Section      128  ddiv.o(.constdata)
-    ddiv_reciptbl                            0x000040dd   Data         128  ddiv.o(.constdata)
-    .constdata                               0x0000415d   Section       64  fdiv.o(.constdata)
-    fdiv_tab                                 0x0000415d   Data          64  fdiv.o(.constdata)
+    i.COM_CloseDrive                         0x00001de0   Section        0  user_function.o(i.COM_CloseDrive)
+    i.COM_Function                           0x00001e30   Section        0  user_function.o(i.COM_Function)
+    i.COM_Get_Protect_Flag                   0x00001ebc   Section        0  user_fault_check.o(i.COM_Get_Protect_Flag)
+    i.COM_PWM_Disable                        0x00001f18   Section        0  sys_hardware_init.o(i.COM_PWM_Disable)
+    i.COM_UART1_Deal                         0x00001f34   Section        0  user_function.o(i.COM_UART1_Deal)
+    i.COM_UPS_Deal                           0x00002064   Section        0  user_function.o(i.COM_UPS_Deal)
+    i.DMA_Start                              0x00002110   Section        0  dma.o(i.DMA_Start)
+    i.ELC_Start                              0x000021bc   Section        0  elc.o(i.ELC_Start)
+    i.EPWM_ConfigInit                        0x000021c8   Section        0  sys_hardware_init.o(i.EPWM_ConfigInit)
+    i.Fault_Deal_Func                        0x000022d0   Section        0  sys_state_machine.o(i.Fault_Deal_Func)
+    i.Fault_State_Check                      0x000022e4   Section        0  user_fault_check.o(i.Fault_State_Check)
+    i.Fault_State_Deal                       0x00002540   Section        0  user_fault_check.o(i.Fault_State_Deal)
+    i.Function_TxSendDebug_Four_INT          0x00002544   Section        0  change.o(i.Function_TxSendDebug_Four_INT)
+    i.GPIO_Init                              0x000025a8   Section        0  sys_hardware_init.o(i.GPIO_Init)
+    i.Get_PLL_Sin                            0x00002620   Section        0  change.o(i.Get_PLL_Sin)
+    i.Get_PLL_Sin_WithARG                    0x0000262c   Section        0  change.o(i.Get_PLL_Sin_WithARG)
+    i.INV_PWM_Enable                         0x000026b8   Section        0  sys_hardware_init.o(i.INV_PWM_Enable)
+    i.INV_Run_VariableInit                   0x00002720   Section        0  sys_variable_init.o(i.INV_Run_VariableInit)
+    i.Initial_Deal_Func                      0x000028f0   Section        0  sys_state_machine.o(i.Initial_Deal_Func)
+    i.Key_Calc                               0x00002908   Section        0  user_function.o(i.Key_Calc)
+    i.PFC_PWM_Enable                         0x00002950   Section        0  sys_hardware_init.o(i.PFC_PWM_Enable)
+    i.PFC_Run_VariableInit                   0x000029a8   Section        0  sys_variable_init.o(i.PFC_Run_VariableInit)
+    i.PORT_Init                              0x00002b14   Section        0  gpio.o(i.PORT_Init)
+    i.Protect_Release                        0x00002bd0   Section        0  user_fault_check.o(i.Protect_Release)
+    i.Ready_Deal_Func                        0x00002bd2   Section        0  sys_state_machine.o(i.Ready_Deal_Func)
+    i.Ready_State_Check                      0x00002be0   Section        0  sys_state_machine.o(i.Ready_State_Check)
+    i.Run_Deal_Func                          0x00002e00   Section        0  sys_state_machine.o(i.Run_Deal_Func)
+    i.Run_State_OpenDriver                   0x00002e24   Section        0  sys_state_machine.o(i.Run_State_OpenDriver)
+    i.State_Context_Func                     0x00002e5c   Section        0  sys_state_machine.o(i.State_Context_Func)
+    i.State_Context_Task                     0x00002edc   Section        0  sys_state_machine.o(i.State_Context_Task)
+    i.Stop_Deal_Func                         0x00002fa0   Section        0  sys_state_machine.o(i.Stop_Deal_Func)
+    i.SysTick_ConfigInit                     0x00002fa4   Section        0  sys_hardware_init.o(i.SysTick_ConfigInit)
+    i.Sys_HardConfigInit                     0x00002fdc   Section        0  sys_hardware_init.o(i.Sys_HardConfigInit)
+    i.Sys_IE_Init                            0x000030b8   Section        0  sys_hardware_init.o(i.Sys_IE_Init)
+    i.Sys_Variableinit                       0x00003148   Section        0  sys_variable_init.o(i.Sys_Variableinit)
+    i.SystemClock_Init                       0x000033c8   Section        0  sys_hardware_init.o(i.SystemClock_Init)
+    i.SystemInit                             0x00003410   Section        0  system_bat32g139.o(i.SystemInit)
+    i.TIMC_ConfigInit                        0x00003484   Section        0  sys_hardware_init.o(i.TIMC_ConfigInit)
+    i.UART0_ConfigInit                       0x000034c8   Section        0  sys_hardware_init.o(i.UART0_ConfigInit)
+    i.UART1_ConfigInit                       0x000035b4   Section        0  sys_hardware_init.o(i.UART1_ConfigInit)
+    i.User_DelayTime_ms                      0x0000367c   Section        0  user_function.o(i.User_DelayTime_ms)
+    i.User_DelayTime_us                      0x00003698   Section        0  user_function.o(i.User_DelayTime_us)
+    i.User_Divider                           0x000036ac   Section        0  user_function.o(i.User_Divider)
+    i.User_Key_Deal                          0x000036c0   Section        0  user_function.o(i.User_Key_Deal)
+    i.User_LED_Deal                          0x0000377c   Section        0  user_function.o(i.User_LED_Deal)
+    i.User_LED_ms                            0x000038a0   Section        0  user_function.o(i.User_LED_ms)
+    i.User_RMS_Deal                          0x000038f8   Section        0  user_function.o(i.User_RMS_Deal)
+    i.WDT_Restart                            0x0000392c   Section        0  wdt.o(i.WDT_Restart)
+    i.Waiting_Deal_Func                      0x00003938   Section        0  sys_state_machine.o(i.Waiting_Deal_Func)
+    i.__ARM_common_switch8                   0x00003974   Section        0  gpio.o(i.__ARM_common_switch8)
+    i.__NVIC_ClearPendingIRQ                 0x00003990   Section        0  sys_hardware_init.o(i.__NVIC_ClearPendingIRQ)
+    __NVIC_ClearPendingIRQ                   0x00003991   Thumb Code    18  sys_hardware_init.o(i.__NVIC_ClearPendingIRQ)
+    i.__NVIC_SetPriority                     0x000039a8   Section        0  sys_hardware_init.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x000039a9   Thumb Code    60  sys_hardware_init.o(i.__NVIC_SetPriority)
+    i._is_digit                              0x000039ec   Section        0  __printf_wp.o(i._is_digit)
+    i._sys_exit                              0x000039fc   Section        0  retarget.o(i._sys_exit)
+    i.main                                   0x00003a14   Section        0  main.o(i.main)
+    i.sqrt                                   0x00003a3c   Section        0  sqrt.o(i.sqrt)
+    i.wdt_interrupt                          0x00003a84   Section        0  wdt_user.o(i.wdt_interrupt)
+    sram_code                                0x00003a98   Section        0  clk.o(sram_code)
+    .constdata                               0x00003ae0   Section      840  user_sine_table.o(.constdata)
+    x$fpl$usenofp                            0x00003ae0   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x00003e28   Section      700  user_sine_table.o(.constdata)
+    .constdata                               0x000040e4   Section       17  __printf_flags_wp.o(.constdata)
+    maptable                                 0x000040e4   Data          17  __printf_flags_wp.o(.constdata)
+    .constdata                               0x000040f5   Section      128  ddiv.o(.constdata)
+    ddiv_reciptbl                            0x000040f5   Data         128  ddiv.o(.constdata)
+    .constdata                               0x00004175   Section       64  fdiv.o(.constdata)
+    fdiv_tab                                 0x00004175   Data          64  fdiv.o(.constdata)
     i.COM_Uartx_HeartCheck                   0x200001c0   Section        0  user_communication.o(i.COM_Uartx_HeartCheck)
     i.HardFault_Handler                      0x20000200   Section        0  interrupt.o(i.HardFault_Handler)
     i.INV_AC_Vol_FreCalc                     0x20000220   Section        0  user_parallel.o(i.INV_AC_Vol_FreCalc)
     i.INV_Ctrl                               0x200002b8   Section        0  inv_ctrl.o(i.INV_Ctrl)
-    i.INV_DataSend                           0x200006fc   Section        0  user_communication.o(i.INV_DataSend)
-    i.INV_Deal                               0x20000834   Section        0  interrupt.o(i.INV_Deal)
-    i.INV_Lock_Phase                         0x200008c4   Section        0  inv_ctrl.o(i.INV_Lock_Phase)
-    i.INV_MasterSlaveSelect                  0x200009dc   Section        0  user_parallel.o(i.INV_MasterSlaveSelect)
-    i.INV_PQ_Droop_Ctrl                      0x20000a64   Section        0  pq_droop_ctrl.o(i.INV_PQ_Droop_Ctrl)
-    i.PFC_AC_Vol_FreCalc                     0x20000ab0   Section        0  user_parallel.o(i.PFC_AC_Vol_FreCalc)
-    i.PFC_Ctrl                               0x20000b54   Section        0  pfc_ctrl.o(i.PFC_Ctrl)
-    i.PFC_Deal                               0x20000c64   Section        0  interrupt.o(i.PFC_Deal)
-    i.PFC_PID_Ctrl                           0x20000e24   Section        0  pid_ctrl.o(i.PFC_PID_Ctrl)
-    i.PFC_VBus_RefCalc                       0x20000e8c   Section        0  pfc_ctrl.o(i.PFC_VBus_RefCalc)
-    i.PID_Ctrl                               0x20000f38   Section        0  pid_ctrl.o(i.PID_Ctrl)
-    i.PLL_Ctrl                               0x20000f9c   Section        0  pll_ctrl.o(i.PLL_Ctrl)
-    i.PLL_Ctrl_Param                         0x2000115c   Section        0  pll_ctrl.o(i.PLL_Ctrl_Param)
-    i.RMS_PQ_Calc                            0x20001188   Section        0  user_sample.o(i.RMS_PQ_Calc)
-    i.RMS_PQ_Update                          0x2000128c   Section        0  user_sample.o(i.RMS_PQ_Update)
-    i.SysTick_Handler                        0x200013b4   Section        0  interrupt.o(i.SysTick_Handler)
-    i.UART1_INV_DataSend                     0x20001470   Section        0  user_communication.o(i.UART1_INV_DataSend)
-    i.User_UART_View                         0x200014f0   Section        0  user_communication.o(i.User_UART_View)
-    i.adc_interrupt                          0x20001514   Section        0  interrupt.o(i.adc_interrupt)
-    i.crc16_modbus                           0x2000176c   Section        0  user_communication.o(i.crc16_modbus)
-    i.tmm0_interrupt                         0x200017a4   Section        0  interrupt.o(i.tmm0_interrupt)
-    i.tmm1_interrupt                         0x200017c8   Section        0  interrupt.o(i.tmm1_interrupt)
-    i.uart1_interrupt_receive                0x20001934   Section        0  interrupt.o(i.uart1_interrupt_receive)
-    .constdata                               0x20001958   Section      512  pll_ctrl.o(.constdata)
-    .data                                    0x20001b58   Section        4  wdt_user.o(.data)
-    .data                                    0x20001b5c   Section       16  interrupt.o(.data)
-    .data                                    0x20001b6c   Section       20  sys_struct.o(.data)
-    .data                                    0x20001b80   Section       20  sys_struct.o(.data)
-    .data                                    0x20001b94   Section       20  sys_struct.o(.data)
-    .data                                    0x20001ba8   Section       20  sys_struct.o(.data)
-    .data                                    0x20001bbc   Section       20  sys_struct.o(.data)
-    .data                                    0x20001bd0   Section       20  sys_struct.o(.data)
-    .data                                    0x20001be4   Section       20  sys_struct.o(.data)
-    .data                                    0x20001bf8   Section       20  sys_struct.o(.data)
-    .data                                    0x20001c0c   Section       20  sys_struct.o(.data)
-    .data                                    0x20001c20   Section       20  sys_struct.o(.data)
-    .data                                    0x20001c34   Section       20  sys_struct.o(.data)
-    .data                                    0x20001c48   Section       20  sys_struct.o(.data)
-    .data                                    0x20001c5c   Section       20  sys_struct.o(.data)
-    .data                                    0x20001c70   Section       20  sys_struct.o(.data)
-    .data                                    0x20001c84   Section       20  sys_struct.o(.data)
-    .data                                    0x20001c98   Section       20  sys_struct.o(.data)
-    .data                                    0x20001cac   Section       20  sys_struct.o(.data)
-    .data                                    0x20001cc0   Section       20  sys_struct.o(.data)
-    .data                                    0x20001cd4   Section       20  sys_struct.o(.data)
-    .data                                    0x20001ce8   Section       20  sys_struct.o(.data)
-    .data                                    0x20001cfc   Section       20  sys_struct.o(.data)
-    .data                                    0x20001d10   Section       20  sys_struct.o(.data)
-    .data                                    0x20001d24   Section       20  sys_struct.o(.data)
-    .data                                    0x20001d38   Section       20  sys_struct.o(.data)
-    .data                                    0x20001d4c   Section       20  sys_struct.o(.data)
-    .data                                    0x20001d60   Section       20  sys_struct.o(.data)
-    .data                                    0x20001d74   Section       20  sys_struct.o(.data)
-    .data                                    0x20001d88   Section       20  sys_struct.o(.data)
-    .data                                    0x20001d9c   Section       20  sys_struct.o(.data)
-    .data                                    0x20001db0   Section       20  sys_struct.o(.data)
-    .data                                    0x20001dc4   Section       20  sys_struct.o(.data)
-    .data                                    0x20001dd8   Section       20  sys_struct.o(.data)
-    .data                                    0x20001dec   Section       20  sys_struct.o(.data)
-    .data                                    0x20001e00   Section       20  sys_struct.o(.data)
-    .data                                    0x20001e14   Section       20  sys_struct.o(.data)
-    .data                                    0x20001e28   Section       20  sys_struct.o(.data)
-    .data                                    0x20001e3c   Section       20  sys_struct.o(.data)
-    .data                                    0x20001e50   Section       20  sys_struct.o(.data)
-    .data                                    0x20001e64   Section       20  sys_struct.o(.data)
-    .data                                    0x20001e78   Section       20  sys_struct.o(.data)
-    .data                                    0x20001e8c   Section       20  sys_struct.o(.data)
-    .data                                    0x20001ea0   Section       20  sys_struct.o(.data)
-    .data                                    0x20001eb8   Section       40  sys_struct.o(.data)
-    .data                                    0x20001ee0   Section       40  sys_struct.o(.data)
-    .data                                    0x20001f08   Section       40  sys_struct.o(.data)
-    .data                                    0x20001f30   Section       40  sys_struct.o(.data)
-    .data                                    0x20001f58   Section       40  sys_struct.o(.data)
-    .data                                    0x20001f80   Section       84  sys_struct.o(.data)
-    .data                                    0x20001fd4   Section       84  sys_struct.o(.data)
-    .data                                    0x20002028   Section       84  sys_struct.o(.data)
-    .data                                    0x2000207c   Section       84  sys_struct.o(.data)
-    .data                                    0x200020d0   Section       84  sys_struct.o(.data)
-    .data                                    0x20002124   Section       84  sys_struct.o(.data)
-    .data                                    0x20002178   Section       56  sys_struct.o(.data)
-    .data                                    0x200021b0   Section       20  sys_struct.o(.data)
-    .data                                    0x200021c4   Section        2  sys_struct.o(.data)
-    .data                                    0x200021c6   Section        4  sys_struct.o(.data)
-    .data                                    0x200021cc   Section      300  sys_struct.o(.data)
-    .data                                    0x200022f8   Section        8  sys_struct.o(.data)
-    .data                                    0x20002300   Section        2  sys_struct.o(.data)
-    .data                                    0x20002302   Section        2  sys_variable_init.o(.data)
-    .data                                    0x20002304   Section      128  sys_state_machine.o(.data)
-    .data                                    0x20002384   Section       14  user_parallel.o(.data)
-    .data                                    0x20002394   Section       12  user_function.o(.data)
-    .data                                    0x200023a0   Section        2  user_communication.o(.data)
-    .data                                    0x200023a4   Section        4  change.o(.data)
-    .data                                    0x200023a8   Section        2  change.o(.data)
-    .data                                    0x200023ac   Section        4  change.o(.data)
-    .data                                    0x200023b0   Section        4  change.o(.data)
-    .data                                    0x200023b4   Section        4  change.o(.data)
-    .data                                    0x200023b8   Section        8  pfc_ctrl.o(.data)
-    .data                                    0x200023c0   Section        4  pll_ctrl.o(.data)
-    .data                                    0x200023c4   Section        4  system_bat32g139.o(.data)
-    .bss                                     0x200023c8   Section       76  sys_struct.o(.bss)
-    .bss                                     0x20002414   Section      136  sys_struct.o(.bss)
-    .bss                                     0x2000249c   Section       84  sys_struct.o(.bss)
-    .bss                                     0x200024f0   Section       64  sys_struct.o(.bss)
-    .bss                                     0x20002530   Section       44  sys_struct.o(.bss)
-    .bss                                     0x2000255c   Section       10  sys_struct.o(.bss)
-    .bss                                     0x20002566   Section       20  sys_struct.o(.bss)
-    .bss                                     0x2000257c   Section       60  sys_struct.o(.bss)
-    .bss                                     0x200025b8   Section       10  sys_struct.o(.bss)
-    .bss                                     0x200025c4   Section       92  sys_struct.o(.bss)
-    .bss                                     0x20002620   Section       12  sys_struct.o(.bss)
-    .bss                                     0x2000262c   Section       20  sys_struct.o(.bss)
-    .bss                                     0x20002640   Section       28  sys_struct.o(.bss)
-    .bss                                     0x2000265c   Section      196  sys_struct.o(.bss)
-    .bss                                     0x20002720   Section     6800  user_sample.o(.bss)
-    .bss                                     0x200041b0   Section       44  user_communication.o(.bss)
-    .bss                                     0x200041dc   Section       64  change.o(.bss)
-    .bss                                     0x2000421c   Section     2400  repeat_ctrl.o(.bss)
-    .bss                                     0x20004b7c   Section     2372  pll_ctrl.o(.bss)
-    .bss                                     0x200054c0   Section     2372  pll_ctrl.o(.bss)
-    .bss                                     0x20005e04   Section       12  pll_ctrl.o(.bss)
-    .bss                                     0x20005e10   Section       96  libspace.o(.bss)
-    HEAP                                     0x20005e70   Section      256  startup_bat32g139.o(HEAP)
-    Heap_Mem                                 0x20005e70   Data         256  startup_bat32g139.o(HEAP)
-    STACK                                    0x20005f70   Section     1024  startup_bat32g139.o(STACK)
-    Stack_Mem                                0x20005f70   Data        1024  startup_bat32g139.o(STACK)
-    __initial_sp                             0x20006370   Data           0  startup_bat32g139.o(STACK)
+    i.INV_Ctrl_220V                          0x200006fc   Section        0  inv_ctrl.o(i.INV_Ctrl_220V)
+    i.INV_DataSend                           0x20000a7c   Section        0  user_communication.o(i.INV_DataSend)
+    i.INV_Deal                               0x20000bb4   Section        0  interrupt.o(i.INV_Deal)
+    i.INV_Lock_Phase                         0x20000c54   Section        0  inv_ctrl.o(i.INV_Lock_Phase)
+    i.INV_MasterSlaveSelect                  0x20000d6c   Section        0  user_parallel.o(i.INV_MasterSlaveSelect)
+    i.INV_PQ_Droop_Ctrl                      0x20000df4   Section        0  pq_droop_ctrl.o(i.INV_PQ_Droop_Ctrl)
+    i.PFC_AC_Vol_FreCalc                     0x20000e40   Section        0  user_parallel.o(i.PFC_AC_Vol_FreCalc)
+    i.PFC_Ctrl                               0x20000ee4   Section        0  pfc_ctrl.o(i.PFC_Ctrl)
+    i.PFC_Deal                               0x20000ff4   Section        0  interrupt.o(i.PFC_Deal)
+    i.PFC_PID_Ctrl                           0x200011b4   Section        0  pid_ctrl.o(i.PFC_PID_Ctrl)
+    i.PFC_VBus_RefCalc                       0x2000121c   Section        0  pfc_ctrl.o(i.PFC_VBus_RefCalc)
+    i.PID_Ctrl                               0x200012c8   Section        0  pid_ctrl.o(i.PID_Ctrl)
+    i.PLL_Ctrl                               0x2000132c   Section        0  pll_ctrl.o(i.PLL_Ctrl)
+    i.PLL_Ctrl_Param                         0x200014ec   Section        0  pll_ctrl.o(i.PLL_Ctrl_Param)
+    i.RMS_PQ_Calc                            0x20001518   Section        0  user_sample.o(i.RMS_PQ_Calc)
+    i.RMS_PQ_Update                          0x2000161c   Section        0  user_sample.o(i.RMS_PQ_Update)
+    i.SysTick_Handler                        0x20001744   Section        0  interrupt.o(i.SysTick_Handler)
+    i.UART1_INV_DataSend                     0x20001800   Section        0  user_communication.o(i.UART1_INV_DataSend)
+    i.User_UART_View                         0x20001880   Section        0  user_communication.o(i.User_UART_View)
+    i.adc_interrupt                          0x200018a4   Section        0  interrupt.o(i.adc_interrupt)
+    i.crc16_modbus                           0x20001afc   Section        0  user_communication.o(i.crc16_modbus)
+    i.tmm0_interrupt                         0x20001b34   Section        0  interrupt.o(i.tmm0_interrupt)
+    i.tmm1_interrupt                         0x20001b58   Section        0  interrupt.o(i.tmm1_interrupt)
+    i.uart1_interrupt_receive                0x20001cc4   Section        0  interrupt.o(i.uart1_interrupt_receive)
+    .constdata                               0x20001ce8   Section      512  pll_ctrl.o(.constdata)
+    .data                                    0x20001ee8   Section        4  wdt_user.o(.data)
+    .data                                    0x20001eec   Section       16  interrupt.o(.data)
+    .data                                    0x20001efc   Section       20  sys_struct.o(.data)
+    .data                                    0x20001f10   Section       20  sys_struct.o(.data)
+    .data                                    0x20001f24   Section       20  sys_struct.o(.data)
+    .data                                    0x20001f38   Section       20  sys_struct.o(.data)
+    .data                                    0x20001f4c   Section       20  sys_struct.o(.data)
+    .data                                    0x20001f60   Section       20  sys_struct.o(.data)
+    .data                                    0x20001f74   Section       20  sys_struct.o(.data)
+    .data                                    0x20001f88   Section       20  sys_struct.o(.data)
+    .data                                    0x20001f9c   Section       20  sys_struct.o(.data)
+    .data                                    0x20001fb0   Section       20  sys_struct.o(.data)
+    .data                                    0x20001fc4   Section       20  sys_struct.o(.data)
+    .data                                    0x20001fd8   Section       20  sys_struct.o(.data)
+    .data                                    0x20001fec   Section       20  sys_struct.o(.data)
+    .data                                    0x20002000   Section       20  sys_struct.o(.data)
+    .data                                    0x20002014   Section       20  sys_struct.o(.data)
+    .data                                    0x20002028   Section       20  sys_struct.o(.data)
+    .data                                    0x2000203c   Section       20  sys_struct.o(.data)
+    .data                                    0x20002050   Section       20  sys_struct.o(.data)
+    .data                                    0x20002064   Section       20  sys_struct.o(.data)
+    .data                                    0x20002078   Section       20  sys_struct.o(.data)
+    .data                                    0x2000208c   Section       20  sys_struct.o(.data)
+    .data                                    0x200020a0   Section       20  sys_struct.o(.data)
+    .data                                    0x200020b4   Section       20  sys_struct.o(.data)
+    .data                                    0x200020c8   Section       20  sys_struct.o(.data)
+    .data                                    0x200020dc   Section       20  sys_struct.o(.data)
+    .data                                    0x200020f0   Section       20  sys_struct.o(.data)
+    .data                                    0x20002104   Section       20  sys_struct.o(.data)
+    .data                                    0x20002118   Section       20  sys_struct.o(.data)
+    .data                                    0x2000212c   Section       20  sys_struct.o(.data)
+    .data                                    0x20002140   Section       20  sys_struct.o(.data)
+    .data                                    0x20002154   Section       20  sys_struct.o(.data)
+    .data                                    0x20002168   Section       20  sys_struct.o(.data)
+    .data                                    0x2000217c   Section       20  sys_struct.o(.data)
+    .data                                    0x20002190   Section       20  sys_struct.o(.data)
+    .data                                    0x200021a4   Section       20  sys_struct.o(.data)
+    .data                                    0x200021b8   Section       20  sys_struct.o(.data)
+    .data                                    0x200021cc   Section       20  sys_struct.o(.data)
+    .data                                    0x200021e0   Section       20  sys_struct.o(.data)
+    .data                                    0x200021f4   Section       20  sys_struct.o(.data)
+    .data                                    0x20002208   Section       20  sys_struct.o(.data)
+    .data                                    0x2000221c   Section       20  sys_struct.o(.data)
+    .data                                    0x20002230   Section       20  sys_struct.o(.data)
+    .data                                    0x20002248   Section       40  sys_struct.o(.data)
+    .data                                    0x20002270   Section       40  sys_struct.o(.data)
+    .data                                    0x20002298   Section       40  sys_struct.o(.data)
+    .data                                    0x200022c0   Section       40  sys_struct.o(.data)
+    .data                                    0x200022e8   Section       40  sys_struct.o(.data)
+    .data                                    0x20002310   Section       84  sys_struct.o(.data)
+    .data                                    0x20002364   Section       84  sys_struct.o(.data)
+    .data                                    0x200023b8   Section       84  sys_struct.o(.data)
+    .data                                    0x2000240c   Section       84  sys_struct.o(.data)
+    .data                                    0x20002460   Section       84  sys_struct.o(.data)
+    .data                                    0x200024b4   Section       84  sys_struct.o(.data)
+    .data                                    0x20002508   Section       56  sys_struct.o(.data)
+    .data                                    0x20002540   Section       20  sys_struct.o(.data)
+    .data                                    0x20002554   Section        2  sys_struct.o(.data)
+    .data                                    0x20002556   Section        4  sys_struct.o(.data)
+    .data                                    0x2000255c   Section      300  sys_struct.o(.data)
+    .data                                    0x20002688   Section        8  sys_struct.o(.data)
+    .data                                    0x20002690   Section        2  sys_struct.o(.data)
+    .data                                    0x20002692   Section        2  sys_variable_init.o(.data)
+    .data                                    0x20002694   Section      128  sys_state_machine.o(.data)
+    .data                                    0x20002714   Section       14  user_parallel.o(.data)
+    .data                                    0x20002724   Section       12  user_function.o(.data)
+    .data                                    0x20002730   Section        2  user_communication.o(.data)
+    .data                                    0x20002734   Section        4  change.o(.data)
+    .data                                    0x20002738   Section        2  change.o(.data)
+    .data                                    0x2000273a   Section        1  change.o(.data)
+    .data                                    0x2000273c   Section        4  change.o(.data)
+    .data                                    0x20002740   Section        4  change.o(.data)
+    .data                                    0x20002744   Section        4  change.o(.data)
+    .data                                    0x20002748   Section        8  pfc_ctrl.o(.data)
+    .data                                    0x20002750   Section        4  pll_ctrl.o(.data)
+    .data                                    0x20002754   Section        4  system_bat32g139.o(.data)
+    .bss                                     0x20002758   Section       76  sys_struct.o(.bss)
+    .bss                                     0x200027a4   Section      136  sys_struct.o(.bss)
+    .bss                                     0x2000282c   Section       84  sys_struct.o(.bss)
+    .bss                                     0x20002880   Section       64  sys_struct.o(.bss)
+    .bss                                     0x200028c0   Section       44  sys_struct.o(.bss)
+    .bss                                     0x200028ec   Section       10  sys_struct.o(.bss)
+    .bss                                     0x200028f6   Section       20  sys_struct.o(.bss)
+    .bss                                     0x2000290c   Section       60  sys_struct.o(.bss)
+    .bss                                     0x20002948   Section       10  sys_struct.o(.bss)
+    .bss                                     0x20002954   Section       92  sys_struct.o(.bss)
+    .bss                                     0x200029b0   Section       12  sys_struct.o(.bss)
+    .bss                                     0x200029bc   Section       20  sys_struct.o(.bss)
+    .bss                                     0x200029d0   Section       28  sys_struct.o(.bss)
+    .bss                                     0x200029ec   Section      196  sys_struct.o(.bss)
+    .bss                                     0x20002ab0   Section     6800  user_sample.o(.bss)
+    .bss                                     0x20004540   Section       44  user_communication.o(.bss)
+    .bss                                     0x2000456c   Section       64  change.o(.bss)
+    .bss                                     0x200045ac   Section     2400  repeat_ctrl.o(.bss)
+    .bss                                     0x20004f0c   Section     2372  pll_ctrl.o(.bss)
+    .bss                                     0x20005850   Section     2372  pll_ctrl.o(.bss)
+    .bss                                     0x20006194   Section       12  pll_ctrl.o(.bss)
+    .bss                                     0x200061a0   Section       96  libspace.o(.bss)
+    HEAP                                     0x20006200   Section      256  startup_bat32g139.o(HEAP)
+    Heap_Mem                                 0x20006200   Data         256  startup_bat32g139.o(HEAP)
+    STACK                                    0x20006300   Section     1024  startup_bat32g139.o(STACK)
+    Stack_Mem                                0x20006300   Data        1024  startup_bat32g139.o(STACK)
+    __initial_sp                             0x20006700   Data           0  startup_bat32g139.o(STACK)
 
     Global Symbols
 
@@ -2633,69 +2650,69 @@ Image Symbol Table
     CMP_Input_Select                         0x000018bd   Thumb Code    26  cmp.o(i.CMP_Input_Select)
     CMP_VREF_Set_Value                       0x000018dd   Thumb Code    16  cmp.o(i.CMP_VREF_Set_Value)
     COM_AD_Data_Deal                         0x000018f1   Thumb Code   216  user_function.o(i.COM_AD_Data_Deal)
-    COM_CHG_INV_Select                       0x000019ed   Thumb Code   878  user_function.o(i.COM_CHG_INV_Select)
-    COM_CloseDrive                           0x00001dc9   Thumb Code    64  user_function.o(i.COM_CloseDrive)
-    COM_Function                             0x00001e19   Thumb Code   116  user_function.o(i.COM_Function)
-    COM_Get_Protect_Flag                     0x00001ea5   Thumb Code    88  user_fault_check.o(i.COM_Get_Protect_Flag)
-    COM_PWM_Disable                          0x00001f01   Thumb Code    18  sys_hardware_init.o(i.COM_PWM_Disable)
-    COM_UART1_Deal                           0x00001f1d   Thumb Code   272  user_function.o(i.COM_UART1_Deal)
-    COM_UPS_Deal                             0x0000204d   Thumb Code   138  user_function.o(i.COM_UPS_Deal)
-    DMA_Start                                0x000020f9   Thumb Code   158  dma.o(i.DMA_Start)
-    ELC_Start                                0x000021a5   Thumb Code     6  elc.o(i.ELC_Start)
-    EPWM_ConfigInit                          0x000021b1   Thumb Code   236  sys_hardware_init.o(i.EPWM_ConfigInit)
-    Fault_Deal_Func                          0x000022b9   Thumb Code    20  sys_state_machine.o(i.Fault_Deal_Func)
-    Fault_State_Check                        0x000022cd   Thumb Code   442  user_fault_check.o(i.Fault_State_Check)
-    Fault_State_Deal                         0x00002529   Thumb Code     2  user_fault_check.o(i.Fault_State_Deal)
-    Function_TxSendDebug_Four_INT            0x0000252d   Thumb Code    62  change.o(i.Function_TxSendDebug_Four_INT)
-    GPIO_Init                                0x00002591   Thumb Code   114  sys_hardware_init.o(i.GPIO_Init)
-    Get_PLL_Sin                              0x00002609   Thumb Code    12  change.o(i.Get_PLL_Sin)
-    Get_PLL_Sin_WithARG                      0x00002615   Thumb Code   126  change.o(i.Get_PLL_Sin_WithARG)
-    INV_PWM_Enable                           0x000026a1   Thumb Code    88  sys_hardware_init.o(i.INV_PWM_Enable)
-    INV_Run_VariableInit                     0x00002709   Thumb Code   358  sys_variable_init.o(i.INV_Run_VariableInit)
-    Initial_Deal_Func                        0x000028d9   Thumb Code    20  sys_state_machine.o(i.Initial_Deal_Func)
-    Key_Calc                                 0x000028f1   Thumb Code    70  user_function.o(i.Key_Calc)
-    PFC_PWM_Enable                           0x00002939   Thumb Code    62  sys_hardware_init.o(i.PFC_PWM_Enable)
-    PFC_Run_VariableInit                     0x00002991   Thumb Code   258  sys_variable_init.o(i.PFC_Run_VariableInit)
-    PORT_Init                                0x00002afd   Thumb Code   180  gpio.o(i.PORT_Init)
-    Protect_Release                          0x00002bb9   Thumb Code     2  user_fault_check.o(i.Protect_Release)
-    Ready_Deal_Func                          0x00002bbb   Thumb Code    12  sys_state_machine.o(i.Ready_Deal_Func)
-    Ready_State_Check                        0x00002bc9   Thumb Code   430  sys_state_machine.o(i.Ready_State_Check)
-    Run_Deal_Func                            0x00002de9   Thumb Code    34  sys_state_machine.o(i.Run_Deal_Func)
-    Run_State_OpenDriver                     0x00002e0d   Thumb Code    44  sys_state_machine.o(i.Run_State_OpenDriver)
-    State_Context_Func                       0x00002e45   Thumb Code   128  sys_state_machine.o(i.State_Context_Func)
-    State_Context_Task                       0x00002ec5   Thumb Code   182  sys_state_machine.o(i.State_Context_Task)
-    Stop_Deal_Func                           0x00002f89   Thumb Code     2  sys_state_machine.o(i.Stop_Deal_Func)
-    SysTick_ConfigInit                       0x00002f8d   Thumb Code    44  sys_hardware_init.o(i.SysTick_ConfigInit)
-    Sys_HardConfigInit                       0x00002fc5   Thumb Code   190  sys_hardware_init.o(i.Sys_HardConfigInit)
-    Sys_IE_Init                              0x000030a1   Thumb Code   134  sys_hardware_init.o(i.Sys_IE_Init)
-    Sys_Variableinit                         0x00003131   Thumb Code   490  sys_variable_init.o(i.Sys_Variableinit)
-    SystemClock_Init                         0x000033b1   Thumb Code    58  sys_hardware_init.o(i.SystemClock_Init)
-    SystemInit                               0x000033f9   Thumb Code    82  system_bat32g139.o(i.SystemInit)
-    TIMC_ConfigInit                          0x0000346d   Thumb Code    50  sys_hardware_init.o(i.TIMC_ConfigInit)
-    UART0_ConfigInit                         0x000034b1   Thumb Code   192  sys_hardware_init.o(i.UART0_ConfigInit)
-    UART1_ConfigInit                         0x0000359d   Thumb Code   164  sys_hardware_init.o(i.UART1_ConfigInit)
-    User_DelayTime_ms                        0x00003665   Thumb Code    22  user_function.o(i.User_DelayTime_ms)
-    User_DelayTime_us                        0x00003681   Thumb Code    20  user_function.o(i.User_DelayTime_us)
-    User_Divider                             0x00003695   Thumb Code    16  user_function.o(i.User_Divider)
-    User_Key_Deal                            0x000036a9   Thumb Code   160  user_function.o(i.User_Key_Deal)
-    User_LED_Deal                            0x00003765   Thumb Code   272  user_function.o(i.User_LED_Deal)
-    User_LED_ms                              0x00003889   Thumb Code    84  user_function.o(i.User_LED_ms)
-    User_RMS_Deal                            0x000038e1   Thumb Code    38  user_function.o(i.User_RMS_Deal)
-    WDT_Restart                              0x00003915   Thumb Code     8  wdt.o(i.WDT_Restart)
-    Waiting_Deal_Func                        0x00003921   Thumb Code    52  sys_state_machine.o(i.Waiting_Deal_Func)
-    __ARM_common_switch8                     0x0000395d   Thumb Code    26  gpio.o(i.__ARM_common_switch8)
-    _is_digit                                0x000039d5   Thumb Code    14  __printf_wp.o(i._is_digit)
-    _sys_exit                                0x000039e5   Thumb Code    16  retarget.o(i._sys_exit)
-    main                                     0x000039fd   Thumb Code    30  main.o(i.main)
-    sqrt                                     0x00003a25   Thumb Code    66  sqrt.o(i.sqrt)
-    NMI_Handler                              0x00003a6d   Thumb Code     0  wdt_user.o(i.wdt_interrupt)
-    wdt_interrupt                            0x00003a6d   Thumb Code    16  wdt_user.o(i.wdt_interrupt)
-    CLK_Fclk_Select                          0x00003a81   Thumb Code    62  clk.o(sram_code)
-    Sine_Table_50Hz                          0x00003ac8   Data         840  user_sine_table.o(.constdata)
-    __I$use$fp                               0x00003ac8   Number         0  usenofp.o(x$fpl$usenofp)
-    Sine_Table_60Hz                          0x00003e10   Data         700  user_sine_table.o(.constdata)
-    Region$$Table$$Base                      0x000041a0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000041d0   Number         0  anon$$obj.o(Region$$Table)
+    COM_CHG_INV_Select                       0x000019ed   Thumb Code   898  user_function.o(i.COM_CHG_INV_Select)
+    COM_CloseDrive                           0x00001de1   Thumb Code    64  user_function.o(i.COM_CloseDrive)
+    COM_Function                             0x00001e31   Thumb Code   116  user_function.o(i.COM_Function)
+    COM_Get_Protect_Flag                     0x00001ebd   Thumb Code    88  user_fault_check.o(i.COM_Get_Protect_Flag)
+    COM_PWM_Disable                          0x00001f19   Thumb Code    18  sys_hardware_init.o(i.COM_PWM_Disable)
+    COM_UART1_Deal                           0x00001f35   Thumb Code   272  user_function.o(i.COM_UART1_Deal)
+    COM_UPS_Deal                             0x00002065   Thumb Code   138  user_function.o(i.COM_UPS_Deal)
+    DMA_Start                                0x00002111   Thumb Code   158  dma.o(i.DMA_Start)
+    ELC_Start                                0x000021bd   Thumb Code     6  elc.o(i.ELC_Start)
+    EPWM_ConfigInit                          0x000021c9   Thumb Code   236  sys_hardware_init.o(i.EPWM_ConfigInit)
+    Fault_Deal_Func                          0x000022d1   Thumb Code    20  sys_state_machine.o(i.Fault_Deal_Func)
+    Fault_State_Check                        0x000022e5   Thumb Code   442  user_fault_check.o(i.Fault_State_Check)
+    Fault_State_Deal                         0x00002541   Thumb Code     2  user_fault_check.o(i.Fault_State_Deal)
+    Function_TxSendDebug_Four_INT            0x00002545   Thumb Code    62  change.o(i.Function_TxSendDebug_Four_INT)
+    GPIO_Init                                0x000025a9   Thumb Code   114  sys_hardware_init.o(i.GPIO_Init)
+    Get_PLL_Sin                              0x00002621   Thumb Code    12  change.o(i.Get_PLL_Sin)
+    Get_PLL_Sin_WithARG                      0x0000262d   Thumb Code   126  change.o(i.Get_PLL_Sin_WithARG)
+    INV_PWM_Enable                           0x000026b9   Thumb Code    88  sys_hardware_init.o(i.INV_PWM_Enable)
+    INV_Run_VariableInit                     0x00002721   Thumb Code   358  sys_variable_init.o(i.INV_Run_VariableInit)
+    Initial_Deal_Func                        0x000028f1   Thumb Code    20  sys_state_machine.o(i.Initial_Deal_Func)
+    Key_Calc                                 0x00002909   Thumb Code    70  user_function.o(i.Key_Calc)
+    PFC_PWM_Enable                           0x00002951   Thumb Code    62  sys_hardware_init.o(i.PFC_PWM_Enable)
+    PFC_Run_VariableInit                     0x000029a9   Thumb Code   258  sys_variable_init.o(i.PFC_Run_VariableInit)
+    PORT_Init                                0x00002b15   Thumb Code   180  gpio.o(i.PORT_Init)
+    Protect_Release                          0x00002bd1   Thumb Code     2  user_fault_check.o(i.Protect_Release)
+    Ready_Deal_Func                          0x00002bd3   Thumb Code    12  sys_state_machine.o(i.Ready_Deal_Func)
+    Ready_State_Check                        0x00002be1   Thumb Code   430  sys_state_machine.o(i.Ready_State_Check)
+    Run_Deal_Func                            0x00002e01   Thumb Code    34  sys_state_machine.o(i.Run_Deal_Func)
+    Run_State_OpenDriver                     0x00002e25   Thumb Code    44  sys_state_machine.o(i.Run_State_OpenDriver)
+    State_Context_Func                       0x00002e5d   Thumb Code   128  sys_state_machine.o(i.State_Context_Func)
+    State_Context_Task                       0x00002edd   Thumb Code   182  sys_state_machine.o(i.State_Context_Task)
+    Stop_Deal_Func                           0x00002fa1   Thumb Code     2  sys_state_machine.o(i.Stop_Deal_Func)
+    SysTick_ConfigInit                       0x00002fa5   Thumb Code    44  sys_hardware_init.o(i.SysTick_ConfigInit)
+    Sys_HardConfigInit                       0x00002fdd   Thumb Code   190  sys_hardware_init.o(i.Sys_HardConfigInit)
+    Sys_IE_Init                              0x000030b9   Thumb Code   134  sys_hardware_init.o(i.Sys_IE_Init)
+    Sys_Variableinit                         0x00003149   Thumb Code   490  sys_variable_init.o(i.Sys_Variableinit)
+    SystemClock_Init                         0x000033c9   Thumb Code    58  sys_hardware_init.o(i.SystemClock_Init)
+    SystemInit                               0x00003411   Thumb Code    82  system_bat32g139.o(i.SystemInit)
+    TIMC_ConfigInit                          0x00003485   Thumb Code    50  sys_hardware_init.o(i.TIMC_ConfigInit)
+    UART0_ConfigInit                         0x000034c9   Thumb Code   192  sys_hardware_init.o(i.UART0_ConfigInit)
+    UART1_ConfigInit                         0x000035b5   Thumb Code   164  sys_hardware_init.o(i.UART1_ConfigInit)
+    User_DelayTime_ms                        0x0000367d   Thumb Code    22  user_function.o(i.User_DelayTime_ms)
+    User_DelayTime_us                        0x00003699   Thumb Code    20  user_function.o(i.User_DelayTime_us)
+    User_Divider                             0x000036ad   Thumb Code    16  user_function.o(i.User_Divider)
+    User_Key_Deal                            0x000036c1   Thumb Code   160  user_function.o(i.User_Key_Deal)
+    User_LED_Deal                            0x0000377d   Thumb Code   272  user_function.o(i.User_LED_Deal)
+    User_LED_ms                              0x000038a1   Thumb Code    84  user_function.o(i.User_LED_ms)
+    User_RMS_Deal                            0x000038f9   Thumb Code    38  user_function.o(i.User_RMS_Deal)
+    WDT_Restart                              0x0000392d   Thumb Code     8  wdt.o(i.WDT_Restart)
+    Waiting_Deal_Func                        0x00003939   Thumb Code    52  sys_state_machine.o(i.Waiting_Deal_Func)
+    __ARM_common_switch8                     0x00003975   Thumb Code    26  gpio.o(i.__ARM_common_switch8)
+    _is_digit                                0x000039ed   Thumb Code    14  __printf_wp.o(i._is_digit)
+    _sys_exit                                0x000039fd   Thumb Code    16  retarget.o(i._sys_exit)
+    main                                     0x00003a15   Thumb Code    30  main.o(i.main)
+    sqrt                                     0x00003a3d   Thumb Code    66  sqrt.o(i.sqrt)
+    NMI_Handler                              0x00003a85   Thumb Code     0  wdt_user.o(i.wdt_interrupt)
+    wdt_interrupt                            0x00003a85   Thumb Code    16  wdt_user.o(i.wdt_interrupt)
+    CLK_Fclk_Select                          0x00003a99   Thumb Code    62  clk.o(sram_code)
+    Sine_Table_50Hz                          0x00003ae0   Data         840  user_sine_table.o(.constdata)
+    __I$use$fp                               0x00003ae0   Number         0  usenofp.o(x$fpl$usenofp)
+    Sine_Table_60Hz                          0x00003e28   Data         700  user_sine_table.o(.constdata)
+    Region$$Table$$Base                      0x000041b8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000041e8   Number         0  anon$$obj.o(Region$$Table)
     Long Thumb to Thumb Veneer to COM_PWM_Disable 0x20000101   Thumb Code    12  anon$$obj.o(Veneer$$Code)
     Long Thumb to Thumb Veneer to User_Divider 0x2000010d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
     Long Thumb to Thumb Veneer to Get_PLL_Sin 0x20000119   Thumb Code    12  anon$$obj.o(Veneer$$Code)
@@ -2716,168 +2733,170 @@ Image Symbol Table
     HardFault_Handler                        0x20000201   Thumb Code    24  interrupt.o(i.HardFault_Handler)
     INV_AC_Vol_FreCalc                       0x20000221   Thumb Code   134  user_parallel.o(i.INV_AC_Vol_FreCalc)
     INV_Ctrl                                 0x200002b9   Thumb Code  1092  inv_ctrl.o(i.INV_Ctrl)
-    INV_DataSend                             0x200006fd   Thumb Code   266  user_communication.o(i.INV_DataSend)
-    INV_Deal                                 0x20000835   Thumb Code   110  interrupt.o(i.INV_Deal)
-    INV_Lock_Phase                           0x200008c5   Thumb Code   246  inv_ctrl.o(i.INV_Lock_Phase)
-    INV_MasterSlaveSelect                    0x200009dd   Thumb Code   122  user_parallel.o(i.INV_MasterSlaveSelect)
-    INV_PQ_Droop_Ctrl                        0x20000a65   Thumb Code    74  pq_droop_ctrl.o(i.INV_PQ_Droop_Ctrl)
-    PFC_AC_Vol_FreCalc                       0x20000ab1   Thumb Code   136  user_parallel.o(i.PFC_AC_Vol_FreCalc)
-    PFC_Ctrl                                 0x20000b55   Thumb Code   238  pfc_ctrl.o(i.PFC_Ctrl)
-    PFC_Deal                                 0x20000c65   Thumb Code   380  interrupt.o(i.PFC_Deal)
-    PFC_PID_Ctrl                             0x20000e25   Thumb Code   102  pid_ctrl.o(i.PFC_PID_Ctrl)
-    PFC_VBus_RefCalc                         0x20000e8d   Thumb Code   150  pfc_ctrl.o(i.PFC_VBus_RefCalc)
-    PID_Ctrl                                 0x20000f39   Thumb Code    98  pid_ctrl.o(i.PID_Ctrl)
-    PLL_Ctrl                                 0x20000f9d   Thumb Code   432  pll_ctrl.o(i.PLL_Ctrl)
-    PLL_Ctrl_Param                           0x2000115d   Thumb Code    32  pll_ctrl.o(i.PLL_Ctrl_Param)
-    RMS_PQ_Calc                              0x20001189   Thumb Code   240  user_sample.o(i.RMS_PQ_Calc)
-    RMS_PQ_Update                            0x2000128d   Thumb Code   280  user_sample.o(i.RMS_PQ_Update)
-    SysTick_Handler                          0x200013b5   Thumb Code   146  interrupt.o(i.SysTick_Handler)
-    UART1_INV_DataSend                       0x20001471   Thumb Code   112  user_communication.o(i.UART1_INV_DataSend)
-    User_UART_View                           0x200014f1   Thumb Code    26  user_communication.o(i.User_UART_View)
-    IRQ21_Handler                            0x20001515   Thumb Code     0  interrupt.o(i.adc_interrupt)
-    adc_interrupt                            0x20001515   Thumb Code   546  interrupt.o(i.adc_interrupt)
-    crc16_modbus                             0x2000176d   Thumb Code    50  user_communication.o(i.crc16_modbus)
-    IRQ27_Handler                            0x200017a5   Thumb Code     0  interrupt.o(i.tmm0_interrupt)
-    tmm0_interrupt                           0x200017a5   Thumb Code    28  interrupt.o(i.tmm0_interrupt)
-    IRQ28_Handler                            0x200017c9   Thumb Code     0  interrupt.o(i.tmm1_interrupt)
-    tmm1_interrupt                           0x200017c9   Thumb Code   308  interrupt.o(i.tmm1_interrupt)
-    IRQ14_Handler                            0x20001935   Thumb Code     0  interrupt.o(i.uart1_interrupt_receive)
-    uart1_interrupt_receive                  0x20001935   Thumb Code    26  interrupt.o(i.uart1_interrupt_receive)
-    Sin_Cos_Table                            0x20001958   Data         512  pll_ctrl.o(.constdata)
-    g_WdtIntTaken                            0x20001b58   Data           4  wdt_user.o(.data)
-    tmsr1_temp                               0x20001b5c   Data           1  interrupt.o(.data)
-    tmier1_temp                              0x20001b5d   Data           1  interrupt.o(.data)
-    PFC_StartCount                           0x20001b5e   Data           2  interrupt.o(.data)
-    u16AD_Cnt                                0x20001b60   Data           2  interrupt.o(.data)
-    User_UART_View_cnt11                     0x20001b64   Data           4  interrupt.o(.data)
-    count_err                                0x20001b68   Data           4  interrupt.o(.data)
-    PFC_P_OLP1_Info                          0x20001b6c   Data          20  sys_struct.o(.data)
-    PFC_P_OLP2_Info                          0x20001b80   Data          20  sys_struct.o(.data)
-    PFC_RMS_OCP1_Info                        0x20001b94   Data          20  sys_struct.o(.data)
-    PFC_RMS_OCP2_Info                        0x20001ba8   Data          20  sys_struct.o(.data)
-    COM_VBus_OVP1_Info                       0x20001bbc   Data          20  sys_struct.o(.data)
-    COM_VBus_OVP2_Info                       0x20001bd0   Data          20  sys_struct.o(.data)
-    COM_VBus_OVP3_Info                       0x20001be4   Data          20  sys_struct.o(.data)
-    INV_VBus_LVP1_Info                       0x20001bf8   Data          20  sys_struct.o(.data)
-    INV_VBus_LVP2_Info                       0x20001c0c   Data          20  sys_struct.o(.data)
-    INV_VBus_LVP3_Info                       0x20001c20   Data          20  sys_struct.o(.data)
-    INV_P_OLP1_Info                          0x20001c34   Data          20  sys_struct.o(.data)
-    INV_P_OLP2_Info                          0x20001c48   Data          20  sys_struct.o(.data)
-    INV_P_OLP3_Info                          0x20001c5c   Data          20  sys_struct.o(.data)
-    INV_P_OLP4_Info                          0x20001c70   Data          20  sys_struct.o(.data)
-    INV_S_OLP1_Info                          0x20001c84   Data          20  sys_struct.o(.data)
-    INV_S_OLP2_Info                          0x20001c98   Data          20  sys_struct.o(.data)
-    INV_S_OLP3_Info                          0x20001cac   Data          20  sys_struct.o(.data)
-    INV_S_OLP4_Info                          0x20001cc0   Data          20  sys_struct.o(.data)
-    INV_RMS_OCP1_Info                        0x20001cd4   Data          20  sys_struct.o(.data)
-    INV_RMS_OCP2_Info                        0x20001ce8   Data          20  sys_struct.o(.data)
-    INV_RMS_OCP3_Info                        0x20001cfc   Data          20  sys_struct.o(.data)
-    INV_RMS_OCP4_Info                        0x20001d10   Data          20  sys_struct.o(.data)
-    INV_IST_OCP1_Info                        0x20001d24   Data          20  sys_struct.o(.data)
-    INV_ACOUT_OVP_Info                       0x20001d38   Data          20  sys_struct.o(.data)
-    INV_ACOUT_LVP_Info                       0x20001d4c   Data          20  sys_struct.o(.data)
-    INV_ACOUT_SCP_Info                       0x20001d60   Data          20  sys_struct.o(.data)
-    INV_ACOUT_P_SCP_Info                     0x20001d74   Data          20  sys_struct.o(.data)
-    COM_AuxPower_OVP_Info                    0x20001d88   Data          20  sys_struct.o(.data)
-    COM_AuxPower_LVP_Info                    0x20001d9c   Data          20  sys_struct.o(.data)
-    COM_Vref_OVP_Info                        0x20001db0   Data          20  sys_struct.o(.data)
-    COM_Vref_LVP_Info                        0x20001dc4   Data          20  sys_struct.o(.data)
-    COM_OTP1_Info                            0x20001dd8   Data          20  sys_struct.o(.data)
-    COM_OTP2_Info                            0x20001dec   Data          20  sys_struct.o(.data)
-    INV_StartCheck_VBus_Up                   0x20001e00   Data          20  sys_struct.o(.data)
-    INV_StartCheck_VBus_Down                 0x20001e14   Data          20  sys_struct.o(.data)
-    COM_StartCheck_AuxPower_Up               0x20001e28   Data          20  sys_struct.o(.data)
-    COM_StartCheck_AuxPower_Down             0x20001e3c   Data          20  sys_struct.o(.data)
-    PFC_StartCheck_AC_VOL_Up                 0x20001e50   Data          20  sys_struct.o(.data)
-    PFC_StartCheck_AC_VOL_Down               0x20001e64   Data          20  sys_struct.o(.data)
-    PFC_StartCheck_FREQ_Up                   0x20001e78   Data          20  sys_struct.o(.data)
-    PFC_StartCheck_FREQ_Down                 0x20001e8c   Data          20  sys_struct.o(.data)
-    COM_StartCheck_Temp_Up                   0x20001ea0   Data          20  sys_struct.o(.data)
-    AD_Correct_V_ACOUT                       0x20001eb8   Data          40  sys_struct.o(.data)
-    AD_Correct_V_ACIN                        0x20001ee0   Data          40  sys_struct.o(.data)
-    AD_Correct_I_Induc                       0x20001f08   Data          40  sys_struct.o(.data)
-    AD_Correct_I_Load                        0x20001f30   Data          40  sys_struct.o(.data)
-    AD_Correct_Vref                          0x20001f58   Data          40  sys_struct.o(.data)
-    INV_PID_Vol                              0x20001f80   Data          84  sys_struct.o(.data)
-    INV_PID_Cur                              0x20001fd4   Data          84  sys_struct.o(.data)
-    INV_PID_Power                            0x20002028   Data          84  sys_struct.o(.data)
-    INV_PID_DCIM                             0x2000207c   Data          84  sys_struct.o(.data)
-    PFC_PID_Vol                              0x200020d0   Data          84  sys_struct.o(.data)
-    PFC_PID_Cur                              0x20002124   Data          84  sys_struct.o(.data)
-    INV_Repeat_Info                          0x20002178   Data          56  sys_struct.o(.data)
-    Key_SW_InvOn                             0x200021b0   Data          20  sys_struct.o(.data)
-    StartCheck_Flag_Info                     0x200021c4   Data           2  sys_struct.o(.data)
-    System_ProtectFlag_Info                  0x200021c6   Data           4  sys_struct.o(.data)
-    UART1_Info                               0x200021cc   Data         300  sys_struct.o(.data)
-    UARTx_DC_Info                            0x200022f8   Data           8  sys_struct.o(.data)
-    SysClockBase_ms                          0x20002300   Data           2  sys_struct.o(.data)
-    i16_variableI                            0x20002302   Data           2  sys_variable_init.o(.data)
-    Stop_Deal                                0x20002304   Data           8  sys_state_machine.o(.data)
-    State_Context                            0x2000230c   Data          32  sys_state_machine.o(.data)
-    Initial_Deal                             0x2000232c   Data          16  sys_state_machine.o(.data)
-    Waiting_Deal                             0x2000233c   Data          16  sys_state_machine.o(.data)
-    Ready_Deal                               0x2000234c   Data          20  sys_state_machine.o(.data)
-    Run_Deal                                 0x20002360   Data          20  sys_state_machine.o(.data)
-    Fault_Deal                               0x20002374   Data          16  sys_state_machine.o(.data)
-    INV_flag_cnt1                            0x20002384   Data           1  user_parallel.o(.data)
-    PFC_flag_cnt1                            0x20002385   Data           1  user_parallel.o(.data)
-    INV_flag_cnt                             0x20002386   Data           1  user_parallel.o(.data)
-    INV_flag                                 0x20002387   Data           1  user_parallel.o(.data)
-    PFC_flag                                 0x20002388   Data           1  user_parallel.o(.data)
-    PFC_flag_cnt                             0x20002389   Data           1  user_parallel.o(.data)
-    INV_TimeCntVal                           0x2000238a   Data           2  user_parallel.o(.data)
-    u16_INV_Freq_Cnt                         0x2000238c   Data           2  user_parallel.o(.data)
-    PFC_TimeCntVal                           0x2000238e   Data           2  user_parallel.o(.data)
-    PFC_Freq_Time_Cnt                        0x20002390   Data           2  user_parallel.o(.data)
-    u8_Key_SW_InvOn_Flag                     0x20002394   Data           1  user_function.o(.data)
-    u8_System1msbit_cnt                      0x20002395   Data           1  user_function.o(.data)
-    u16INV_OFF_Flag                          0x20002396   Data           2  user_function.o(.data)
-    i16PFC_AC_Vol_AD_temp                    0x20002398   Data           2  user_function.o(.data)
-    u16_InvOn_Start_count                    0x2000239a   Data           2  user_function.o(.data)
-    UART1_RXD_B_Temp                         0x2000239c   Data           4  user_function.o(.data)
-    PFC_VBUS_READY_OK_Cnt                    0x200023a0   Data           2  user_communication.o(.data)
-    isAllowCHG                               0x200023a4   Data           4  change.o(.data)
-    PWM_CNT                                  0x200023a8   Data           2  change.o(.data)
-    Workms                                   0x200023ac   Data           4  change.o(.data)
-    Works                                    0x200023b0   Data           4  change.o(.data)
-    WorkMin                                  0x200023b4   Data           4  change.o(.data)
-    PFC_CHG_Out_StepVal                      0x200023b8   Data           1  pfc_ctrl.o(.data)
-    PFC_Reverse_Flag                         0x200023b9   Data           1  pfc_ctrl.o(.data)
-    PFC_Reverse_BufferCount                  0x200023ba   Data           2  pfc_ctrl.o(.data)
-    PFC_Zero_DutySS_Count                    0x200023bc   Data           4  pfc_ctrl.o(.data)
-    u16Index                                 0x200023c0   Data           2  pll_ctrl.o(.data)
-    u16Index2                                0x200023c2   Data           2  pll_ctrl.o(.data)
-    SystemCoreClock                          0x200023c4   Data           4  system_bat32g139.o(.data)
-    INV_PQ_Droop_Info                        0x200023c8   Data          76  sys_struct.o(.bss)
-    RMS_PQ_Info                              0x20002414   Data         136  sys_struct.o(.bss)
-    ADSample_Info                            0x2000249c   Data          84  sys_struct.o(.bss)
-    COM_Ctr_Info                             0x200024f0   Data          64  sys_struct.o(.bss)
-    UPS_Ctr_Info                             0x20002530   Data          44  sys_struct.o(.bss)
-    LED_Ctr_Info                             0x2000255c   Data          10  sys_struct.o(.bss)
-    InvToDC_Data_Info                        0x20002566   Data          20  sys_struct.o(.bss)
-    COM_AD_Data_Info                         0x2000257c   Data          60  sys_struct.o(.bss)
-    ADSampleDMA_Info                         0x200025b8   Data          10  sys_struct.o(.bss)
-    PFC_Ctrl_Info                            0x200025c4   Data          92  sys_struct.o(.bss)
-    PFC_Ref_Info                             0x20002620   Data          12  sys_struct.o(.bss)
-    PFC_VPID_Info                            0x2000262c   Data          20  sys_struct.o(.bss)
-    INV_Parall_Info                          0x20002640   Data          28  sys_struct.o(.bss)
-    INV_Ctrl_Info                            0x2000265c   Data         196  sys_struct.o(.bss)
-    P_table                                  0x20002720   Data        1360  user_sample.o(.bss)
-    INV_AC_Vol_table                         0x20002c70   Data        1360  user_sample.o(.bss)
-    PFC_AC_Vol_table                         0x200031c0   Data        1360  user_sample.o(.bss)
-    CurLoad_table                            0x20003710   Data        1360  user_sample.o(.bss)
-    CurInduc_table                           0x20003c60   Data        1360  user_sample.o(.bss)
-    txBuf                                    0x200041b0   Data          24  user_communication.o(.bss)
-    num                                      0x200041c8   Data          20  user_communication.o(.bss)
-    txChar                                   0x200041dc   Data          24  change.o(.bss)
-    txCharL                                  0x200041f4   Data          40  change.o(.bss)
-    RepeatOut                                0x2000421c   Data        1200  repeat_ctrl.o(.bss)
-    RepeatErr                                0x200046cc   Data        1200  repeat_ctrl.o(.bss)
-    PLL_Ctrl_Info_V_ACOUT                    0x20004b7c   Data        2372  pll_ctrl.o(.bss)
-    PLL_Ctrl_Info_V_ACIN                     0x200054c0   Data        2372  pll_ctrl.o(.bss)
-    PFC_3Theta_Info                          0x20005e04   Data          12  pll_ctrl.o(.bss)
-    __libspace_start                         0x20005e10   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20005e70   Data           0  libspace.o(.bss)
+    INV_Ctrl_220V                            0x200006fd   Thumb Code   830  inv_ctrl.o(i.INV_Ctrl_220V)
+    INV_DataSend                             0x20000a7d   Thumb Code   266  user_communication.o(i.INV_DataSend)
+    INV_Deal                                 0x20000bb5   Thumb Code   124  interrupt.o(i.INV_Deal)
+    INV_Lock_Phase                           0x20000c55   Thumb Code   246  inv_ctrl.o(i.INV_Lock_Phase)
+    INV_MasterSlaveSelect                    0x20000d6d   Thumb Code   122  user_parallel.o(i.INV_MasterSlaveSelect)
+    INV_PQ_Droop_Ctrl                        0x20000df5   Thumb Code    74  pq_droop_ctrl.o(i.INV_PQ_Droop_Ctrl)
+    PFC_AC_Vol_FreCalc                       0x20000e41   Thumb Code   136  user_parallel.o(i.PFC_AC_Vol_FreCalc)
+    PFC_Ctrl                                 0x20000ee5   Thumb Code   238  pfc_ctrl.o(i.PFC_Ctrl)
+    PFC_Deal                                 0x20000ff5   Thumb Code   380  interrupt.o(i.PFC_Deal)
+    PFC_PID_Ctrl                             0x200011b5   Thumb Code   102  pid_ctrl.o(i.PFC_PID_Ctrl)
+    PFC_VBus_RefCalc                         0x2000121d   Thumb Code   150  pfc_ctrl.o(i.PFC_VBus_RefCalc)
+    PID_Ctrl                                 0x200012c9   Thumb Code    98  pid_ctrl.o(i.PID_Ctrl)
+    PLL_Ctrl                                 0x2000132d   Thumb Code   432  pll_ctrl.o(i.PLL_Ctrl)
+    PLL_Ctrl_Param                           0x200014ed   Thumb Code    32  pll_ctrl.o(i.PLL_Ctrl_Param)
+    RMS_PQ_Calc                              0x20001519   Thumb Code   240  user_sample.o(i.RMS_PQ_Calc)
+    RMS_PQ_Update                            0x2000161d   Thumb Code   280  user_sample.o(i.RMS_PQ_Update)
+    SysTick_Handler                          0x20001745   Thumb Code   146  interrupt.o(i.SysTick_Handler)
+    UART1_INV_DataSend                       0x20001801   Thumb Code   112  user_communication.o(i.UART1_INV_DataSend)
+    User_UART_View                           0x20001881   Thumb Code    26  user_communication.o(i.User_UART_View)
+    IRQ21_Handler                            0x200018a5   Thumb Code     0  interrupt.o(i.adc_interrupt)
+    adc_interrupt                            0x200018a5   Thumb Code   546  interrupt.o(i.adc_interrupt)
+    crc16_modbus                             0x20001afd   Thumb Code    50  user_communication.o(i.crc16_modbus)
+    IRQ27_Handler                            0x20001b35   Thumb Code     0  interrupt.o(i.tmm0_interrupt)
+    tmm0_interrupt                           0x20001b35   Thumb Code    28  interrupt.o(i.tmm0_interrupt)
+    IRQ28_Handler                            0x20001b59   Thumb Code     0  interrupt.o(i.tmm1_interrupt)
+    tmm1_interrupt                           0x20001b59   Thumb Code   308  interrupt.o(i.tmm1_interrupt)
+    IRQ14_Handler                            0x20001cc5   Thumb Code     0  interrupt.o(i.uart1_interrupt_receive)
+    uart1_interrupt_receive                  0x20001cc5   Thumb Code    26  interrupt.o(i.uart1_interrupt_receive)
+    Sin_Cos_Table                            0x20001ce8   Data         512  pll_ctrl.o(.constdata)
+    g_WdtIntTaken                            0x20001ee8   Data           4  wdt_user.o(.data)
+    tmsr1_temp                               0x20001eec   Data           1  interrupt.o(.data)
+    tmier1_temp                              0x20001eed   Data           1  interrupt.o(.data)
+    PFC_StartCount                           0x20001eee   Data           2  interrupt.o(.data)
+    u16AD_Cnt                                0x20001ef0   Data           2  interrupt.o(.data)
+    User_UART_View_cnt11                     0x20001ef4   Data           4  interrupt.o(.data)
+    count_err                                0x20001ef8   Data           4  interrupt.o(.data)
+    PFC_P_OLP1_Info                          0x20001efc   Data          20  sys_struct.o(.data)
+    PFC_P_OLP2_Info                          0x20001f10   Data          20  sys_struct.o(.data)
+    PFC_RMS_OCP1_Info                        0x20001f24   Data          20  sys_struct.o(.data)
+    PFC_RMS_OCP2_Info                        0x20001f38   Data          20  sys_struct.o(.data)
+    COM_VBus_OVP1_Info                       0x20001f4c   Data          20  sys_struct.o(.data)
+    COM_VBus_OVP2_Info                       0x20001f60   Data          20  sys_struct.o(.data)
+    COM_VBus_OVP3_Info                       0x20001f74   Data          20  sys_struct.o(.data)
+    INV_VBus_LVP1_Info                       0x20001f88   Data          20  sys_struct.o(.data)
+    INV_VBus_LVP2_Info                       0x20001f9c   Data          20  sys_struct.o(.data)
+    INV_VBus_LVP3_Info                       0x20001fb0   Data          20  sys_struct.o(.data)
+    INV_P_OLP1_Info                          0x20001fc4   Data          20  sys_struct.o(.data)
+    INV_P_OLP2_Info                          0x20001fd8   Data          20  sys_struct.o(.data)
+    INV_P_OLP3_Info                          0x20001fec   Data          20  sys_struct.o(.data)
+    INV_P_OLP4_Info                          0x20002000   Data          20  sys_struct.o(.data)
+    INV_S_OLP1_Info                          0x20002014   Data          20  sys_struct.o(.data)
+    INV_S_OLP2_Info                          0x20002028   Data          20  sys_struct.o(.data)
+    INV_S_OLP3_Info                          0x2000203c   Data          20  sys_struct.o(.data)
+    INV_S_OLP4_Info                          0x20002050   Data          20  sys_struct.o(.data)
+    INV_RMS_OCP1_Info                        0x20002064   Data          20  sys_struct.o(.data)
+    INV_RMS_OCP2_Info                        0x20002078   Data          20  sys_struct.o(.data)
+    INV_RMS_OCP3_Info                        0x2000208c   Data          20  sys_struct.o(.data)
+    INV_RMS_OCP4_Info                        0x200020a0   Data          20  sys_struct.o(.data)
+    INV_IST_OCP1_Info                        0x200020b4   Data          20  sys_struct.o(.data)
+    INV_ACOUT_OVP_Info                       0x200020c8   Data          20  sys_struct.o(.data)
+    INV_ACOUT_LVP_Info                       0x200020dc   Data          20  sys_struct.o(.data)
+    INV_ACOUT_SCP_Info                       0x200020f0   Data          20  sys_struct.o(.data)
+    INV_ACOUT_P_SCP_Info                     0x20002104   Data          20  sys_struct.o(.data)
+    COM_AuxPower_OVP_Info                    0x20002118   Data          20  sys_struct.o(.data)
+    COM_AuxPower_LVP_Info                    0x2000212c   Data          20  sys_struct.o(.data)
+    COM_Vref_OVP_Info                        0x20002140   Data          20  sys_struct.o(.data)
+    COM_Vref_LVP_Info                        0x20002154   Data          20  sys_struct.o(.data)
+    COM_OTP1_Info                            0x20002168   Data          20  sys_struct.o(.data)
+    COM_OTP2_Info                            0x2000217c   Data          20  sys_struct.o(.data)
+    INV_StartCheck_VBus_Up                   0x20002190   Data          20  sys_struct.o(.data)
+    INV_StartCheck_VBus_Down                 0x200021a4   Data          20  sys_struct.o(.data)
+    COM_StartCheck_AuxPower_Up               0x200021b8   Data          20  sys_struct.o(.data)
+    COM_StartCheck_AuxPower_Down             0x200021cc   Data          20  sys_struct.o(.data)
+    PFC_StartCheck_AC_VOL_Up                 0x200021e0   Data          20  sys_struct.o(.data)
+    PFC_StartCheck_AC_VOL_Down               0x200021f4   Data          20  sys_struct.o(.data)
+    PFC_StartCheck_FREQ_Up                   0x20002208   Data          20  sys_struct.o(.data)
+    PFC_StartCheck_FREQ_Down                 0x2000221c   Data          20  sys_struct.o(.data)
+    COM_StartCheck_Temp_Up                   0x20002230   Data          20  sys_struct.o(.data)
+    AD_Correct_V_ACOUT                       0x20002248   Data          40  sys_struct.o(.data)
+    AD_Correct_V_ACIN                        0x20002270   Data          40  sys_struct.o(.data)
+    AD_Correct_I_Induc                       0x20002298   Data          40  sys_struct.o(.data)
+    AD_Correct_I_Load                        0x200022c0   Data          40  sys_struct.o(.data)
+    AD_Correct_Vref                          0x200022e8   Data          40  sys_struct.o(.data)
+    INV_PID_Vol                              0x20002310   Data          84  sys_struct.o(.data)
+    INV_PID_Cur                              0x20002364   Data          84  sys_struct.o(.data)
+    INV_PID_Power                            0x200023b8   Data          84  sys_struct.o(.data)
+    INV_PID_DCIM                             0x2000240c   Data          84  sys_struct.o(.data)
+    PFC_PID_Vol                              0x20002460   Data          84  sys_struct.o(.data)
+    PFC_PID_Cur                              0x200024b4   Data          84  sys_struct.o(.data)
+    INV_Repeat_Info                          0x20002508   Data          56  sys_struct.o(.data)
+    Key_SW_InvOn                             0x20002540   Data          20  sys_struct.o(.data)
+    StartCheck_Flag_Info                     0x20002554   Data           2  sys_struct.o(.data)
+    System_ProtectFlag_Info                  0x20002556   Data           4  sys_struct.o(.data)
+    UART1_Info                               0x2000255c   Data         300  sys_struct.o(.data)
+    UARTx_DC_Info                            0x20002688   Data           8  sys_struct.o(.data)
+    SysClockBase_ms                          0x20002690   Data           2  sys_struct.o(.data)
+    i16_variableI                            0x20002692   Data           2  sys_variable_init.o(.data)
+    Stop_Deal                                0x20002694   Data           8  sys_state_machine.o(.data)
+    State_Context                            0x2000269c   Data          32  sys_state_machine.o(.data)
+    Initial_Deal                             0x200026bc   Data          16  sys_state_machine.o(.data)
+    Waiting_Deal                             0x200026cc   Data          16  sys_state_machine.o(.data)
+    Ready_Deal                               0x200026dc   Data          20  sys_state_machine.o(.data)
+    Run_Deal                                 0x200026f0   Data          20  sys_state_machine.o(.data)
+    Fault_Deal                               0x20002704   Data          16  sys_state_machine.o(.data)
+    INV_flag_cnt1                            0x20002714   Data           1  user_parallel.o(.data)
+    PFC_flag_cnt1                            0x20002715   Data           1  user_parallel.o(.data)
+    INV_flag_cnt                             0x20002716   Data           1  user_parallel.o(.data)
+    INV_flag                                 0x20002717   Data           1  user_parallel.o(.data)
+    PFC_flag                                 0x20002718   Data           1  user_parallel.o(.data)
+    PFC_flag_cnt                             0x20002719   Data           1  user_parallel.o(.data)
+    INV_TimeCntVal                           0x2000271a   Data           2  user_parallel.o(.data)
+    u16_INV_Freq_Cnt                         0x2000271c   Data           2  user_parallel.o(.data)
+    PFC_TimeCntVal                           0x2000271e   Data           2  user_parallel.o(.data)
+    PFC_Freq_Time_Cnt                        0x20002720   Data           2  user_parallel.o(.data)
+    u8_Key_SW_InvOn_Flag                     0x20002724   Data           1  user_function.o(.data)
+    u8_System1msbit_cnt                      0x20002725   Data           1  user_function.o(.data)
+    u16INV_OFF_Flag                          0x20002726   Data           2  user_function.o(.data)
+    i16PFC_AC_Vol_AD_temp                    0x20002728   Data           2  user_function.o(.data)
+    u16_InvOn_Start_count                    0x2000272a   Data           2  user_function.o(.data)
+    UART1_RXD_B_Temp                         0x2000272c   Data           4  user_function.o(.data)
+    PFC_VBUS_READY_OK_Cnt                    0x20002730   Data           2  user_communication.o(.data)
+    isAllowCHG                               0x20002734   Data           4  change.o(.data)
+    PWM_CNT                                  0x20002738   Data           2  change.o(.data)
+    is220V                                   0x2000273a   Data           1  change.o(.data)
+    Workms                                   0x2000273c   Data           4  change.o(.data)
+    Works                                    0x20002740   Data           4  change.o(.data)
+    WorkMin                                  0x20002744   Data           4  change.o(.data)
+    PFC_CHG_Out_StepVal                      0x20002748   Data           1  pfc_ctrl.o(.data)
+    PFC_Reverse_Flag                         0x20002749   Data           1  pfc_ctrl.o(.data)
+    PFC_Reverse_BufferCount                  0x2000274a   Data           2  pfc_ctrl.o(.data)
+    PFC_Zero_DutySS_Count                    0x2000274c   Data           4  pfc_ctrl.o(.data)
+    u16Index                                 0x20002750   Data           2  pll_ctrl.o(.data)
+    u16Index2                                0x20002752   Data           2  pll_ctrl.o(.data)
+    SystemCoreClock                          0x20002754   Data           4  system_bat32g139.o(.data)
+    INV_PQ_Droop_Info                        0x20002758   Data          76  sys_struct.o(.bss)
+    RMS_PQ_Info                              0x200027a4   Data         136  sys_struct.o(.bss)
+    ADSample_Info                            0x2000282c   Data          84  sys_struct.o(.bss)
+    COM_Ctr_Info                             0x20002880   Data          64  sys_struct.o(.bss)
+    UPS_Ctr_Info                             0x200028c0   Data          44  sys_struct.o(.bss)
+    LED_Ctr_Info                             0x200028ec   Data          10  sys_struct.o(.bss)
+    InvToDC_Data_Info                        0x200028f6   Data          20  sys_struct.o(.bss)
+    COM_AD_Data_Info                         0x2000290c   Data          60  sys_struct.o(.bss)
+    ADSampleDMA_Info                         0x20002948   Data          10  sys_struct.o(.bss)
+    PFC_Ctrl_Info                            0x20002954   Data          92  sys_struct.o(.bss)
+    PFC_Ref_Info                             0x200029b0   Data          12  sys_struct.o(.bss)
+    PFC_VPID_Info                            0x200029bc   Data          20  sys_struct.o(.bss)
+    INV_Parall_Info                          0x200029d0   Data          28  sys_struct.o(.bss)
+    INV_Ctrl_Info                            0x200029ec   Data         196  sys_struct.o(.bss)
+    P_table                                  0x20002ab0   Data        1360  user_sample.o(.bss)
+    INV_AC_Vol_table                         0x20003000   Data        1360  user_sample.o(.bss)
+    PFC_AC_Vol_table                         0x20003550   Data        1360  user_sample.o(.bss)
+    CurLoad_table                            0x20003aa0   Data        1360  user_sample.o(.bss)
+    CurInduc_table                           0x20003ff0   Data        1360  user_sample.o(.bss)
+    txBuf                                    0x20004540   Data          24  user_communication.o(.bss)
+    num                                      0x20004558   Data          20  user_communication.o(.bss)
+    txChar                                   0x2000456c   Data          24  change.o(.bss)
+    txCharL                                  0x20004584   Data          40  change.o(.bss)
+    RepeatOut                                0x200045ac   Data        1200  repeat_ctrl.o(.bss)
+    RepeatErr                                0x20004a5c   Data        1200  repeat_ctrl.o(.bss)
+    PLL_Ctrl_Info_V_ACOUT                    0x20004f0c   Data        2372  pll_ctrl.o(.bss)
+    PLL_Ctrl_Info_V_ACIN                     0x20005850   Data        2372  pll_ctrl.o(.bss)
+    PFC_3Theta_Info                          0x20006194   Data          12  pll_ctrl.o(.bss)
+    __libspace_start                         0x200061a0   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20006200   Data           0  libspace.o(.bss)
 
 
 
@@ -2887,105 +2906,105 @@ Memory Map of the image
 
   Image Entry point : 0x0000010d
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00006498, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00005ec4])
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00006840, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00006270])
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000041d0, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000041e8, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000c0   Data   RO         4483    RESET               startup_bat32g139.o
-    0x000000c0   0x000000c0   0x00000004   Data   RO         4494    .ARM.__AT_0x000000C0  system_bat32g139.o
-    0x000000c4   0x000000c4   0x0000000c   Ven    RO         4879    Veneer$$Code        anon$$obj.o
-    0x000000d0   0x000000d0   0x0000000c   Ven    RO         4880    Veneer$$Code        anon$$obj.o
-    0x000000dc   0x000000dc   0x0000000c   Ven    RO         4881    Veneer$$Code        anon$$obj.o
-    0x000000e8   0x000000e8   0x0000000c   Ven    RO         4882    Veneer$$Code        anon$$obj.o
-    0x000000f4   0x000000f4   0x0000000c   Ven    RO         4883    Veneer$$Code        anon$$obj.o
-    0x00000100   0x00000100   0x0000000c   Ven    RO         4884    Veneer$$Code        anon$$obj.o
-    0x0000010c   0x0000010c   0x00000008   Code   RO         4608  * !!!main             c_p.l(__main.o)
-    0x00000114   0x00000114   0x0000003c   Code   RO         4873    !!!scatter          c_p.l(__scatter.o)
-    0x00000150   0x00000150   0x0000001a   Code   RO         4875    !!handler_copy      c_p.l(__scatter_copy.o)
+    0x00000000   0x00000000   0x000000c0   Data   RO         4490    RESET               startup_bat32g139.o
+    0x000000c0   0x000000c0   0x00000004   Data   RO         4501    .ARM.__AT_0x000000C0  system_bat32g139.o
+    0x000000c4   0x000000c4   0x0000000c   Ven    RO         4886    Veneer$$Code        anon$$obj.o
+    0x000000d0   0x000000d0   0x0000000c   Ven    RO         4887    Veneer$$Code        anon$$obj.o
+    0x000000dc   0x000000dc   0x0000000c   Ven    RO         4888    Veneer$$Code        anon$$obj.o
+    0x000000e8   0x000000e8   0x0000000c   Ven    RO         4889    Veneer$$Code        anon$$obj.o
+    0x000000f4   0x000000f4   0x0000000c   Ven    RO         4890    Veneer$$Code        anon$$obj.o
+    0x00000100   0x00000100   0x0000000c   Ven    RO         4891    Veneer$$Code        anon$$obj.o
+    0x0000010c   0x0000010c   0x00000008   Code   RO         4615  * !!!main             c_p.l(__main.o)
+    0x00000114   0x00000114   0x0000003c   Code   RO         4880    !!!scatter          c_p.l(__scatter.o)
+    0x00000150   0x00000150   0x0000001a   Code   RO         4882    !!handler_copy      c_p.l(__scatter_copy.o)
     0x0000016a   0x0000016a   0x00000002   PAD
-    0x0000016c   0x0000016c   0x0000001c   Code   RO         4877    !!handler_zi        c_p.l(__scatter_zi.o)
-    0x00000188   0x00000188   0x00000002   Code   RO         4595    .ARM.Collect$$_printf_percent$$00000000  c_p.l(_printf_percent.o)
-    0x0000018a   0x0000018a   0x0000000a   Code   RO         4593    .ARM.Collect$$_printf_percent$$00000009  c_p.l(_printf_d.o)
-    0x00000194   0x00000194   0x00000004   Code   RO         4665    .ARM.Collect$$_printf_percent$$00000017  c_p.l(_printf_percent_end.o)
-    0x00000198   0x00000198   0x00000002   Code   RO         4743    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4745    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4747    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4750    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4752    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4754    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4757    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4759    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4761    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4763    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4765    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4767    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4769    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4771    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4773    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4775    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4777    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4781    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4783    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4785    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000000   Code   RO         4787    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
-    0x0000019a   0x0000019a   0x00000002   Code   RO         4788    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
-    0x0000019c   0x0000019c   0x00000002   Code   RO         4831    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
-    0x0000019e   0x0000019e   0x00000000   Code   RO         4852    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
-    0x0000019e   0x0000019e   0x00000000   Code   RO         4854    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
-    0x0000019e   0x0000019e   0x00000000   Code   RO         4856    .ARM.Collect$$libshutdown$$00000006  c_p.l(libshutdown2.o)
-    0x0000019e   0x0000019e   0x00000000   Code   RO         4859    .ARM.Collect$$libshutdown$$00000009  c_p.l(libshutdown2.o)
-    0x0000019e   0x0000019e   0x00000000   Code   RO         4862    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
-    0x0000019e   0x0000019e   0x00000000   Code   RO         4864    .ARM.Collect$$libshutdown$$0000000E  c_p.l(libshutdown2.o)
-    0x0000019e   0x0000019e   0x00000000   Code   RO         4867    .ARM.Collect$$libshutdown$$00000011  c_p.l(libshutdown2.o)
-    0x0000019e   0x0000019e   0x00000002   Code   RO         4868    .ARM.Collect$$libshutdown$$00000012  c_p.l(libshutdown2.o)
-    0x000001a0   0x000001a0   0x00000000   Code   RO         4648    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
-    0x000001a0   0x000001a0   0x00000000   Code   RO         4674    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
-    0x000001a0   0x000001a0   0x00000006   Code   RO         4686    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
-    0x000001a6   0x000001a6   0x00000000   Code   RO         4676    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
-    0x000001a6   0x000001a6   0x00000004   Code   RO         4677    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
-    0x000001aa   0x000001aa   0x00000000   Code   RO         4679    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
-    0x000001aa   0x000001aa   0x00000008   Code   RO         4680    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
-    0x000001b2   0x000001b2   0x00000002   Code   RO         4792    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
-    0x000001b4   0x000001b4   0x00000000   Code   RO         4805    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
-    0x000001b4   0x000001b4   0x00000004   Code   RO         4806    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
-    0x000001b8   0x000001b8   0x00000006   Code   RO         4807    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
+    0x0000016c   0x0000016c   0x0000001c   Code   RO         4884    !!handler_zi        c_p.l(__scatter_zi.o)
+    0x00000188   0x00000188   0x00000002   Code   RO         4602    .ARM.Collect$$_printf_percent$$00000000  c_p.l(_printf_percent.o)
+    0x0000018a   0x0000018a   0x0000000a   Code   RO         4600    .ARM.Collect$$_printf_percent$$00000009  c_p.l(_printf_d.o)
+    0x00000194   0x00000194   0x00000004   Code   RO         4672    .ARM.Collect$$_printf_percent$$00000017  c_p.l(_printf_percent_end.o)
+    0x00000198   0x00000198   0x00000002   Code   RO         4750    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4752    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4754    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4757    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4759    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4761    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4764    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4766    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4768    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4770    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4772    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4774    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4776    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4778    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4780    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4782    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4784    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4788    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4790    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4792    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000000   Code   RO         4794    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
+    0x0000019a   0x0000019a   0x00000002   Code   RO         4795    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
+    0x0000019c   0x0000019c   0x00000002   Code   RO         4838    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
+    0x0000019e   0x0000019e   0x00000000   Code   RO         4859    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
+    0x0000019e   0x0000019e   0x00000000   Code   RO         4861    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
+    0x0000019e   0x0000019e   0x00000000   Code   RO         4863    .ARM.Collect$$libshutdown$$00000006  c_p.l(libshutdown2.o)
+    0x0000019e   0x0000019e   0x00000000   Code   RO         4866    .ARM.Collect$$libshutdown$$00000009  c_p.l(libshutdown2.o)
+    0x0000019e   0x0000019e   0x00000000   Code   RO         4869    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
+    0x0000019e   0x0000019e   0x00000000   Code   RO         4871    .ARM.Collect$$libshutdown$$0000000E  c_p.l(libshutdown2.o)
+    0x0000019e   0x0000019e   0x00000000   Code   RO         4874    .ARM.Collect$$libshutdown$$00000011  c_p.l(libshutdown2.o)
+    0x0000019e   0x0000019e   0x00000002   Code   RO         4875    .ARM.Collect$$libshutdown$$00000012  c_p.l(libshutdown2.o)
+    0x000001a0   0x000001a0   0x00000000   Code   RO         4655    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
+    0x000001a0   0x000001a0   0x00000000   Code   RO         4681    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
+    0x000001a0   0x000001a0   0x00000006   Code   RO         4693    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
+    0x000001a6   0x000001a6   0x00000000   Code   RO         4683    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
+    0x000001a6   0x000001a6   0x00000004   Code   RO         4684    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
+    0x000001aa   0x000001aa   0x00000000   Code   RO         4686    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
+    0x000001aa   0x000001aa   0x00000008   Code   RO         4687    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
+    0x000001b2   0x000001b2   0x00000002   Code   RO         4799    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
+    0x000001b4   0x000001b4   0x00000000   Code   RO         4812    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
+    0x000001b4   0x000001b4   0x00000004   Code   RO         4813    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
+    0x000001b8   0x000001b8   0x00000006   Code   RO         4814    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
     0x000001be   0x000001be   0x00000002   PAD
-    0x000001c0   0x000001c0   0x00000080   Code   RO         4484    .text               startup_bat32g139.o
-    0x00000240   0x00000240   0x00000030   Code   RO         4535    .text               c_p.l(llmul.o)
-    0x00000270   0x00000270   0x00000028   Code   RO         4543    .text               c_p.l(noretval__2sprintf.o)
-    0x00000298   0x00000298   0x0000006c   Code   RO         4549    .text               c_p.l(_printf_dec.o)
-    0x00000304   0x00000304   0x00000138   Code   RO         4584    .text               c_p.l(__printf_flags_wp.o)
-    0x0000043c   0x0000043c   0x00000044   Code   RO         4596    .text               c_p.l(strlen.o)
-    0x00000480   0x00000480   0x0000015a   Code   RO         4602    .text               c_p.l(aeabi_sdiv.o)
-    0x000005da   0x000005da   0x00000006   Code   RO         4606    .text               c_p.l(heapauxi.o)
-    0x000005e0   0x000005e0   0x00000358   Code   RO         4610    .text               fz_ps.l(daddsub.o)
-    0x00000938   0x00000938   0x00000448   Code   RO         4612    .text               fz_ps.l(ddiv.o)
-    0x00000d80   0x00000d80   0x0000006c   Code   RO         4617    .text               fz_ps.l(dfixi.o)
-    0x00000dec   0x00000dec   0x00000058   Code   RO         4619    .text               fz_ps.l(dflti.o)
-    0x00000e44   0x00000e44   0x00000248   Code   RO         4623    .text               fz_ps.l(dmul.o)
-    0x0000108c   0x0000108c   0x00000060   Code   RO         4627    .text               fz_ps.l(dscalbn.o)
-    0x000010ec   0x000010ec   0x00000054   Code   RO         4629    .text               fz_ps.l(f2d.o)
-    0x00001140   0x00001140   0x00000160   Code   RO         4631    .text               fz_ps.l(fdiv.o)
-    0x000012a0   0x000012a0   0x00000044   Code   RO         4636    .text               fz_ps.l(fscalbn.o)
-    0x000012e4   0x000012e4   0x00000016   Code   RO         4653    .text               c_p.l(_rserrno.o)
-    0x000012fa   0x000012fa   0x000000b0   Code   RO         4655    .text               c_p.l(_printf_intcommon.o)
+    0x000001c0   0x000001c0   0x00000080   Code   RO         4491    .text               startup_bat32g139.o
+    0x00000240   0x00000240   0x00000030   Code   RO         4542    .text               c_p.l(llmul.o)
+    0x00000270   0x00000270   0x00000028   Code   RO         4550    .text               c_p.l(noretval__2sprintf.o)
+    0x00000298   0x00000298   0x0000006c   Code   RO         4556    .text               c_p.l(_printf_dec.o)
+    0x00000304   0x00000304   0x00000138   Code   RO         4591    .text               c_p.l(__printf_flags_wp.o)
+    0x0000043c   0x0000043c   0x00000044   Code   RO         4603    .text               c_p.l(strlen.o)
+    0x00000480   0x00000480   0x0000015a   Code   RO         4609    .text               c_p.l(aeabi_sdiv.o)
+    0x000005da   0x000005da   0x00000006   Code   RO         4613    .text               c_p.l(heapauxi.o)
+    0x000005e0   0x000005e0   0x00000358   Code   RO         4617    .text               fz_ps.l(daddsub.o)
+    0x00000938   0x00000938   0x00000448   Code   RO         4619    .text               fz_ps.l(ddiv.o)
+    0x00000d80   0x00000d80   0x0000006c   Code   RO         4624    .text               fz_ps.l(dfixi.o)
+    0x00000dec   0x00000dec   0x00000058   Code   RO         4626    .text               fz_ps.l(dflti.o)
+    0x00000e44   0x00000e44   0x00000248   Code   RO         4630    .text               fz_ps.l(dmul.o)
+    0x0000108c   0x0000108c   0x00000060   Code   RO         4634    .text               fz_ps.l(dscalbn.o)
+    0x000010ec   0x000010ec   0x00000054   Code   RO         4636    .text               fz_ps.l(f2d.o)
+    0x00001140   0x00001140   0x00000160   Code   RO         4638    .text               fz_ps.l(fdiv.o)
+    0x000012a0   0x000012a0   0x00000044   Code   RO         4643    .text               fz_ps.l(fscalbn.o)
+    0x000012e4   0x000012e4   0x00000016   Code   RO         4660    .text               c_p.l(_rserrno.o)
+    0x000012fa   0x000012fa   0x000000b0   Code   RO         4662    .text               c_p.l(_printf_intcommon.o)
     0x000013aa   0x000013aa   0x00000002   PAD
-    0x000013ac   0x000013ac   0x00000030   Code   RO         4659    .text               c_p.l(_printf_char_common.o)
-    0x000013dc   0x000013dc   0x0000000a   Code   RO         4661    .text               c_p.l(_sputc.o)
-    0x000013e6   0x000013e6   0x00000028   Code   RO         4666    .text               c_p.l(rtudiv10.o)
+    0x000013ac   0x000013ac   0x00000030   Code   RO         4666    .text               c_p.l(_printf_char_common.o)
+    0x000013dc   0x000013dc   0x0000000a   Code   RO         4668    .text               c_p.l(_sputc.o)
+    0x000013e6   0x000013e6   0x00000028   Code   RO         4673    .text               c_p.l(rtudiv10.o)
     0x0000140e   0x0000140e   0x00000002   PAD
-    0x00001410   0x00001410   0x00000100   Code   RO         4670    .text               fz_ps.l(dsqrt.o)
-    0x00001510   0x00001510   0x00000008   Code   RO         4698    .text               c_p.l(rt_errno_addr_intlibspace.o)
-    0x00001518   0x00001518   0x00000008   Code   RO         4724    .text               c_p.l(libspace.o)
-    0x00001520   0x00001520   0x0000003e   Code   RO         4727    .text               c_p.l(sys_stackheap_outer.o)
-    0x0000155e   0x0000155e   0x00000010   Code   RO         4730    .text               c_p.l(exit.o)
-    0x0000156e   0x0000156e   0x00000056   Code   RO         4871    .text               c_p.l(__dczerorl2.o)
+    0x00001410   0x00001410   0x00000100   Code   RO         4677    .text               fz_ps.l(dsqrt.o)
+    0x00001510   0x00001510   0x00000008   Code   RO         4705    .text               c_p.l(rt_errno_addr_intlibspace.o)
+    0x00001518   0x00001518   0x00000008   Code   RO         4731    .text               c_p.l(libspace.o)
+    0x00001520   0x00001520   0x0000003e   Code   RO         4734    .text               c_p.l(sys_stackheap_outer.o)
+    0x0000155e   0x0000155e   0x00000010   Code   RO         4737    .text               c_p.l(exit.o)
+    0x0000156e   0x0000156e   0x00000056   Code   RO         4878    .text               c_p.l(__dczerorl2.o)
     0x000015c4   0x000015c4   0x00000060   Code   RO         3698    i.ACMP0_ConfigInit  sys_hardware_init.o
     0x00001624   0x00001624   0x00000060   Code   RO         3699    i.ACMP1_ConfigInit  sys_hardware_init.o
     0x00001684   0x00001684   0x000000a8   Code   RO         3700    i.ADC_ConfigInit    sys_hardware_init.o
-    0x0000172c   0x0000172c   0x000000a4   Code   RO         4490    i.CLK_GetCoreFreq   system_bat32g139.o
+    0x0000172c   0x0000172c   0x000000a4   Code   RO         4497    i.CLK_GetCoreFreq   system_bat32g139.o
     0x000017d0   0x000017d0   0x0000003c   Code   RO          459    i.CLK_MainOsc_Setting  clk.o
     0x0000180c   0x0000180c   0x00000064   Code   RO          462    i.CLK_Osc_Setting   clk.o
     0x00001870   0x00001870   0x0000002c   Code   RO          463    i.CLK_PLL_Setting   clk.o
@@ -2993,239 +3012,241 @@ Memory Map of the image
     0x000018bc   0x000018bc   0x00000020   Code   RO          554    i.CMP_Input_Select  cmp.o
     0x000018dc   0x000018dc   0x00000014   Code   RO          558    i.CMP_VREF_Set_Value  cmp.o
     0x000018f0   0x000018f0   0x000000fc   Code   RO         4017    i.COM_AD_Data_Deal  user_function.o
-    0x000019ec   0x000019ec   0x000003dc   Code   RO         4018    i.COM_CHG_INV_Select  user_function.o
-    0x00001dc8   0x00001dc8   0x00000050   Code   RO         4019    i.COM_CloseDrive    user_function.o
-    0x00001e18   0x00001e18   0x0000008c   Code   RO         4020    i.COM_Function      user_function.o
-    0x00001ea4   0x00001ea4   0x0000005c   Code   RO         4137    i.COM_Get_Protect_Flag  user_fault_check.o
-    0x00001f00   0x00001f00   0x0000001c   Code   RO         3701    i.COM_PWM_Disable   sys_hardware_init.o
-    0x00001f1c   0x00001f1c   0x00000130   Code   RO         4021    i.COM_UART1_Deal    user_function.o
-    0x0000204c   0x0000204c   0x000000ac   Code   RO         4022    i.COM_UPS_Deal      user_function.o
-    0x000020f8   0x000020f8   0x000000ac   Code   RO          706    i.DMA_Start         dma.o
-    0x000021a4   0x000021a4   0x0000000c   Code   RO          746    i.ELC_Start         elc.o
-    0x000021b0   0x000021b0   0x00000108   Code   RO         3702    i.EPWM_ConfigInit   sys_hardware_init.o
-    0x000022b8   0x000022b8   0x00000014   Code   RO         3828    i.Fault_Deal_Func   sys_state_machine.o
-    0x000022cc   0x000022cc   0x0000025c   Code   RO         4138    i.Fault_State_Check  user_fault_check.o
-    0x00002528   0x00002528   0x00000002   Code   RO         4139    i.Fault_State_Deal  user_fault_check.o
-    0x0000252a   0x0000252a   0x00000002   PAD
-    0x0000252c   0x0000252c   0x00000064   Code   RO         4247    i.Function_TxSendDebug_Four_INT  change.o
-    0x00002590   0x00002590   0x00000078   Code   RO         3703    i.GPIO_Init         sys_hardware_init.o
-    0x00002608   0x00002608   0x0000000c   Code   RO         4252    i.Get_PLL_Sin       change.o
-    0x00002614   0x00002614   0x0000008c   Code   RO         4253    i.Get_PLL_Sin_WithARG  change.o
-    0x000026a0   0x000026a0   0x00000068   Code   RO         3704    i.INV_PWM_Enable    sys_hardware_init.o
-    0x00002708   0x00002708   0x000001d0   Code   RO         3662    i.INV_Run_VariableInit  sys_variable_init.o
-    0x000028d8   0x000028d8   0x00000018   Code   RO         3829    i.Initial_Deal_Func  sys_state_machine.o
-    0x000028f0   0x000028f0   0x00000046   Code   RO         4023    i.Key_Calc          user_function.o
-    0x00002936   0x00002936   0x00000002   PAD
-    0x00002938   0x00002938   0x00000058   Code   RO         3705    i.PFC_PWM_Enable    sys_hardware_init.o
-    0x00002990   0x00002990   0x0000016c   Code   RO         3663    i.PFC_Run_VariableInit  sys_variable_init.o
-    0x00002afc   0x00002afc   0x000000bc   Code   RO          823    i.PORT_Init         gpio.o
-    0x00002bb8   0x00002bb8   0x00000002   Code   RO         4140    i.Protect_Release   user_fault_check.o
-    0x00002bba   0x00002bba   0x0000000c   Code   RO         3830    i.Ready_Deal_Func   sys_state_machine.o
-    0x00002bc6   0x00002bc6   0x00000002   PAD
-    0x00002bc8   0x00002bc8   0x00000220   Code   RO         3831    i.Ready_State_Check  sys_state_machine.o
-    0x00002de8   0x00002de8   0x00000022   Code   RO         3832    i.Run_Deal_Func     sys_state_machine.o
-    0x00002e0a   0x00002e0a   0x00000002   PAD
-    0x00002e0c   0x00002e0c   0x00000038   Code   RO         3833    i.Run_State_OpenDriver  sys_state_machine.o
-    0x00002e44   0x00002e44   0x00000080   Code   RO         3834    i.State_Context_Func  sys_state_machine.o
-    0x00002ec4   0x00002ec4   0x000000c4   Code   RO         3835    i.State_Context_Task  sys_state_machine.o
-    0x00002f88   0x00002f88   0x00000002   Code   RO         3836    i.Stop_Deal_Func    sys_state_machine.o
-    0x00002f8a   0x00002f8a   0x00000002   PAD
-    0x00002f8c   0x00002f8c   0x00000038   Code   RO         3706    i.SysTick_ConfigInit  sys_hardware_init.o
-    0x00002fc4   0x00002fc4   0x000000dc   Code   RO         3707    i.Sys_HardConfigInit  sys_hardware_init.o
-    0x000030a0   0x000030a0   0x00000090   Code   RO         3708    i.Sys_IE_Init       sys_hardware_init.o
-    0x00003130   0x00003130   0x00000280   Code   RO         3664    i.Sys_Variableinit  sys_variable_init.o
-    0x000033b0   0x000033b0   0x00000048   Code   RO         3709    i.SystemClock_Init  sys_hardware_init.o
-    0x000033f8   0x000033f8   0x00000074   Code   RO         4493    i.SystemInit        system_bat32g139.o
-    0x0000346c   0x0000346c   0x00000044   Code   RO         3710    i.TIMC_ConfigInit   sys_hardware_init.o
-    0x000034b0   0x000034b0   0x000000ec   Code   RO         3711    i.UART0_ConfigInit  sys_hardware_init.o
-    0x0000359c   0x0000359c   0x000000c8   Code   RO         3712    i.UART1_ConfigInit  sys_hardware_init.o
-    0x00003664   0x00003664   0x0000001c   Code   RO         4024    i.User_DelayTime_ms  user_function.o
-    0x00003680   0x00003680   0x00000014   Code   RO         4025    i.User_DelayTime_us  user_function.o
-    0x00003694   0x00003694   0x00000014   Code   RO         4026    i.User_Divider      user_function.o
-    0x000036a8   0x000036a8   0x000000bc   Code   RO         4027    i.User_Key_Deal     user_function.o
-    0x00003764   0x00003764   0x00000124   Code   RO         4028    i.User_LED_Deal     user_function.o
-    0x00003888   0x00003888   0x00000058   Code   RO         4029    i.User_LED_ms       user_function.o
-    0x000038e0   0x000038e0   0x00000034   Code   RO         4030    i.User_RMS_Deal     user_function.o
-    0x00003914   0x00003914   0x0000000c   Code   RO         3415    i.WDT_Restart       wdt.o
-    0x00003920   0x00003920   0x0000003c   Code   RO         3837    i.Waiting_Deal_Func  sys_state_machine.o
-    0x0000395c   0x0000395c   0x0000001a   Code   RO          878    i.__ARM_common_switch8  gpio.o
-    0x00003976   0x00003976   0x00000002   PAD
-    0x00003978   0x00003978   0x00000018   Code   RO         3714    i.__NVIC_ClearPendingIRQ  sys_hardware_init.o
-    0x00003990   0x00003990   0x00000044   Code   RO         3715    i.__NVIC_SetPriority  sys_hardware_init.o
-    0x000039d4   0x000039d4   0x0000000e   Code   RO         4582    i._is_digit         c_p.l(__printf_wp.o)
-    0x000039e2   0x000039e2   0x00000002   PAD
-    0x000039e4   0x000039e4   0x00000018   Code   RO         1340    i._sys_exit         retarget.o
-    0x000039fc   0x000039fc   0x00000028   Code   RO         3461    i.main              main.o
-    0x00003a24   0x00003a24   0x00000048   Code   RO         4641    i.sqrt              m_ps.l(sqrt.o)
-    0x00003a6c   0x00003a6c   0x00000014   Code   RO         3435    i.wdt_interrupt     wdt_user.o
-    0x00003a80   0x00003a80   0x00000048   Code   RO          469    sram_code           clk.o
-    0x00003ac8   0x00003ac8   0x00000000   Code   RO         4672    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x00003ac8   0x00003ac8   0x00000348   Data   RO         4119    .constdata          user_sine_table.o
-    0x00003e10   0x00003e10   0x000002bc   Data   RO         4120    .constdata          user_sine_table.o
-    0x000040cc   0x000040cc   0x00000011   Data   RO         4585    .constdata          c_p.l(__printf_flags_wp.o)
-    0x000040dd   0x000040dd   0x00000080   Data   RO         4613    .constdata          fz_ps.l(ddiv.o)
-    0x0000415d   0x0000415d   0x00000040   Data   RO         4632    .constdata          fz_ps.l(fdiv.o)
-    0x0000419d   0x0000419d   0x00000003   PAD
-    0x000041a0   0x000041a0   0x00000030   Data   RO         4869    Region$$Table       anon$$obj.o
+    0x000019ec   0x000019ec   0x000003f4   Code   RO         4018    i.COM_CHG_INV_Select  user_function.o
+    0x00001de0   0x00001de0   0x00000050   Code   RO         4019    i.COM_CloseDrive    user_function.o
+    0x00001e30   0x00001e30   0x0000008c   Code   RO         4020    i.COM_Function      user_function.o
+    0x00001ebc   0x00001ebc   0x0000005c   Code   RO         4137    i.COM_Get_Protect_Flag  user_fault_check.o
+    0x00001f18   0x00001f18   0x0000001c   Code   RO         3701    i.COM_PWM_Disable   sys_hardware_init.o
+    0x00001f34   0x00001f34   0x00000130   Code   RO         4021    i.COM_UART1_Deal    user_function.o
+    0x00002064   0x00002064   0x000000ac   Code   RO         4022    i.COM_UPS_Deal      user_function.o
+    0x00002110   0x00002110   0x000000ac   Code   RO          706    i.DMA_Start         dma.o
+    0x000021bc   0x000021bc   0x0000000c   Code   RO          746    i.ELC_Start         elc.o
+    0x000021c8   0x000021c8   0x00000108   Code   RO         3702    i.EPWM_ConfigInit   sys_hardware_init.o
+    0x000022d0   0x000022d0   0x00000014   Code   RO         3828    i.Fault_Deal_Func   sys_state_machine.o
+    0x000022e4   0x000022e4   0x0000025c   Code   RO         4138    i.Fault_State_Check  user_fault_check.o
+    0x00002540   0x00002540   0x00000002   Code   RO         4139    i.Fault_State_Deal  user_fault_check.o
+    0x00002542   0x00002542   0x00000002   PAD
+    0x00002544   0x00002544   0x00000064   Code   RO         4247    i.Function_TxSendDebug_Four_INT  change.o
+    0x000025a8   0x000025a8   0x00000078   Code   RO         3703    i.GPIO_Init         sys_hardware_init.o
+    0x00002620   0x00002620   0x0000000c   Code   RO         4252    i.Get_PLL_Sin       change.o
+    0x0000262c   0x0000262c   0x0000008c   Code   RO         4253    i.Get_PLL_Sin_WithARG  change.o
+    0x000026b8   0x000026b8   0x00000068   Code   RO         3704    i.INV_PWM_Enable    sys_hardware_init.o
+    0x00002720   0x00002720   0x000001d0   Code   RO         3662    i.INV_Run_VariableInit  sys_variable_init.o
+    0x000028f0   0x000028f0   0x00000018   Code   RO         3829    i.Initial_Deal_Func  sys_state_machine.o
+    0x00002908   0x00002908   0x00000046   Code   RO         4023    i.Key_Calc          user_function.o
+    0x0000294e   0x0000294e   0x00000002   PAD
+    0x00002950   0x00002950   0x00000058   Code   RO         3705    i.PFC_PWM_Enable    sys_hardware_init.o
+    0x000029a8   0x000029a8   0x0000016c   Code   RO         3663    i.PFC_Run_VariableInit  sys_variable_init.o
+    0x00002b14   0x00002b14   0x000000bc   Code   RO          823    i.PORT_Init         gpio.o
+    0x00002bd0   0x00002bd0   0x00000002   Code   RO         4140    i.Protect_Release   user_fault_check.o
+    0x00002bd2   0x00002bd2   0x0000000c   Code   RO         3830    i.Ready_Deal_Func   sys_state_machine.o
+    0x00002bde   0x00002bde   0x00000002   PAD
+    0x00002be0   0x00002be0   0x00000220   Code   RO         3831    i.Ready_State_Check  sys_state_machine.o
+    0x00002e00   0x00002e00   0x00000022   Code   RO         3832    i.Run_Deal_Func     sys_state_machine.o
+    0x00002e22   0x00002e22   0x00000002   PAD
+    0x00002e24   0x00002e24   0x00000038   Code   RO         3833    i.Run_State_OpenDriver  sys_state_machine.o
+    0x00002e5c   0x00002e5c   0x00000080   Code   RO         3834    i.State_Context_Func  sys_state_machine.o
+    0x00002edc   0x00002edc   0x000000c4   Code   RO         3835    i.State_Context_Task  sys_state_machine.o
+    0x00002fa0   0x00002fa0   0x00000002   Code   RO         3836    i.Stop_Deal_Func    sys_state_machine.o
+    0x00002fa2   0x00002fa2   0x00000002   PAD
+    0x00002fa4   0x00002fa4   0x00000038   Code   RO         3706    i.SysTick_ConfigInit  sys_hardware_init.o
+    0x00002fdc   0x00002fdc   0x000000dc   Code   RO         3707    i.Sys_HardConfigInit  sys_hardware_init.o
+    0x000030b8   0x000030b8   0x00000090   Code   RO         3708    i.Sys_IE_Init       sys_hardware_init.o
+    0x00003148   0x00003148   0x00000280   Code   RO         3664    i.Sys_Variableinit  sys_variable_init.o
+    0x000033c8   0x000033c8   0x00000048   Code   RO         3709    i.SystemClock_Init  sys_hardware_init.o
+    0x00003410   0x00003410   0x00000074   Code   RO         4500    i.SystemInit        system_bat32g139.o
+    0x00003484   0x00003484   0x00000044   Code   RO         3710    i.TIMC_ConfigInit   sys_hardware_init.o
+    0x000034c8   0x000034c8   0x000000ec   Code   RO         3711    i.UART0_ConfigInit  sys_hardware_init.o
+    0x000035b4   0x000035b4   0x000000c8   Code   RO         3712    i.UART1_ConfigInit  sys_hardware_init.o
+    0x0000367c   0x0000367c   0x0000001c   Code   RO         4024    i.User_DelayTime_ms  user_function.o
+    0x00003698   0x00003698   0x00000014   Code   RO         4025    i.User_DelayTime_us  user_function.o
+    0x000036ac   0x000036ac   0x00000014   Code   RO         4026    i.User_Divider      user_function.o
+    0x000036c0   0x000036c0   0x000000bc   Code   RO         4027    i.User_Key_Deal     user_function.o
+    0x0000377c   0x0000377c   0x00000124   Code   RO         4028    i.User_LED_Deal     user_function.o
+    0x000038a0   0x000038a0   0x00000058   Code   RO         4029    i.User_LED_ms       user_function.o
+    0x000038f8   0x000038f8   0x00000034   Code   RO         4030    i.User_RMS_Deal     user_function.o
+    0x0000392c   0x0000392c   0x0000000c   Code   RO         3415    i.WDT_Restart       wdt.o
+    0x00003938   0x00003938   0x0000003c   Code   RO         3837    i.Waiting_Deal_Func  sys_state_machine.o
+    0x00003974   0x00003974   0x0000001a   Code   RO          878    i.__ARM_common_switch8  gpio.o
+    0x0000398e   0x0000398e   0x00000002   PAD
+    0x00003990   0x00003990   0x00000018   Code   RO         3714    i.__NVIC_ClearPendingIRQ  sys_hardware_init.o
+    0x000039a8   0x000039a8   0x00000044   Code   RO         3715    i.__NVIC_SetPriority  sys_hardware_init.o
+    0x000039ec   0x000039ec   0x0000000e   Code   RO         4589    i._is_digit         c_p.l(__printf_wp.o)
+    0x000039fa   0x000039fa   0x00000002   PAD
+    0x000039fc   0x000039fc   0x00000018   Code   RO         1340    i._sys_exit         retarget.o
+    0x00003a14   0x00003a14   0x00000028   Code   RO         3461    i.main              main.o
+    0x00003a3c   0x00003a3c   0x00000048   Code   RO         4648    i.sqrt              m_ps.l(sqrt.o)
+    0x00003a84   0x00003a84   0x00000014   Code   RO         3435    i.wdt_interrupt     wdt_user.o
+    0x00003a98   0x00003a98   0x00000048   Code   RO          469    sram_code           clk.o
+    0x00003ae0   0x00003ae0   0x00000000   Code   RO         4679    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x00003ae0   0x00003ae0   0x00000348   Data   RO         4119    .constdata          user_sine_table.o
+    0x00003e28   0x00003e28   0x000002bc   Data   RO         4120    .constdata          user_sine_table.o
+    0x000040e4   0x000040e4   0x00000011   Data   RO         4592    .constdata          c_p.l(__printf_flags_wp.o)
+    0x000040f5   0x000040f5   0x00000080   Data   RO         4620    .constdata          fz_ps.l(ddiv.o)
+    0x00004175   0x00004175   0x00000040   Data   RO         4639    .constdata          fz_ps.l(fdiv.o)
+    0x000041b5   0x000041b5   0x00000003   PAD
+    0x000041b8   0x000041b8   0x00000030   Data   RO         4876    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000100, Load base: 0x000041d0, Size: 0x00006270, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x0000029c])
+    Execution Region RW_IRAM1 (Exec base: 0x20000100, Load base: 0x000041e8, Size: 0x00006600, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x000002a0])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000100   0x000041d0   0x0000000c   Ven    RO         4885    Veneer$$Code        anon$$obj.o
-    0x2000010c   0x000041dc   0x0000000c   Ven    RO         4886    Veneer$$Code        anon$$obj.o
-    0x20000118   0x000041e8   0x0000000c   Ven    RO         4887    Veneer$$Code        anon$$obj.o
-    0x20000124   0x000041f4   0x0000000c   Ven    RO         4888    Veneer$$Code        anon$$obj.o
-    0x20000130   0x00004200   0x0000000c   Ven    RO         4889    Veneer$$Code        anon$$obj.o
-    0x2000013c   0x0000420c   0x0000000c   Ven    RO         4890    Veneer$$Code        anon$$obj.o
-    0x20000148   0x00004218   0x0000000c   Ven    RO         4891    Veneer$$Code        anon$$obj.o
-    0x20000154   0x00004224   0x0000000c   Ven    RO         4892    Veneer$$Code        anon$$obj.o
-    0x20000160   0x00004230   0x0000000c   Ven    RO         4893    Veneer$$Code        anon$$obj.o
-    0x2000016c   0x0000423c   0x0000000c   Ven    RO         4894    Veneer$$Code        anon$$obj.o
-    0x20000178   0x00004248   0x0000000c   Ven    RO         4895    Veneer$$Code        anon$$obj.o
-    0x20000184   0x00004254   0x0000000c   Ven    RO         4896    Veneer$$Code        anon$$obj.o
-    0x20000190   0x00004260   0x0000000c   Ven    RO         4897    Veneer$$Code        anon$$obj.o
-    0x2000019c   0x0000426c   0x0000000c   Ven    RO         4898    Veneer$$Code        anon$$obj.o
-    0x200001a8   0x00004278   0x0000000c   Ven    RO         4899    Veneer$$Code        anon$$obj.o
-    0x200001b4   0x00004284   0x0000000c   Ven    RO         4900    Veneer$$Code        anon$$obj.o
-    0x200001c0   0x00004290   0x00000040   Code   RO         4175    i.COM_Uartx_HeartCheck  user_communication.o
-    0x20000200   0x000042d0   0x00000020   Code   RO         3481    i.HardFault_Handler  interrupt.o
-    0x20000220   0x000042f0   0x00000098   Code   RO         3908    i.INV_AC_Vol_FreCalc  user_parallel.o
-    0x200002b8   0x00004388   0x00000444   Code   RO         4338    i.INV_Ctrl          inv_ctrl.o
-    0x200006fc   0x000047cc   0x00000138   Code   RO         4177    i.INV_DataSend      user_communication.o
-    0x20000834   0x00004904   0x00000090   Code   RO         3482    i.INV_Deal          interrupt.o
-    0x200008c4   0x00004994   0x00000118   Code   RO         4339    i.INV_Lock_Phase    inv_ctrl.o
-    0x200009dc   0x00004aac   0x00000088   Code   RO         3909    i.INV_MasterSlaveSelect  user_parallel.o
-    0x20000a64   0x00004b34   0x0000004a   Code   RO         4402    i.INV_PQ_Droop_Ctrl  pq_droop_ctrl.o
-    0x20000aae   COMPRESSED   0x00000002   PAD
-    0x20000ab0   0x00004b80   0x000000a4   Code   RO         3910    i.PFC_AC_Vol_FreCalc  user_parallel.o
-    0x20000b54   0x00004c24   0x00000110   Code   RO         4416    i.PFC_Ctrl          pfc_ctrl.o
-    0x20000c64   0x00004d34   0x000001c0   Code   RO         3483    i.PFC_Deal          interrupt.o
-    0x20000e24   0x00004ef4   0x00000066   Code   RO         4363    i.PFC_PID_Ctrl      pid_ctrl.o
-    0x20000e8a   COMPRESSED   0x00000002   PAD
-    0x20000e8c   0x00004f5c   0x000000ac   Code   RO         4417    i.PFC_VBus_RefCalc  pfc_ctrl.o
-    0x20000f38   0x00005008   0x00000062   Code   RO         4364    i.PID_Ctrl          pid_ctrl.o
-    0x20000f9a   COMPRESSED   0x00000002   PAD
-    0x20000f9c   0x0000506c   0x000001c0   Code   RO         4447    i.PLL_Ctrl          pll_ctrl.o
-    0x2000115c   0x0000522c   0x0000002c   Code   RO         4448    i.PLL_Ctrl_Param    pll_ctrl.o
-    0x20001188   0x00005258   0x00000104   Code   RO         3950    i.RMS_PQ_Calc       user_sample.o
-    0x2000128c   0x0000535c   0x00000128   Code   RO         3951    i.RMS_PQ_Update     user_sample.o
-    0x200013b4   0x00005484   0x000000bc   Code   RO         3484    i.SysTick_Handler   interrupt.o
-    0x20001470   0x00005540   0x00000080   Code   RO         4178    i.UART1_INV_DataSend  user_communication.o
-    0x200014f0   0x000055c0   0x00000024   Code   RO         4179    i.User_UART_View    user_communication.o
-    0x20001514   0x000055e4   0x00000258   Code   RO         3485    i.adc_interrupt     interrupt.o
-    0x2000176c   0x0000583c   0x00000038   Code   RO         4180    i.crc16_modbus      user_communication.o
-    0x200017a4   0x00005874   0x00000024   Code   RO         3486    i.tmm0_interrupt    interrupt.o
-    0x200017c8   0x00005898   0x0000016c   Code   RO         3487    i.tmm1_interrupt    interrupt.o
-    0x20001934   0x00005a04   0x00000024   Code   RO         3488    i.uart1_interrupt_receive  interrupt.o
-    0x20001958   0x00005a28   0x00000200   Data   RO         4452    .constdata          pll_ctrl.o
-    0x20001b58   COMPRESSED   0x00000004   Data   RW         3436    .data               wdt_user.o
-    0x20001b5c   COMPRESSED   0x00000010   Data   RW         3489    .data               interrupt.o
-    0x20001b6c   COMPRESSED   0x00000014   Data   RW         3565    .data               sys_struct.o
-    0x20001b80   COMPRESSED   0x00000014   Data   RW         3566    .data               sys_struct.o
-    0x20001b94   COMPRESSED   0x00000014   Data   RW         3567    .data               sys_struct.o
-    0x20001ba8   COMPRESSED   0x00000014   Data   RW         3568    .data               sys_struct.o
-    0x20001bbc   COMPRESSED   0x00000014   Data   RW         3569    .data               sys_struct.o
-    0x20001bd0   COMPRESSED   0x00000014   Data   RW         3570    .data               sys_struct.o
-    0x20001be4   COMPRESSED   0x00000014   Data   RW         3571    .data               sys_struct.o
-    0x20001bf8   COMPRESSED   0x00000014   Data   RW         3572    .data               sys_struct.o
-    0x20001c0c   COMPRESSED   0x00000014   Data   RW         3573    .data               sys_struct.o
-    0x20001c20   COMPRESSED   0x00000014   Data   RW         3574    .data               sys_struct.o
-    0x20001c34   COMPRESSED   0x00000014   Data   RW         3575    .data               sys_struct.o
-    0x20001c48   COMPRESSED   0x00000014   Data   RW         3576    .data               sys_struct.o
-    0x20001c5c   COMPRESSED   0x00000014   Data   RW         3577    .data               sys_struct.o
-    0x20001c70   COMPRESSED   0x00000014   Data   RW         3578    .data               sys_struct.o
-    0x20001c84   COMPRESSED   0x00000014   Data   RW         3579    .data               sys_struct.o
-    0x20001c98   COMPRESSED   0x00000014   Data   RW         3580    .data               sys_struct.o
-    0x20001cac   COMPRESSED   0x00000014   Data   RW         3581    .data               sys_struct.o
-    0x20001cc0   COMPRESSED   0x00000014   Data   RW         3582    .data               sys_struct.o
-    0x20001cd4   COMPRESSED   0x00000014   Data   RW         3583    .data               sys_struct.o
-    0x20001ce8   COMPRESSED   0x00000014   Data   RW         3584    .data               sys_struct.o
-    0x20001cfc   COMPRESSED   0x00000014   Data   RW         3585    .data               sys_struct.o
-    0x20001d10   COMPRESSED   0x00000014   Data   RW         3586    .data               sys_struct.o
-    0x20001d24   COMPRESSED   0x00000014   Data   RW         3587    .data               sys_struct.o
-    0x20001d38   COMPRESSED   0x00000014   Data   RW         3588    .data               sys_struct.o
-    0x20001d4c   COMPRESSED   0x00000014   Data   RW         3589    .data               sys_struct.o
-    0x20001d60   COMPRESSED   0x00000014   Data   RW         3590    .data               sys_struct.o
-    0x20001d74   COMPRESSED   0x00000014   Data   RW         3591    .data               sys_struct.o
-    0x20001d88   COMPRESSED   0x00000014   Data   RW         3592    .data               sys_struct.o
-    0x20001d9c   COMPRESSED   0x00000014   Data   RW         3593    .data               sys_struct.o
-    0x20001db0   COMPRESSED   0x00000014   Data   RW         3594    .data               sys_struct.o
-    0x20001dc4   COMPRESSED   0x00000014   Data   RW         3595    .data               sys_struct.o
-    0x20001dd8   COMPRESSED   0x00000014   Data   RW         3596    .data               sys_struct.o
-    0x20001dec   COMPRESSED   0x00000014   Data   RW         3597    .data               sys_struct.o
-    0x20001e00   COMPRESSED   0x00000014   Data   RW         3598    .data               sys_struct.o
-    0x20001e14   COMPRESSED   0x00000014   Data   RW         3599    .data               sys_struct.o
-    0x20001e28   COMPRESSED   0x00000014   Data   RW         3600    .data               sys_struct.o
-    0x20001e3c   COMPRESSED   0x00000014   Data   RW         3601    .data               sys_struct.o
-    0x20001e50   COMPRESSED   0x00000014   Data   RW         3602    .data               sys_struct.o
-    0x20001e64   COMPRESSED   0x00000014   Data   RW         3603    .data               sys_struct.o
-    0x20001e78   COMPRESSED   0x00000014   Data   RW         3604    .data               sys_struct.o
-    0x20001e8c   COMPRESSED   0x00000014   Data   RW         3605    .data               sys_struct.o
-    0x20001ea0   COMPRESSED   0x00000014   Data   RW         3606    .data               sys_struct.o
-    0x20001eb4   COMPRESSED   0x00000004   PAD
-    0x20001eb8   COMPRESSED   0x00000028   Data   RW         3607    .data               sys_struct.o
-    0x20001ee0   COMPRESSED   0x00000028   Data   RW         3608    .data               sys_struct.o
-    0x20001f08   COMPRESSED   0x00000028   Data   RW         3609    .data               sys_struct.o
-    0x20001f30   COMPRESSED   0x00000028   Data   RW         3610    .data               sys_struct.o
-    0x20001f58   COMPRESSED   0x00000028   Data   RW         3611    .data               sys_struct.o
-    0x20001f80   COMPRESSED   0x00000054   Data   RW         3612    .data               sys_struct.o
-    0x20001fd4   COMPRESSED   0x00000054   Data   RW         3613    .data               sys_struct.o
-    0x20002028   COMPRESSED   0x00000054   Data   RW         3614    .data               sys_struct.o
-    0x2000207c   COMPRESSED   0x00000054   Data   RW         3615    .data               sys_struct.o
-    0x200020d0   COMPRESSED   0x00000054   Data   RW         3616    .data               sys_struct.o
-    0x20002124   COMPRESSED   0x00000054   Data   RW         3617    .data               sys_struct.o
-    0x20002178   COMPRESSED   0x00000038   Data   RW         3619    .data               sys_struct.o
-    0x200021b0   COMPRESSED   0x00000014   Data   RW         3621    .data               sys_struct.o
-    0x200021c4   COMPRESSED   0x00000002   Data   RW         3622    .data               sys_struct.o
-    0x200021c6   COMPRESSED   0x00000004   Data   RW         3623    .data               sys_struct.o
-    0x200021ca   COMPRESSED   0x00000002   PAD
-    0x200021cc   COMPRESSED   0x0000012c   Data   RW         3624    .data               sys_struct.o
-    0x200022f8   COMPRESSED   0x00000008   Data   RW         3625    .data               sys_struct.o
-    0x20002300   COMPRESSED   0x00000002   Data   RW         3626    .data               sys_struct.o
-    0x20002302   COMPRESSED   0x00000002   Data   RW         3665    .data               sys_variable_init.o
-    0x20002304   COMPRESSED   0x00000080   Data   RW         3838    .data               sys_state_machine.o
-    0x20002384   COMPRESSED   0x0000000e   Data   RW         3911    .data               user_parallel.o
-    0x20002392   COMPRESSED   0x00000002   PAD
-    0x20002394   COMPRESSED   0x0000000c   Data   RW         4031    .data               user_function.o
-    0x200023a0   COMPRESSED   0x00000002   Data   RW         4184    .data               user_communication.o
-    0x200023a2   COMPRESSED   0x00000002   PAD
-    0x200023a4   COMPRESSED   0x00000004   Data   RW         4257    .data               change.o
-    0x200023a8   COMPRESSED   0x00000002   Data   RW         4259    .data               change.o
-    0x200023aa   COMPRESSED   0x00000002   PAD
-    0x200023ac   COMPRESSED   0x00000004   Data   RW         4266    .data               change.o
-    0x200023b0   COMPRESSED   0x00000004   Data   RW         4267    .data               change.o
-    0x200023b4   COMPRESSED   0x00000004   Data   RW         4268    .data               change.o
-    0x200023b8   COMPRESSED   0x00000008   Data   RW         4418    .data               pfc_ctrl.o
-    0x200023c0   COMPRESSED   0x00000004   Data   RW         4453    .data               pll_ctrl.o
-    0x200023c4   COMPRESSED   0x00000004   Data   RW         4495    .data               system_bat32g139.o
-    0x200023c8        -       0x0000004c   Zero   RW         3551    .bss                sys_struct.o
-    0x20002414        -       0x00000088   Zero   RW         3552    .bss                sys_struct.o
-    0x2000249c        -       0x00000054   Zero   RW         3553    .bss                sys_struct.o
-    0x200024f0        -       0x00000040   Zero   RW         3554    .bss                sys_struct.o
-    0x20002530        -       0x0000002c   Zero   RW         3555    .bss                sys_struct.o
-    0x2000255c        -       0x0000000a   Zero   RW         3556    .bss                sys_struct.o
-    0x20002566        -       0x00000014   Zero   RW         3557    .bss                sys_struct.o
-    0x2000257a   COMPRESSED   0x00000002   PAD
-    0x2000257c        -       0x0000003c   Zero   RW         3558    .bss                sys_struct.o
-    0x200025b8        -       0x0000000a   Zero   RW         3559    .bss                sys_struct.o
-    0x200025c2   COMPRESSED   0x00000002   PAD
-    0x200025c4        -       0x0000005c   Zero   RW         3560    .bss                sys_struct.o
-    0x20002620        -       0x0000000c   Zero   RW         3561    .bss                sys_struct.o
-    0x2000262c        -       0x00000014   Zero   RW         3562    .bss                sys_struct.o
-    0x20002640        -       0x0000001c   Zero   RW         3563    .bss                sys_struct.o
-    0x2000265c        -       0x000000c4   Zero   RW         3564    .bss                sys_struct.o
-    0x20002720        -       0x00001a90   Zero   RW         3952    .bss                user_sample.o
-    0x200041b0        -       0x0000002c   Zero   RW         4182    .bss                user_communication.o
-    0x200041dc        -       0x00000040   Zero   RW         4256    .bss                change.o
-    0x2000421c        -       0x00000960   Zero   RW         4388    .bss                repeat_ctrl.o
-    0x20004b7c        -       0x00000944   Zero   RW         4449    .bss                pll_ctrl.o
-    0x200054c0        -       0x00000944   Zero   RW         4450    .bss                pll_ctrl.o
-    0x20005e04        -       0x0000000c   Zero   RW         4451    .bss                pll_ctrl.o
-    0x20005e10        -       0x00000060   Zero   RW         4725    .bss                c_p.l(libspace.o)
-    0x20005e70        -       0x00000100   Zero   RW         4482    HEAP                startup_bat32g139.o
-    0x20005f70        -       0x00000400   Zero   RW         4481    STACK               startup_bat32g139.o
+    0x20000100   0x000041e8   0x0000000c   Ven    RO         4892    Veneer$$Code        anon$$obj.o
+    0x2000010c   0x000041f4   0x0000000c   Ven    RO         4893    Veneer$$Code        anon$$obj.o
+    0x20000118   0x00004200   0x0000000c   Ven    RO         4894    Veneer$$Code        anon$$obj.o
+    0x20000124   0x0000420c   0x0000000c   Ven    RO         4895    Veneer$$Code        anon$$obj.o
+    0x20000130   0x00004218   0x0000000c   Ven    RO         4896    Veneer$$Code        anon$$obj.o
+    0x2000013c   0x00004224   0x0000000c   Ven    RO         4897    Veneer$$Code        anon$$obj.o
+    0x20000148   0x00004230   0x0000000c   Ven    RO         4898    Veneer$$Code        anon$$obj.o
+    0x20000154   0x0000423c   0x0000000c   Ven    RO         4899    Veneer$$Code        anon$$obj.o
+    0x20000160   0x00004248   0x0000000c   Ven    RO         4900    Veneer$$Code        anon$$obj.o
+    0x2000016c   0x00004254   0x0000000c   Ven    RO         4901    Veneer$$Code        anon$$obj.o
+    0x20000178   0x00004260   0x0000000c   Ven    RO         4902    Veneer$$Code        anon$$obj.o
+    0x20000184   0x0000426c   0x0000000c   Ven    RO         4903    Veneer$$Code        anon$$obj.o
+    0x20000190   0x00004278   0x0000000c   Ven    RO         4904    Veneer$$Code        anon$$obj.o
+    0x2000019c   0x00004284   0x0000000c   Ven    RO         4905    Veneer$$Code        anon$$obj.o
+    0x200001a8   0x00004290   0x0000000c   Ven    RO         4906    Veneer$$Code        anon$$obj.o
+    0x200001b4   0x0000429c   0x0000000c   Ven    RO         4907    Veneer$$Code        anon$$obj.o
+    0x200001c0   0x000042a8   0x00000040   Code   RO         4175    i.COM_Uartx_HeartCheck  user_communication.o
+    0x20000200   0x000042e8   0x00000020   Code   RO         3481    i.HardFault_Handler  interrupt.o
+    0x20000220   0x00004308   0x00000098   Code   RO         3908    i.INV_AC_Vol_FreCalc  user_parallel.o
+    0x200002b8   0x000043a0   0x00000444   Code   RO         4339    i.INV_Ctrl          inv_ctrl.o
+    0x200006fc   0x000047e4   0x00000380   Code   RO         4340    i.INV_Ctrl_220V     inv_ctrl.o
+    0x20000a7c   0x00004b64   0x00000138   Code   RO         4177    i.INV_DataSend      user_communication.o
+    0x20000bb4   0x00004c9c   0x000000a0   Code   RO         3482    i.INV_Deal          interrupt.o
+    0x20000c54   0x00004d3c   0x00000118   Code   RO         4341    i.INV_Lock_Phase    inv_ctrl.o
+    0x20000d6c   0x00004e54   0x00000088   Code   RO         3909    i.INV_MasterSlaveSelect  user_parallel.o
+    0x20000df4   0x00004edc   0x0000004a   Code   RO         4409    i.INV_PQ_Droop_Ctrl  pq_droop_ctrl.o
+    0x20000e3e   COMPRESSED   0x00000002   PAD
+    0x20000e40   0x00004f28   0x000000a4   Code   RO         3910    i.PFC_AC_Vol_FreCalc  user_parallel.o
+    0x20000ee4   0x00004fcc   0x00000110   Code   RO         4423    i.PFC_Ctrl          pfc_ctrl.o
+    0x20000ff4   0x000050dc   0x000001c0   Code   RO         3483    i.PFC_Deal          interrupt.o
+    0x200011b4   0x0000529c   0x00000066   Code   RO         4370    i.PFC_PID_Ctrl      pid_ctrl.o
+    0x2000121a   COMPRESSED   0x00000002   PAD
+    0x2000121c   0x00005304   0x000000ac   Code   RO         4424    i.PFC_VBus_RefCalc  pfc_ctrl.o
+    0x200012c8   0x000053b0   0x00000062   Code   RO         4371    i.PID_Ctrl          pid_ctrl.o
+    0x2000132a   COMPRESSED   0x00000002   PAD
+    0x2000132c   0x00005414   0x000001c0   Code   RO         4454    i.PLL_Ctrl          pll_ctrl.o
+    0x200014ec   0x000055d4   0x0000002c   Code   RO         4455    i.PLL_Ctrl_Param    pll_ctrl.o
+    0x20001518   0x00005600   0x00000104   Code   RO         3950    i.RMS_PQ_Calc       user_sample.o
+    0x2000161c   0x00005704   0x00000128   Code   RO         3951    i.RMS_PQ_Update     user_sample.o
+    0x20001744   0x0000582c   0x000000bc   Code   RO         3484    i.SysTick_Handler   interrupt.o
+    0x20001800   0x000058e8   0x00000080   Code   RO         4178    i.UART1_INV_DataSend  user_communication.o
+    0x20001880   0x00005968   0x00000024   Code   RO         4179    i.User_UART_View    user_communication.o
+    0x200018a4   0x0000598c   0x00000258   Code   RO         3485    i.adc_interrupt     interrupt.o
+    0x20001afc   0x00005be4   0x00000038   Code   RO         4180    i.crc16_modbus      user_communication.o
+    0x20001b34   0x00005c1c   0x00000024   Code   RO         3486    i.tmm0_interrupt    interrupt.o
+    0x20001b58   0x00005c40   0x0000016c   Code   RO         3487    i.tmm1_interrupt    interrupt.o
+    0x20001cc4   0x00005dac   0x00000024   Code   RO         3488    i.uart1_interrupt_receive  interrupt.o
+    0x20001ce8   0x00005dd0   0x00000200   Data   RO         4459    .constdata          pll_ctrl.o
+    0x20001ee8   COMPRESSED   0x00000004   Data   RW         3436    .data               wdt_user.o
+    0x20001eec   COMPRESSED   0x00000010   Data   RW         3489    .data               interrupt.o
+    0x20001efc   COMPRESSED   0x00000014   Data   RW         3565    .data               sys_struct.o
+    0x20001f10   COMPRESSED   0x00000014   Data   RW         3566    .data               sys_struct.o
+    0x20001f24   COMPRESSED   0x00000014   Data   RW         3567    .data               sys_struct.o
+    0x20001f38   COMPRESSED   0x00000014   Data   RW         3568    .data               sys_struct.o
+    0x20001f4c   COMPRESSED   0x00000014   Data   RW         3569    .data               sys_struct.o
+    0x20001f60   COMPRESSED   0x00000014   Data   RW         3570    .data               sys_struct.o
+    0x20001f74   COMPRESSED   0x00000014   Data   RW         3571    .data               sys_struct.o
+    0x20001f88   COMPRESSED   0x00000014   Data   RW         3572    .data               sys_struct.o
+    0x20001f9c   COMPRESSED   0x00000014   Data   RW         3573    .data               sys_struct.o
+    0x20001fb0   COMPRESSED   0x00000014   Data   RW         3574    .data               sys_struct.o
+    0x20001fc4   COMPRESSED   0x00000014   Data   RW         3575    .data               sys_struct.o
+    0x20001fd8   COMPRESSED   0x00000014   Data   RW         3576    .data               sys_struct.o
+    0x20001fec   COMPRESSED   0x00000014   Data   RW         3577    .data               sys_struct.o
+    0x20002000   COMPRESSED   0x00000014   Data   RW         3578    .data               sys_struct.o
+    0x20002014   COMPRESSED   0x00000014   Data   RW         3579    .data               sys_struct.o
+    0x20002028   COMPRESSED   0x00000014   Data   RW         3580    .data               sys_struct.o
+    0x2000203c   COMPRESSED   0x00000014   Data   RW         3581    .data               sys_struct.o
+    0x20002050   COMPRESSED   0x00000014   Data   RW         3582    .data               sys_struct.o
+    0x20002064   COMPRESSED   0x00000014   Data   RW         3583    .data               sys_struct.o
+    0x20002078   COMPRESSED   0x00000014   Data   RW         3584    .data               sys_struct.o
+    0x2000208c   COMPRESSED   0x00000014   Data   RW         3585    .data               sys_struct.o
+    0x200020a0   COMPRESSED   0x00000014   Data   RW         3586    .data               sys_struct.o
+    0x200020b4   COMPRESSED   0x00000014   Data   RW         3587    .data               sys_struct.o
+    0x200020c8   COMPRESSED   0x00000014   Data   RW         3588    .data               sys_struct.o
+    0x200020dc   COMPRESSED   0x00000014   Data   RW         3589    .data               sys_struct.o
+    0x200020f0   COMPRESSED   0x00000014   Data   RW         3590    .data               sys_struct.o
+    0x20002104   COMPRESSED   0x00000014   Data   RW         3591    .data               sys_struct.o
+    0x20002118   COMPRESSED   0x00000014   Data   RW         3592    .data               sys_struct.o
+    0x2000212c   COMPRESSED   0x00000014   Data   RW         3593    .data               sys_struct.o
+    0x20002140   COMPRESSED   0x00000014   Data   RW         3594    .data               sys_struct.o
+    0x20002154   COMPRESSED   0x00000014   Data   RW         3595    .data               sys_struct.o
+    0x20002168   COMPRESSED   0x00000014   Data   RW         3596    .data               sys_struct.o
+    0x2000217c   COMPRESSED   0x00000014   Data   RW         3597    .data               sys_struct.o
+    0x20002190   COMPRESSED   0x00000014   Data   RW         3598    .data               sys_struct.o
+    0x200021a4   COMPRESSED   0x00000014   Data   RW         3599    .data               sys_struct.o
+    0x200021b8   COMPRESSED   0x00000014   Data   RW         3600    .data               sys_struct.o
+    0x200021cc   COMPRESSED   0x00000014   Data   RW         3601    .data               sys_struct.o
+    0x200021e0   COMPRESSED   0x00000014   Data   RW         3602    .data               sys_struct.o
+    0x200021f4   COMPRESSED   0x00000014   Data   RW         3603    .data               sys_struct.o
+    0x20002208   COMPRESSED   0x00000014   Data   RW         3604    .data               sys_struct.o
+    0x2000221c   COMPRESSED   0x00000014   Data   RW         3605    .data               sys_struct.o
+    0x20002230   COMPRESSED   0x00000014   Data   RW         3606    .data               sys_struct.o
+    0x20002244   COMPRESSED   0x00000004   PAD
+    0x20002248   COMPRESSED   0x00000028   Data   RW         3607    .data               sys_struct.o
+    0x20002270   COMPRESSED   0x00000028   Data   RW         3608    .data               sys_struct.o
+    0x20002298   COMPRESSED   0x00000028   Data   RW         3609    .data               sys_struct.o
+    0x200022c0   COMPRESSED   0x00000028   Data   RW         3610    .data               sys_struct.o
+    0x200022e8   COMPRESSED   0x00000028   Data   RW         3611    .data               sys_struct.o
+    0x20002310   COMPRESSED   0x00000054   Data   RW         3612    .data               sys_struct.o
+    0x20002364   COMPRESSED   0x00000054   Data   RW         3613    .data               sys_struct.o
+    0x200023b8   COMPRESSED   0x00000054   Data   RW         3614    .data               sys_struct.o
+    0x2000240c   COMPRESSED   0x00000054   Data   RW         3615    .data               sys_struct.o
+    0x20002460   COMPRESSED   0x00000054   Data   RW         3616    .data               sys_struct.o
+    0x200024b4   COMPRESSED   0x00000054   Data   RW         3617    .data               sys_struct.o
+    0x20002508   COMPRESSED   0x00000038   Data   RW         3619    .data               sys_struct.o
+    0x20002540   COMPRESSED   0x00000014   Data   RW         3621    .data               sys_struct.o
+    0x20002554   COMPRESSED   0x00000002   Data   RW         3622    .data               sys_struct.o
+    0x20002556   COMPRESSED   0x00000004   Data   RW         3623    .data               sys_struct.o
+    0x2000255a   COMPRESSED   0x00000002   PAD
+    0x2000255c   COMPRESSED   0x0000012c   Data   RW         3624    .data               sys_struct.o
+    0x20002688   COMPRESSED   0x00000008   Data   RW         3625    .data               sys_struct.o
+    0x20002690   COMPRESSED   0x00000002   Data   RW         3626    .data               sys_struct.o
+    0x20002692   COMPRESSED   0x00000002   Data   RW         3665    .data               sys_variable_init.o
+    0x20002694   COMPRESSED   0x00000080   Data   RW         3838    .data               sys_state_machine.o
+    0x20002714   COMPRESSED   0x0000000e   Data   RW         3911    .data               user_parallel.o
+    0x20002722   COMPRESSED   0x00000002   PAD
+    0x20002724   COMPRESSED   0x0000000c   Data   RW         4031    .data               user_function.o
+    0x20002730   COMPRESSED   0x00000002   Data   RW         4184    .data               user_communication.o
+    0x20002732   COMPRESSED   0x00000002   PAD
+    0x20002734   COMPRESSED   0x00000004   Data   RW         4257    .data               change.o
+    0x20002738   COMPRESSED   0x00000002   Data   RW         4259    .data               change.o
+    0x2000273a   COMPRESSED   0x00000001   Data   RW         4266    .data               change.o
+    0x2000273b   COMPRESSED   0x00000001   PAD
+    0x2000273c   COMPRESSED   0x00000004   Data   RW         4267    .data               change.o
+    0x20002740   COMPRESSED   0x00000004   Data   RW         4268    .data               change.o
+    0x20002744   COMPRESSED   0x00000004   Data   RW         4269    .data               change.o
+    0x20002748   COMPRESSED   0x00000008   Data   RW         4425    .data               pfc_ctrl.o
+    0x20002750   COMPRESSED   0x00000004   Data   RW         4460    .data               pll_ctrl.o
+    0x20002754   COMPRESSED   0x00000004   Data   RW         4502    .data               system_bat32g139.o
+    0x20002758        -       0x0000004c   Zero   RW         3551    .bss                sys_struct.o
+    0x200027a4        -       0x00000088   Zero   RW         3552    .bss                sys_struct.o
+    0x2000282c        -       0x00000054   Zero   RW         3553    .bss                sys_struct.o
+    0x20002880        -       0x00000040   Zero   RW         3554    .bss                sys_struct.o
+    0x200028c0        -       0x0000002c   Zero   RW         3555    .bss                sys_struct.o
+    0x200028ec        -       0x0000000a   Zero   RW         3556    .bss                sys_struct.o
+    0x200028f6        -       0x00000014   Zero   RW         3557    .bss                sys_struct.o
+    0x2000290a   COMPRESSED   0x00000002   PAD
+    0x2000290c        -       0x0000003c   Zero   RW         3558    .bss                sys_struct.o
+    0x20002948        -       0x0000000a   Zero   RW         3559    .bss                sys_struct.o
+    0x20002952   COMPRESSED   0x00000002   PAD
+    0x20002954        -       0x0000005c   Zero   RW         3560    .bss                sys_struct.o
+    0x200029b0        -       0x0000000c   Zero   RW         3561    .bss                sys_struct.o
+    0x200029bc        -       0x00000014   Zero   RW         3562    .bss                sys_struct.o
+    0x200029d0        -       0x0000001c   Zero   RW         3563    .bss                sys_struct.o
+    0x200029ec        -       0x000000c4   Zero   RW         3564    .bss                sys_struct.o
+    0x20002ab0        -       0x00001a90   Zero   RW         3952    .bss                user_sample.o
+    0x20004540        -       0x0000002c   Zero   RW         4182    .bss                user_communication.o
+    0x2000456c        -       0x00000040   Zero   RW         4256    .bss                change.o
+    0x200045ac        -       0x00000960   Zero   RW         4395    .bss                repeat_ctrl.o
+    0x20004f0c        -       0x00000944   Zero   RW         4456    .bss                pll_ctrl.o
+    0x20005850        -       0x00000944   Zero   RW         4457    .bss                pll_ctrl.o
+    0x20006194        -       0x0000000c   Zero   RW         4458    .bss                pll_ctrl.o
+    0x200061a0        -       0x00000060   Zero   RW         4732    .bss                c_p.l(libspace.o)
+    0x20006200        -       0x00000100   Zero   RW         4489    HEAP                startup_bat32g139.o
+    0x20006300        -       0x00000400   Zero   RW         4488    STACK               startup_bat32g139.o
 
 
 ==============================================================================
@@ -3235,32 +3256,32 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-         0          0          0          0          0      72244   adc.o
-         0          0          0          0          0      24313   adc_user.o
-       252         52          0         18         64       3718   change.o
-       308         32          0          0          0       6940   clk.o
+         0          0          0          0          0      72196   adc.o
+         0          0          0          0          0      24241   adc_user.o
+       252         52          0         19         64       3725   change.o
+       308         32          0          0          0       6916   clk.o
         52         10          0          0          0       2029   cmp.o
        172         14          0          0          0       3320   dma.o
         12          6          0          0          0       1232   elc.o
        214         16          0          0          0        948   gpio.o
-      1848        280          0         16          0       6940   interrupt.o
-      1372        130          0          0          0       2168   inv_ctrl.o
+      1864        282          0         16          0       6960   interrupt.o
+      2268        196          0          0          0       3488   inv_ctrl.o
         40         10          0          0          0        543   main.o
        444         56          0          8          0       2066   pfc_ctrl.o
        200          0          0          0          0       1842   pid_ctrl.o
-       492         28        512          4       4756       3714   pll_ctrl.o
+       492         28        512          4       4756       3666   pll_ctrl.o
         74          0          0          0          0       1208   pq_droop_ctrl.o
-         0          0          0          0       2400        998   repeat_ctrl.o
+         0          0          0          0       2400        974   repeat_ctrl.o
         24          8          0          0          0        584   retarget.o
        128         28        192          0       1280       2188   startup_bat32g139.o
-      2052        312          0          0          0      18788   sys_hardware_init.o
+      2052        312          0          0          0      18764   sys_hardware_init.o
       1076        168          0        128          0      10813   sys_state_machine.o
-         0          0          0       1936        852      22829   sys_struct.o
+         0          0          0       1936        852      22733   sys_struct.o
       1468        362          0          2          0       3009   sys_variable_init.o
-       280        100          4          4          0       2891   system_bat32g139.o
-       596         78          0          2         44       5654   user_communication.o
+       280        100          4          4          0       2867   system_bat32g139.o
+       596         78          0          2         44       5630   user_communication.o
        700        166          0          0          0       3384   user_fault_check.o
-      2694        328          0         12          0      11573   user_function.o
+      2718        332          0         12          0      11593   user_function.o
        452         60          0         14          0       2781   user_parallel.o
        556         36          0          0       6800       2863   user_sample.o
          0          0       1540          0          0       1050   user_sine_table.o
@@ -3268,9 +3289,9 @@ Image component sizes
         20          4          0          4          0       1484   wdt_user.o
 
     ----------------------------------------------------------------------
-     15820       2376       2296       2160      16200     224620   Object Totals
+     16756       2448       2296       2160      16200     225603   Object Totals
        264         88         48          0          0          0   (incl. Generated)
-        18          0          0         12          4          0   (incl. Padding)
+        18          0          0         11          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3345,15 +3366,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     21084       2558       2508       2160      16296     222036   Grand Totals
-     21084       2558       2508        668      16296     222036   ELF Image Totals (compressed)
-     21084       2558       2508        668          0          0   ROM Totals
+     22020       2630       2508       2160      16296     222975   Grand Totals
+     22020       2630       2508        672      16296     222975   ELF Image Totals (compressed)
+     22020       2630       2508        672          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                23592 (  23.04kB)
+    Total RO  Size (Code + RO Data)                24528 (  23.95kB)
     Total RW  Size (RW Data + ZI Data)             18456 (  18.02kB)
-    Total ROM Size (Code + RO Data + RW Data)      24260 (  23.69kB)
+    Total ROM Size (Code + RO Data + RW Data)      25200 (  24.61kB)
 
 ==============================================================================
 

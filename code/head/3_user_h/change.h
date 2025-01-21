@@ -2,6 +2,9 @@
 #include "sys_mcu_header.h"
 #include "PLL_Ctrl.h"
 extern int isAllowCHG;
+extern uint8_t is220V;
+
+void INV_Ctrl_220V(void);
 int32_t Get_PLL_Sin(PLL_Ctrl_Var_t *PLL_Info);
 int32_t Get_PLL_Sin_WithARG(PLL_Ctrl_Var_t *PLL_Info, float ARG);
 void Function_TxSendDebug_INT(int32_t data);
@@ -10,7 +13,6 @@ void Function_TxSendDebug_Four_INT(int32_t data1, int32_t data2, int32_t data3, 
 
 void Function_TxSendDebug_Float(float data);
 void Function_TxSendDebug_Two_Float(float data1, float data2);
-
 
 void DebugUse(void);
 #define BWRY_State 0
@@ -24,10 +26,10 @@ void DebugUse(void);
 #define DISABLE_IN_UP 220 * COM_REAL_VACIN_RMS_SCAL  // 停止充电220是V，真实值
 #define DISABLE_OUT_DN 213 * COM_REAL_VACIN_RMS_SCAL // 停止放电203是V，真实值
 
-#define I3_OUT 208 * COM_REAL_VACIN_RMS_SCAL  
-#define I4_OUT 203 * COM_REAL_VACIN_RMS_SCAL 
-#define I5_OUT 198 * COM_REAL_VACIN_RMS_SCAL 
-#define I6_OUT 193 * COM_REAL_VACIN_RMS_SCAL 
+#define I3_OUT 208 * COM_REAL_VACIN_RMS_SCAL
+#define I4_OUT 203 * COM_REAL_VACIN_RMS_SCAL
+#define I5_OUT 198 * COM_REAL_VACIN_RMS_SCAL
+#define I6_OUT 193 * COM_REAL_VACIN_RMS_SCAL
 
 int32_t Get_PLL_Cos(PLL_Ctrl_Var_t *PLL_Info);
 extern int32_t save[512], save2[512];
@@ -39,4 +41,4 @@ extern uint16_t NOK_CNT;
 extern uint32_t periodDot_Val;
 extern uint16_t why;
 
-extern uint32_t Workms,Works,WorkMin;
+extern uint32_t Workms, Works, WorkMin;
