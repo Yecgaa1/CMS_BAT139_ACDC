@@ -813,9 +813,9 @@ void UART1_ConfigInit(void)
 	(4)UARTx波特率配置
 	*/	
     /* UART1 Start, Setting baud rate */
-    //波特率计算：64M/(2^5)/((103+1)*2) = 2M/208 = 9615 ≈ 9600 波特率
+    //波特率计算：64M/(2^5)/(51+1)/2 = 2M/52/2 = 19230波特率
     SCI0->SPS0 |= _0000_SCI_CK01_fCLK_0 | 5;     //注意 UART0 和 UART1 共用 SCI0->SPS0 寄存器
-    SCI0->SDR02 = 51 << 9;
+    SCI0->SDR02 = 51 << 9;//直接就是推入SDRmn[15:9]=51
     SCI0->SDR03 = 51 << 9;
 
 
