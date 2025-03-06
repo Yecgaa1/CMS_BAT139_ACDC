@@ -725,12 +725,12 @@ void UART0_ConfigInit(void)
 	(4)UARTx波特率配置
 	*/
     /* UART0 Start, Setting baud rate */
-    //波特率计算：64M/(2^5)/((1)*2) = 2M/2 = 1M 波特率    
+    //波特率计算：64M/(2^7)/((127+1)*2) = 2M/2 = 1M 波特率    
     SCI0->ST0 = _0002_SCI_CH1_STOP_TRG_ON | _0001_SCI_CH0_STOP_TRG_ON;
     SCI0->SPS0 &= ~SCI0_SPS0_PRS00_Msk;
-    SCI0->SPS0 |=  _0000_SCI_CK01_fCLK_0 | 5;   //注意 UART0 和 UART1 共用 SCI0->SPS0 寄存器
-    SCI0->SDR00 = 0 << 9;
-    SCI0->SDR01 = 0 << 9;
+    SCI0->SPS0 |=  _0000_SCI_CK01_fCLK_0 | 7;   //注意 UART0 和 UART1 共用 SCI0->SPS0 寄存器
+    SCI0->SDR00 = 103 << 9;
+    SCI0->SDR01 = 103 << 9;
 //    SCI0->SDR00 = 103 << 9;
 //    SCI0->SDR01 = 103 << 9;
 
@@ -814,10 +814,14 @@ void UART1_ConfigInit(void)
 	*/	
     /* UART1 Start, Setting baud rate */
     //波特率计算：64M/(2^5)/(51+1)/2 = 2M/52/2 = 19230波特率
-    SCI0->SPS0 |= _0000_SCI_CK01_fCLK_0 | 5;     //注意 UART0 和 UART1 共用 SCI0->SPS0 寄存器
-    SCI0->SDR02 = 51 << 9;//直接就是推入SDRmn[15:9]=51
-    SCI0->SDR03 = 51 << 9;
+//    SCI0->SPS0 |= _0000_SCI_CK01_fCLK_0 | 5;     //注意 UART0 和 UART1 共用 SCI0->SPS0 寄存器
+//    SCI0->SDR02 = 51 << 9;//直接就是推入SDRmn[15:9]=51
+//    SCI0->SDR03 = 51 << 9;
 
+	//64M/(2^7)/(12+1)/2 = 2M/52/2= 19230波特率
+    SCI0->SPS0 |= _0000_SCI_CK01_fCLK_0 | 7;     //注意 UART0 和 UART1 共用 SCI0->SPS0 寄存器
+    SCI0->SDR02 = 12 << 9;//直接就是推入SDRmn[15:9]=12
+    SCI0->SDR03 = 12 << 9;
 
 	/*
 	(5)开启UARTx输出
