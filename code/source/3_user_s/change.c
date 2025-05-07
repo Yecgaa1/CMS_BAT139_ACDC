@@ -65,7 +65,7 @@ int32_t Get_PLL_Cos(PLL_Ctrl_Var_t *PLL_Info)
     return (PLL_Info->i32CosTheta) >> 3;
 }
 char txChar[24] = {0};
-char txCharL[40] = {0};
+char txCharL[50] = {0};
 void Function_TxSendDebug_INT(int32_t data)
 {
     sprintf((char *)txChar, "%d\r\n", data);
@@ -104,9 +104,9 @@ void Function_TxSendDebug_Two_Float(float data1, float data2)
     DMA->DMAEN1 |= 1 << 4;                      // uart1                                  //使能传输(UART1)
     SCI0->TXD0 = (uint8_t)txChar[0];
 }
-void Function_TxSendDebug_Four_INT(int32_t data1, int32_t data2, int32_t data3, int32_t data4)
+void Function_TxSendDebug_Five_INT(int32_t data1, int32_t data2, int32_t data3, int32_t data4, int32_t data5)
 {
-    sprintf((char *)txCharL, "%d,%d,%d,%d,%d\r\n", data1, data2, data3, data4, data1 + data2 + data3 + data4);
+    sprintf((char *)txCharL, "%d,%d,%d,%d,%d,%d\r\n", data1, data2, data3, data4, data5, data1 + data2 + data3 + data4 + data5);
 
     DMAVEC->CTRL[0].DMSAR = (uint32_t)(txCharL + 1);
     DMAVEC->CTRL[0].DMACT = strlen(txCharL) - 1; // 传输8个数据
