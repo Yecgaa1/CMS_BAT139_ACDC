@@ -673,7 +673,7 @@ void COM_CHG_INV_Select(void)
             COM_Ctr_Info.PFC_AC_Vol_OK_Cnt = 0;
         }
 
-        // 逆变工作模式处理
+        // INV逆变工作模式处理
         if (System_ProtectFlag_Info.all == 0 &&
             State_Context.state_Value <= COM_RUN_STATE &&
             COM_Ctr_Info.INV_Enable_Flag == 1 &&
@@ -688,8 +688,15 @@ void COM_CHG_INV_Select(void)
                 COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt++;
             if (COM_Ctr_Info.PFC_AC_Vol_NOK_Cnt >= COM_Ctr_Info.PFC_AC_Vol_NOK_TimeVal || UPS_Ctr_Info.V_ACIN_NOK == 1)
             {
-                //TODO:检查电压是否低于临界
-
+                // TODO:检查电压是否低于临界
+                if (COM_AD_Data_Info.VACIN_RMS_Val_Fir < 150 * 10)
+                {
+                    is220V = 1;//打开220v输出模式
+                }
+                else
+                {
+                    is220V = 0;
+                }
                 PFC_RY2_DISABLE; // 逆变状态下关闭
                 INV_START_DISABLE;
 
@@ -730,6 +737,7 @@ void COM_CHG_INV_Select(void)
         }
 
         // 设定工作模式为空闲状态
+		//在放电时，如果在220v模式则不应该会自动退出，所以需要is220v==0
         if ((System_ProtectFlag_Info.all == 0 &&
              State_Context.state_Value <= COM_RUN_STATE &&
              COM_Ctr_Info.INV_Enable_Flag == 0 &&
@@ -738,7 +746,7 @@ void COM_CHG_INV_Select(void)
               COM_Ctr_Info.PFC_FREQ_State == 0 ||
               UPS_Ctr_Info.V_ACIN_NOK == 1) &&
              (COM_Ctr_Info.INV_PFC_Mode_Select == 1 || COM_Ctr_Info.INV_PFC_Mode_Select == 2)) ||
-            (COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE && COM_AD_Data_Info.VACIN_RMS_Val_Fir > DISABLE_OUT_DN) ||
+            (COM_Ctr_Info.INV_PFC_Mode_Select == INV_MODE && COM_AD_Data_Info.VACIN_RMS_Val_Fir > DISABLE_OUT_DN && is220V == 0) ||
             (COM_Ctr_Info.INV_PFC_Mode_Select == PFC_MODE && COM_AD_Data_Info.VACIN_RMS_Val_Fir < DISABLE_IN_UP))
         {
             if (COM_Ctr_Info.NO_Mode_OK_Cnt < COM_Ctr_Info.NO_Mode_OK_TimeVal)

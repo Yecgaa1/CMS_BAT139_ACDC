@@ -15,6 +15,8 @@ uint16_t NOK_CNT = 0;
 uint32_t periodDot_Val = 0;
 uint16_t why = 0;
 
+uint8_t is220V = 0;
+
 uint32_t Workms = 0;
 uint32_t Works = 0;
 uint32_t WorkMin = 0;

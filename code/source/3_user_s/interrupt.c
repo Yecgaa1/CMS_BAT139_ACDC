@@ -188,7 +188,14 @@ void INV_Deal(void)
         INV_Lock_Phase();  //注意：锁相更新周期值必须在INV环路控制之前执行  
             
         //逆变控制
-        INV_Ctrl();
+        if (is220V)
+        {
+            INV_Ctrl_220V();
+        }
+        else
+        {
+            INV_Ctrl();
+        }
 
         // 占空比、周期更新
         TMM->TMGRA0 = INV_Ctrl_Info.PWM_Period; // Set pwm period

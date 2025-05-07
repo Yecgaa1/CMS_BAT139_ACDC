@@ -2,6 +2,9 @@
 #include "sys_mcu_header.h"
 #include "PLL_Ctrl.h"
 extern int isAllowCHG;
+extern uint8_t is220V;
+
+void INV_Ctrl_220V(void);
 int32_t Get_PLL_Sin(PLL_Ctrl_Var_t *PLL_Info);
 int32_t Get_PLL_Sin_WithARG(PLL_Ctrl_Var_t *PLL_Info, float ARG);
 void Function_TxSendDebug_INT(int32_t data);
