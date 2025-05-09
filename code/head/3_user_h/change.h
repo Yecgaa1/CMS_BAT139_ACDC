@@ -2,7 +2,7 @@
 #include "sys_mcu_header.h"
 #include "PLL_Ctrl.h"
 extern int isAllowCHG;
-extern uint8_t is220V;
+extern volatile uint8_t is220V;
 
 void INV_Ctrl_220V(void);
 int32_t Get_PLL_Sin(PLL_Ctrl_Var_t *PLL_Info);
