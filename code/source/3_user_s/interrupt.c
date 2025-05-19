@@ -188,7 +188,7 @@ void INV_Deal(void)
         // Äæ±ä¿ØÖÆ
         if (is220V == 1)
         {
-            // INV_Ctrl_220V();
+            INV_Ctrl_220V();
         }
         else
         {
