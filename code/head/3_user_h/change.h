@@ -22,10 +22,10 @@ void DebugUse(void);
 #define PWMDelay (0) // ms，不得大于2000，可以是0
 #define PWMDelayCNT (PWMDelay * 24)
 
-#define ENABLE_IN_UP 230 * COM_REAL_VACIN_RMS_SCAL   // 开始充电230是V，真实值
+#define ENABLE_IN_UP 220 * COM_REAL_VACIN_RMS_SCAL   // 开始充电230是V，真实值
 #define ENABLE_OUT_DN 198 * COM_REAL_VACIN_RMS_SCAL  // 开始放电198是V，真实值
-#define DISABLE_IN_UP 220 * COM_REAL_VACIN_RMS_SCAL  // 停止充电220是V，真实值
-#define DISABLE_OUT_DN 213 * COM_REAL_VACIN_RMS_SCAL // 停止放电203是V，真实值
+#define DISABLE_IN_UP 216 * COM_REAL_VACIN_RMS_SCAL  // 停止充电220是V，真实值
+#define DISABLE_OUT_DN 210 * COM_REAL_VACIN_RMS_SCAL // 停止放电203是V，真实值
 
 #define I3_OUT 208 * COM_REAL_VACIN_RMS_SCAL  
 #define I4_OUT 203 * COM_REAL_VACIN_RMS_SCAL 
